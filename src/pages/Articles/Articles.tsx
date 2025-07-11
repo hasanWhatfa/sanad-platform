@@ -167,12 +167,12 @@ const Articles = () => {
             <div className="imgs-container">
               <h3>صور</h3>
               <div className="container">
-                <img src="/images/docPhoto3.jpg" />
-                <img src="/images/manStanding2.jpg" />
-                <img src="/images/woman3.jpg" />
-                <img src="/images/social phobia.jfif" />
-                <img src="/images/ثنائي القطب.jfif" />
-                <img src="/images/heroImage3.jpg" />
+                <img src="/images/docPhoto3.webp" />
+                <img src="/images/manStanding2.webp" />
+                <img src="/images/woman3.webp" />
+                <img src="/images/social phobia.webp" />
+                <img src="/images/ثنائي القطب.webp" />
+                <img src="/images/heroImage3.webp" />
               </div>
             </div>
           </div>

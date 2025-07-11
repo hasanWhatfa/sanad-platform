@@ -19,7 +19,7 @@
 }
 .TestPage.attachment .testPage_hero {
     /* this image wil be different for each test so */
-    background-image: url(/public/images/attachmentImage.jpg);
+    background-image: url(/public/images/attachmentImage.webp);
 }
 .TestPage .testPage_hero::after{
     content: '';

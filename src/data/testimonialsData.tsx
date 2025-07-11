@@ -13,7 +13,7 @@ const testimonialsData: Testimonial[] = [
     name: "سارة أحمد",
     job: "مديرة تسويق",
     testimonial: "المنصة ساعدتني كثيرا في تحسين صحتي النفسية، والأطباء كانوا محترفين جدا.",
-    image: "/images/woman1.jpg",
+    image: "/images/woman1.webp",
     rating: 5,
   },
   {
@@ -21,7 +21,7 @@ const testimonialsData: Testimonial[] = [
     name: "علي محمد",
     job: "مهندس برمجيات",
     testimonial: "وجدت الدعم النفسي الذي كنت أبحث عنه بطريقة سهلة وسريعة.",
-    image: "/images/manStanding1.jpg",
+    image: "/images/manStanding1.webp",
     rating: 4,
   },
   {
@@ -29,7 +29,7 @@ const testimonialsData: Testimonial[] = [
     name: "ليلى حسن",
     job: "مصممة جرافيك",
     testimonial: "التجربة كانت مريحة ومفيدة، أنصح الجميع باستخدام المنصة.",
-    image: "/images/woman2.jpg",
+    image: "/images/woman2.webp",
     rating: 5,
   },
   {
@@ -37,7 +37,7 @@ const testimonialsData: Testimonial[] = [
     name: "يوسف إبراهيم",
     job: "طالب جامعي",
     testimonial: "خدمة ممتازة، والأطباء متعاونين ويفهمون مشاكلك بعمق.",
-    image: "/images/manStanding2.jpg",
+    image: "/images/manStanding2.webp",
     rating: 4,
   },
   {
@@ -45,7 +45,7 @@ const testimonialsData: Testimonial[] = [
     name: "ندى سمير",
     job: "مهندسة معمارية",
     testimonial: "المنصة من أفضل الطرق للحصول على استشارة نفسية بسهولة وثقة.",
-    image: "/images/woman3.jpg",
+    image: "/images/woman3.webp",
     rating: 5,
   },
   {
@@ -53,7 +53,7 @@ const testimonialsData: Testimonial[] = [
     name: "عمر عبد الله",
     job: "مدير مشروع",
     testimonial: "التقييم الكامل للأطباء يعطي ثقة كبيرة لاختيار الطبيب المناسب.",
-    image: "/images/manStanding3.jpg",
+    image: "/images/manStanding3.webp",
     rating: 4,
   },
   {
@@ -61,7 +61,7 @@ const testimonialsData: Testimonial[] = [
     name: "ريم مصطفى",
     job: "محاسبة",
     testimonial: "أشكر فريق العمل على الدعم المستمر والمساعدة في تخطي الأزمات النفسية.",
-    image: "/images/woman2.jpg",
+    image: "/images/woman2.webp",
     rating: 5,
   },
 ];

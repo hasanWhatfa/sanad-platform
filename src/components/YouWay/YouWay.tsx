@@ -9,7 +9,7 @@ const YouWay = () => {
         />
        <div className="youWayContent">
           <div className="imgCont">
-            <img src="/images/heroImage3.jpg"/>
+            <img src="/images/heroImage3.webp"/>
           </div>
           <div className="youWayCardsContainer">
               {youWayData.map((e,i)=>{

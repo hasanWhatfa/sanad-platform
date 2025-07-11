@@ -12,7 +12,7 @@ const Doctors = () => {
       <AboutUsHero 
       title='تعرف على اطبائنا واختر الطبيب الذي ترتاح له لتبدأ رحلة علاجك'
       talk='جميع الاطباء والاخصائيون لدينا محترفون وحاصلون على ابرز الشهادات في مجال الطب والدعم النفسي'
-      img='/images/docPhoto.jpg'
+      img='/images/docPhoto.webp'
        />
        <div className="px-162">
         <TitleComponent title='اطبائنا' desc='زر صفحة الطبيب لتعرف معلومات اكثر عنة' />

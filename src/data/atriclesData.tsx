@@ -55,7 +55,7 @@ function unifyArticleCategories(articles: Article[]): Article[] {
 const articlesData : Array<Article>  = [
     {
     id: "mental-health-pregnancy",
-    img:"/images/Premium Photo _ Thoughtful pregnant woman looks thoughtfully aside with hand on chin, makes planning about child birth.jfif",
+    img:"/images/pregnantWoman.webp",
     title: "الصحة النفسية أثناء الحمل",
     description:
       "منذ اللحظة التي تكتشف فيها المرأة حملها، تبدأ رحلتها النفسية المعقدة التي تمزج بين الفرح والخوف، وتتطلب دعمًا عاطفيًا وتفهّمًا لتغيراتها.",
@@ -116,7 +116,7 @@ const articlesData : Array<Article>  = [
   },
     {
     id: "child-teen-mental-health",
-    img:'/images/social phobia.jfif',
+    img:'/images/social phobia.webp',
     title: "الصحة النفسية للأطفال والمراهقين",
     description:
       "الضغوط النفسية لا تقتصر على الكبار، فالأطفال والمراهقون يمرون بتجارب معقّدة تؤثر على نموهم، وتتطلب فهمًا واحتواءً من الأهل والمجتمع.",
@@ -162,7 +162,7 @@ const articlesData : Array<Article>  = [
    {
     id: "anxiety",
     title: "القلق: بين الطبيعي والمرضي",
-    img:'/images/doctorAndPatient.jfif',
+    img:'/images/doctorAndPatient.webp',
     description:
       "القلق شعور إنساني طبيعي، لكنه قد يتحول إلى مشكلة نفسية تؤثر على جودة الحياة إذا تجاوز حدوده الطبيعية. فهمه والتعامل معه هو أول خطوة نحو التوازن.",
     sections: [
@@ -215,7 +215,7 @@ const articlesData : Array<Article>  = [
   },
     {
     id: "phobia-social-anxiety",
-    img:'/images/ثنائي القطب.jfif',
+    img:'/images/ثنائي القطب.webp',
     title: "الرهاب الاجتماعي والفوبيا: عندما تصبح المخاوف سجنًا",
     description:
       "الخوف الطبيعي قد يتحول إلى عائق نفسي في حياتنا. الرهاب الاجتماعي والفوبيا هما وجهان لحالة تستحق الفهم والعلاج لا التجاهل.",
@@ -289,7 +289,7 @@ const articlesData : Array<Article>  = [
    {
     id: "addiction",
     title: "الإدمان: السجن الصامت",
-    img:'/images/doctorAndPatient.jfif',
+    img:'/images/doctorAndPatient.webp',
     description:
       "الإدمان هو اضطراب معقّد لا يقيّد الجسد فقط، بل الفكر والمشاعر والمستقبل. فهمه والتعامل معه أمر ضروري من أجل استعادة السيطرة على الحياة.",
     sections: [
@@ -350,7 +350,7 @@ const articlesData : Array<Article>  = [
 {
     id: "depression",
     title: "الاكتئاب: صمت القلب في عالم صاخب",
-        img:"/images/Premium Photo _ Thoughtful pregnant woman looks thoughtfully aside with hand on chin, makes planning about child birth.jfif",
+        img:"/images/pregnantWoman.webp",
 
     description:
       "الاكتئاب هو اضطراب نفسي عميق يُضعف طاقة الإنسان ويطفئ شغفه، لكنه ليس دليلاً على الضعف بل تجربة إنسانية تحتاج إلى فهم ودعم وعلاج.",
@@ -417,7 +417,7 @@ const articlesData : Array<Article>  = [
    {
     id: "panic-attacks",
     title: "نوبات الهلع: لحظات الخوف الحاد",
-    img:'/images/doctorAndPatient.jfif',
+    img:'/images/doctorAndPatient.webp',
     description:
       "نوبات الهلع لحظات مرعبة يشعر فيها الشخص بفقدان السيطرة، لكنها مؤقتة وقابلة للعلاج. تعلّم كيف تتعامل معها وتخفف من حدّتها.",
     sections: [
@@ -461,7 +461,7 @@ const articlesData : Array<Article>  = [
   },
     {
     id: "family-relationships",
-        img:"/images/Premium Photo _ Thoughtful pregnant woman looks thoughtfully aside with hand on chin, makes planning about child birth.jfif",
+        img:"/images/pregnantWoman.webp",
 
     title: "العلاقات الأسرية: الجذور النفسية لصحتنا",
     description:
@@ -519,7 +519,7 @@ const articlesData : Array<Article>  = [
   },
    {
     id: "neurological-disorders",
-        img:'/images/doctorAndPatient.jfif',
+        img:'/images/doctorAndPatient.webp',
 
     title: "الاضطرابات العصبية: فهم التحدي الصامت",
     description:
@@ -573,7 +573,7 @@ const articlesData : Array<Article>  = [
   },
    {
     id: "psychiatric-medication",
-        img:'/images/social phobia.jfif',
+        img:'/images/social phobia.webp',
 
     title: "الأدوية النفسية: بين الوصمة والحاجة الحقيقية",
     description:
@@ -634,7 +634,7 @@ const articlesData : Array<Article>  = [
   },
   {
     id: "panic-attacks",
-        img:'/images/social phobia.jfif',
+        img:'/images/social phobia.webp',
 
     title: "نوبات الهلع: عندما يختنق العقل ويصرخ الجسد",
     description:
@@ -676,7 +676,7 @@ const articlesData : Array<Article>  = [
 
   {
     id: "final-note",
-    img:'/images/social phobia.jfif',
+    img:'/images/social phobia.webp',
     title: "كلمة أمل",
     description:
       "إذا كنت تشعر بالتعب أو التيه، تذكّر أنك لست وحدك. الشفاء يبدأ بخطوة، وطلب المساعدة شجاعة لا خجل فيها.",
@@ -693,7 +693,7 @@ const articlesData : Array<Article>  = [
   }
 ,  {
   id: "panic-attack-management",
-      img:'/images/doctorAndPatient.jfif',
+      img:'/images/doctorAndPatient.webp',
 
   title: "كيف أتعامل مع نوبة الهلع؟",
   description:"",

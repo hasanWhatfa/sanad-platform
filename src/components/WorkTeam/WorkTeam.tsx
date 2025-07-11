@@ -28,7 +28,7 @@ const WorkTeam = () => {
           <div className="top">
             <div className="choosenDocImage">
               {/* الصورة الآن تتغير حسب الطبيب المختار */}
-              <img src={chosenDoctor.image || "/images/docPhoto.jpg"} alt={`${chosenDoctor.name} photo`} />
+              <img src={chosenDoctor.image || "/images/docPhoto.webp"} alt={`${chosenDoctor.name} photo`} />
             </div>
           </div>
           <div className="displayedDocInfo">

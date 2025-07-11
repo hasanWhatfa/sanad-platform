@@ -219,7 +219,7 @@ export default MainHero;
 //                         </div>
 //                         <button className="ctaBtn">احجز جلستك الأولى</button>
 //                     </div>
-//                     <img src="/images/heroImage1.jpg" className='heroImage' />
+//                     <img src="/images/heroImage1.webp" className='heroImage' />
 //                     <div className="darkLayout"></div>
 
 //                 </div>
@@ -233,7 +233,7 @@ export default MainHero;
 //                         </div>
 //                         <button className="ctaBtn">احجز جلستك الأولى</button>
 //                     </div>
-//                     <img src="/images/heroImage2.jpg" className='heroImage' />
+//                     <img src="/images/heroImage2.webp" className='heroImage' />
 //                     <div className="darkLayout"></div>
 //                 </div>            
 //             </SwiperSlide>
@@ -258,7 +258,7 @@ export default MainHero;
 //                         </div>
 //                         <button className="ctaBtn">احجز جلستك الأولى</button>
 //                     </div>
-//                     <img src="/images/heroImage1.jpg" className='heroImage' />
+//                     <img src="/images/heroImage1.webp" className='heroImage' />
 //                     <div className="darkLayout"></div>
 
 //                 </div>
@@ -273,7 +273,7 @@ export default MainHero;
 //                         </div>
 //                         <button className="ctaBtn">اكتشف المعالجين</button>
 //                     </div>
-//                     <img src="/images/heroImage2.jpg" className='heroImage' />
+//                     <img src="/images/heroImage2.webp" className='heroImage' />
 //                     <div className="darkLayout"></div>
 //                 </div>            
 //             </SwiperSlide>

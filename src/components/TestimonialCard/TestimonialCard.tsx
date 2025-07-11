@@ -23,7 +23,7 @@ const TestimonialCard: React.FC<Props> = ({ name, job, testimonial, image, ratin
 
   return (
     <div className="testimonial-slide">
-      <img src={image || "/images/default-user.jpg"} alt={`صورة ${name}`} />
+      <img src={image || "/images/default-user.webp"} alt={`صورة ${name}`} />
       <h3 className="testimonial-name">{name}</h3>
       <h4 className="testimonial-job">{job}</h4>
       <div className="testimonial-text">"{testimonial}"</div>

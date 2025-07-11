@@ -1,4 +1,4 @@
-import attchmentImage from '/images/attachmentImage.jpg';
+import attchmentImage from '/images/attachmentImage.webp';
 
 
 export interface PsychTest {

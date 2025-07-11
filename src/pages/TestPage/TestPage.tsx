@@ -41,7 +41,7 @@ const TestPage = () => {
                   <p>*{testData?.testSentence}</p>
                   <div className="start_btn_container">
                     <img src="/icons/roundedArrow.png" className="rouded-arow"/>
-                    <img src="/icons/roundedArrowCurvy.png" className="rounded-arow-curvy"/>
+                    <img src="/public/icons/roundedArrowCurvy.png" className="rounded-arow-curvy"/>
                     <Link to={`/questionsPage/${testData?.id}`} className="testStart_button">
                       ابدا اختبار {testData?.testName}
                       <RiMentalHealthFill />
