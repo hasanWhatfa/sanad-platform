@@ -1,0 +1,94 @@
+.DocCardComponent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column ;
+    gap: 15px;
+    background-color: var(--color-secondary);
+    border-radius: 12px;
+    max-width: 250px;
+    border: 1px solid var(--color-secondary);
+    transition: var(--main-trans);
+}
+
+.DocCardComponent:hover , .DocCardActive{
+    background-color: var(--color-primary);
+}
+
+.DocCardComponent .topPART{
+    background-color: var(--color-primary);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    backdrop-filter: blur(10px);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    transition: var(--main-trans);
+}
+.DocCardComponent:hover .topPART , .DocCardActive .topPART {
+    background-color: var(--color-secondary);
+}
+.DocCardComponent .docCardImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    overflow: hidden;
+    border: 2px solid transparent;
+}
+.DocCardComponent .docCardImage img{
+    width: 100%;
+    height: 100%;
+}
+.DocCardComponent .bottomPart{
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    padding: 12px;
+}
+.DocCardComponent .bottomPart .docCardComName{
+    font-size: 18px;
+    color: var(--text-primary);
+    font-weight: 600;
+    line-height: 150%;
+    border-bottom: 2px solid var(--color-primary);
+    padding: 0px 4px 5px;
+    transition: var(--main-trans);
+}
+.DocCardComponent:hover .bottomPart .docCardComName , .DocCardActive .bottomPart .docCardComName{
+    color: white;
+    border-bottom: 2px solid var(--color-secondary);
+}
+.DocCardComponent .bottomPart > p{
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-muted);
+    transition: var(--main-trans);
+}
+.DocCardComponent:hover .bottomPart > p , .DocCardActive .bottomPart > p{
+    color:white
+}
+.DocCardActive .docCardImage{
+    border: 2px solid var(--color-primary);
+    box-shadow: 0px 0px 10px 0px var(--color-primary);
+}
+
+/* Responive Start */
+@media (max-width:992px){
+.DocCardComponent{
+    max-width: 250px;
+    gap:0px
+}
+.DocCardComponent .topPART{
+    padding: 15px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+.DocCardComponent .bottomPart .docCardComName{
+    font-size: 16px;
+}
+
+}

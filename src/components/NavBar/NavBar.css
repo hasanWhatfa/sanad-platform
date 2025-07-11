@@ -1,0 +1,294 @@
+nav{
+    position: fixed;
+    width: 100%;
+    box-shadow: var(--shadow-soft);
+    background-color: var(--color-secondary);
+    z-index: 1000;
+    transition: 300ms;
+}
+.bg-screen-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    padding: 12px 0;
+}
+nav .logoContainer{
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    h1{
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    img{
+        width:90px;
+        height: 90px;
+    }
+}
+.logoContainer h1{
+    color: var(--text-primary);
+    font-weight: 700;
+    line-height: 150%;
+    font-size: 28px;
+    cursor: pointer;
+}
+.navLinks{
+    display: flex;
+    align-items: center;
+    /* gap: px; */
+    justify-content: center;
+    flex-direction: row-reverse;
+}
+.navLinks a{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    text-decoration: none;
+    color:var(--text-primary);
+    padding: 10px;
+    transition: 300ms background;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+}
+.navLinks a:hover{
+    background-color: rgb(0, 0, 0 , 0.3);
+}
+.navLinks a.activeLink{
+    border-bottom: 2px solid var(--color-primary);
+}
+.navBtns{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: row-reverse;
+}
+.navBtns button{
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 150%;
+    padding: 5px 20px;
+    color: var(--text-primary);
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    transition: 400ms ease;
+    cursor: pointer;
+}
+.navBtns button:hover{
+    background-color: hsl(0, 80%, 56%);
+}
+.navBtns button:first-child{
+    background-color: transparent;
+    color: var(--text-primary);
+}
+.navBtns button:first-child:hover{
+    background-color: rgb(0, 0, 0 , 0.3);
+}
+
+
+/* small screen nav style start */
+.sm-screen-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    display: none;
+    position: relative;
+}
+.bars{
+    cursor: pointer;
+    transition: var(--main-trans)
+}
+.bars:hover{
+    transform:scale(1.05);
+}
+.sm-screen-nav h1{
+    color: var(--text-primary);
+    font-weight: 700;
+    line-height: 150%;
+    font-size: 25px;
+    cursor: pointer;
+}
+.sm-screen-menu{
+    padding: 12px 0;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-secondary);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    gap:62px;
+    padding-bottom: 70px;
+    transform: translateY(-1500px);
+    transition: var(--main-trans);
+    overflow-y: auto;
+    scrollbar-width: none;  
+    -ms-overflow-style: none; 
+}
+.showNavMenu{
+    transform: translateY(0) !important;
+}
+.sm-screen-nav-menu-top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 30px;
+}
+.sm-screen-nav-menu-top .navLinks-sm-screen-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.sm-screen-menu .navLinks{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+.sm-screen-menu .navLinks a{
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid var(--color-primary);
+    border-bottom: 1px solid var(--color-primary);
+}
+.sm-screen-menu .navLinks .activeLink{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+.sm-screen-menu .navBtns{
+    gap: 30px;
+}
+.scrollingNav{
+    top: 0;
+}
+
+/* top banner style */
+.topBanner{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    background-color: var(--color-accent);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: 300ms;
+    height: 44px;
+}
+.topBanner .bannerLeft{
+    p{
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 150%;
+        color:var(--color-secondary)
+    }
+}
+.topBanner .bannerRight{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
+    gap: 30px;
+}
+.topBanner .bannerRight p{
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 150%;
+    color:var(--color-secondary)
+}
+.topBanner .bannerRight .bannerIconsContainer{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-direction: row-reverse;
+    img{
+        width: 20px;
+        height:20px;
+        cursor: pointer;
+        transition: var(--main-trans);
+    }
+}
+.topBanner .bannerRight .bannerIconsContainer img:hover{
+    transform: translateY(-10px);
+}
+.topBanner .bannerRight,.topBanner .bannerLeft{
+    position: relative;
+}
+.topBanner .bannerRight::after,.topBanner .bannerLeft::after{
+    content: "";
+    position: absolute;
+    width: 110%;
+    height: 2px;
+    background-color: var(--color-white);
+    top: 100%;
+    left: -5%;
+}
+.topBannerHide{
+    /* display: none; */
+    height: 0px;
+}
+
+/* responsive start */
+@media(max-width:1200px){
+    .bg-screen-nav{
+    padding: 10px 0;
+}
+.logoContainer h1{
+    font-size: 24px;
+}
+.navLinks a{
+    font-size: 14px;
+    padding: 8px;
+}
+.navBtns button{
+    font-size: 15px;
+    padding: 5px 18px;
+}
+}
+
+@media(max-width:992px){
+    .sm-screen-nav{
+    display: flex;
+
+}
+.bg-screen-nav{
+    display: none;
+}
+
+
+/* top banner style */
+.topBanner .bannerLeft{
+    p{
+        font-size: 14px;
+    }
+}
+.topBanner .bannerRight{
+    gap: 20px;
+}
+.topBanner .bannerRight p{
+    font-size: 14px;
+}
+.topBanner .bannerRight .bannerIconsContainer{
+    img{
+        width: 16px;
+        height:16px;
+    }
+}
+.topBanner .bannerRight .bannerIconsContainer img:hover{
+    transform: translateY(-5px);
+}
+}

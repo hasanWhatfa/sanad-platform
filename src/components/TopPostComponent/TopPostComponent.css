@@ -1,0 +1,35 @@
+.topPostComponent{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    text-decoration: none;
+    color: var(--text-primary);
+}
+.topPostComponent > h2{
+    font-size: 28px;
+    font-weight: 800;
+}
+.topPostComponent .text{
+    display: flex;
+    flex-direction: column;
+}
+.topPostComponent .text > h4{
+    font-size: 16px;
+    font-weight: 600;
+    a{
+        text-decoration: none;
+        padding-bottom: 2px;
+        color: var(--text-primary);
+    }
+}
+.topPostComponent .text > h4:hover a{
+    text-decoration: underline;
+}
+.topPostComponent .text p{
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-muted);
+    overflow: hidden;
+    max-height: 50px;
+}

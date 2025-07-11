@@ -1,0 +1,118 @@
+.plan{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    text-align:right ;
+    justify-content: space-between;
+    width: 31%;
+    position: relative;
+    background-color: white;
+    padding: 30px;
+    padding-top: 50px;
+    border-radius: 12px;
+    min-height: 446px;
+    transition: 300ms;
+}
+.plan:hover{
+    box-shadow: 0px 0px 10px 2px var(--color-primary);
+}
+.planName{
+    display: flex;
+    flex-direction: row-reverse;
+    width: max-content;
+    align-items: center;
+    gap: 20px;
+    position: absolute;
+    bottom: 93%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--color-primary);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 30px;
+}
+.planName h4{
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 150%;
+}
+.planName svg{
+    width: 23px;
+    height: 23px;
+}
+.priceInfo{
+    text-align: center;
+    width: 100%;
+}
+.priceInfo h3{
+    text-align: center;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 150%;
+    color: var(--text-primary);
+}
+.priceInfo h5{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+    color: var(--text-muted);
+}
+.planFeatuers{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    list-style: none;
+}
+.planFeatuers .featLi{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 14px;
+}
+.planFeatuers .featLi{
+    font-size:16px;
+    font-weight: 600;
+    line-height: 150%;
+    color:var(--text-primary)
+}
+.plan > button{
+    height: 44px;
+}
+
+/* responsive start */
+@media (max-width:1200px){
+    .plan{
+    min-height: 466px;
+}
+}
+
+@media (max-width:992px){
+    .plan{
+    width:100%;
+    gap: 15px;
+    padding: 20px;
+    padding-top: 40px;
+    border-radius: 10px;
+    min-height: unset;
+    }
+    .planName{
+    gap: 15px;
+    bottom: 95%;
+    }
+    .planName h4{
+        font-size: 18px;
+    }
+    .planName svg{
+        width: 20px;
+        height: 20px;
+    }
+    .planFeatuers .featLi{
+        gap: 10px;
+    }
+    .plan .startNow{
+    font-size: 14px;
+    border-radius: 6px;
+    }
+}

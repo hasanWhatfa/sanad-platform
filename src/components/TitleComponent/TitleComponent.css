@@ -1,0 +1,57 @@
+.titleComponent{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width:100%;
+    margin:0 auto;
+    padding-bottom: 60px;
+}
+
+.titleComponent .logoContainer{
+    width: 110px;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.titleComponent img.logo{
+    width: 190px;
+    height:190px;
+}
+.titleComponent .titleHeader{
+    text-align: center;
+}
+.titleComponent h3{
+    font-size: 32px;
+    font-weight: bold;
+}
+.titleComponent p{
+    font-size: 16px;
+}
+
+
+    .scribble {
+      width: 220px;
+      height: 50px;
+      filter: drop-shadow(0px 0px 0.5px rgba(0, 0, 0, 0.3)); /* ظل خفيف كأنها قلم رصاص */
+    }
+
+    .scribble path {
+      stroke: #4b4b4b; /* رمادي غامق - لون قلم رصاص */
+      stroke-width: 2.2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 300;
+      stroke-dashoffset: 300;
+
+      animation: drawScribble 2.2s ease-in-out forwards;
+    }
+
+    @keyframes drawScribble {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }

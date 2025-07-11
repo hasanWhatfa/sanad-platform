@@ -1,0 +1,76 @@
+.DoctorsPage{
+    padding-bottom: 100px;
+}
+.doctors-list{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.doctors-list .doctorsROw{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+.doctors-list .doctorsROw .doctorCard--hw{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom:20px;
+    border-radius: 12px;
+    background-color: var(--color-secondary);
+    width: 31.9%;
+    border: 2px solid var(--color-primary);
+    overflow: hidden;
+    box-shadow: 4px 4px 0px 4px var(--color-primary);
+}
+.doctors-list .doctorsROw .doctorCard--hw .doctorCard--hw-image{
+    width: 100%;
+    height: 270px;
+}
+.doctors-list .doctorsROw .doctorCard--hw .doctorCard--hw-image img{
+    width: 100%;
+    height: 100%;
+}
+.doctorCard--hw-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+.doctorCard--hw-text h3{
+    font-size: 20px;
+    color: var(--text-primary);
+    font-weight: 600;
+    line-height: 150%
+}
+.doctorCard--hw-text h5{
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-muted);
+    line-height: 150%;
+}
+.doctorCard--hw > a{
+    padding: 10px 20px;
+    font-size: 16px;
+    color: var(--color-primary);
+    background-color: var(--color-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--color-primary);
+    transition: var(--main-trans);
+    width: max-content;
+    margin: 0 auto;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 4px 4px 0px 4px var(--color-primary);
+}
+.doctorCard--hw > a:hover{
+    transform: translate(-2px,-2px);
+    box-shadow: 2px 2px 0px 4px var(--color-primary);
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+}
+
+

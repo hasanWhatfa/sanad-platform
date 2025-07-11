@@ -1,0 +1,14 @@
+.paganationControl{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-secondary);
+    border: none;
+    padding: 4px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    gap: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+}

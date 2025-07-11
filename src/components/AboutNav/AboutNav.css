@@ -1,0 +1,23 @@
+.aboutNav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-secondary);
+    min-height: 44px;
+    font-size: 20px;
+    font-weight: bolder;
+    flex-direction: row-reverse;
+}
+.aboutNav > a{
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 800;
+    line-height: 150%;
+    color: var(--text-primary);
+    width: 30%;
+    text-align: center;
+    padding: 10px 0;
+}
+.aboutNav a.activeLInk{
+    border-bottom: 2px solid var(--color-primary);
+}

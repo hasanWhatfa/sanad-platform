@@ -1,0 +1,22 @@
+.CTAbtnCmpnt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background-color: var(--color-accent);
+    color: white;
+    font-weight: 800;
+    line-height: 150%;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    align-self: center;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: var(--main-trans);
+}
+.CTAbtnCmpnt:hover{
+    background-color: white;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+}

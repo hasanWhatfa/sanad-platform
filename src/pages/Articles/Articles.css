@@ -1,0 +1,203 @@
+.ArticlesPage{
+    padding-top: 120px;
+    padding-bottom: 100px;
+}
+.ArticlesPage .newThing{
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    width: 100%;
+    justify-content: space-between;
+}
+.ArticlesPage .newThing .articlesContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    width: 73%;
+}
+.articlesContainer .cardsContainer{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    row-gap:48px;
+    column-gap:24px;
+}
+.articlesContainer .cardsContainer .ArticleCard{
+    width: 100% !important;
+}
+.articlesContainer  .paganation-controls{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}
+.paganation-controls .numbers-container{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.activeTab{
+    background-color: var(--color-primary) !important;
+    color: white !important;
+}
+.disabledBtn{
+    background-color: var(--color-light);
+    color: var(--text-muted);
+}
+.ArticlesPage .leftSideNav{
+    display: flex;
+    flex-direction: column;
+    width: 24%;
+    min-width: 300px;
+    gap: 28px;
+    direction: rtl;
+    > div{
+        background-color: var(--color-light);
+        border-radius: 8px;
+        padding: 16px;
+    }
+}
+.leftSideNav .serachBox{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    input{
+        background-color: transparent;
+        border: transparent;
+        outline: transparent;
+        flex: 1;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-primary);
+    }
+    svg{
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+}
+.leftSideNav .categorize-container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    h3{
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+    ul{
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        li{
+            font-weight: 400;
+            color: var(--color-primary);
+            cursor: pointer;
+            transition: 300ms ease;
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+    }
+}
+.leftSideNav .categorize-container ul li:hover{
+    background-color: var(--color-secondary);
+}
+.leftSideNav .categorize-container ul li:not(:last-child){
+
+    border-bottom: 1px solid rgba(44, 44, 44, 0.219);
+}
+
+.leftSideNav .topPosts{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    h3{
+        font-weight: 600;
+        color: var(--text-primary);
+    }
+}
+.topPosts .topPostsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.leftSideNav .imgs-container{
+    display: flex;
+    flex-direction: column;
+}
+.leftSideNav .imgs-container .container{
+    display: grid;
+    grid-template-columns: repeat(3 , 1fr);
+    gap: 8px;
+    img{
+        width: 100%;
+        height: 90px;
+        border-radius: 4px;
+    }
+}
+.activeCategory {
+  font-weight: bold;
+  color: var(--mainColor);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.resetCategory {
+  margin-top: 8px;
+  color: red;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:992px){
+.ArticlesPage{
+    padding-top: 40px;
+    padding-bottom:40px;
+}
+.ArticlesPage .newThing{
+    flex-direction: column-reverse;
+}
+.ArticlesPage .newThing .articlesContainer{
+    flex-direction: column;
+    width: 100%;
+}
+.articlesContainer .cardsContainer{
+    grid-template-columns: repeat(2,1fr);
+    row-gap:24px;
+}
+.articlesContainer .cardsContainer .ArticleCard{
+    width: 100% !important;
+}
+.articlesContainer  .paganation-controls{
+    flex-direction: column;
+    gap: 40px;
+}
+.paganation-controls .numbers-container{
+    gap: 12px;
+}
+.ArticlesPage .leftSideNav{
+    width: 100%;
+}
+
+.leftSideNav .imgs-container .container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+}
+
+@media (max-width:768px) {
+.articlesContainer .cardsContainer{
+    grid-template-columns: repeat(1,1fr);
+}
+}

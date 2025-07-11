@@ -1,0 +1,35 @@
+.AboutUsHero{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding-top: 50px;
+    direction: rtl;
+}
+.AboutUsHero .aboutUsHeroImageContainer {
+    flex: 1;
+    max-width: 48%;
+}
+.AboutUsHero .aboutUsHeroImageContainer img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+.AboutUsHero .aboutUsheroText{
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.AboutUsHero .aboutUsheroText > h3{
+    font-size: 38px;
+    color: var(--color-primary);
+    font-weight: 800;
+    line-height: 150%;
+}
+.AboutUsHero .aboutUsheroText > p{
+    font-size: 16px;
+    color: var(--text-muted);
+    font-weight: 400;
+    line-height: 150%;
+}

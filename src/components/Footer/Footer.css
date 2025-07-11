@@ -1,0 +1,175 @@
+footer{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: var(--color-secondary);
+    padding-top: 60px;
+    padding-bottom: 20px;
+}
+.grayLineFooter{
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-primary);
+}
+.footerTopContent{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+}
+.footerTopContent .logoContainer{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    text-align: center;
+    gap: 30px;
+}
+.footerTopContent .logoContainer > p{
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-align: right;
+}
+.footerTopContent .logoContainer img{
+    width:65px;
+    height: 65px;
+}
+.footerTopContent .footerLink{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    gap: 30px
+}
+.footerLink > h4{
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 150%;
+    color: var(--text-primary);
+    padding: 0px 7px 5px;
+    border-bottom: 2px solid var(--color-primary);
+}
+.footerLink .footerLinksContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.footerLink .footerLinksContainer > a{
+    font-size: 16px;
+    color: var(--text-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+.footerLink .footerLinksContainer > a:hover{
+    text-decoration: underline;
+    color: var(--color-primary);
+}
+/* footer bottom content style */
+.footerBottomContent{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.footerBottomContent-top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+.footerBottomContent-top .leftSide{
+    display:flex;
+    align-items: center;
+    gap: 15px;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.footerBottomContent-top .leftSide > button{
+    border: none;
+    outline: none;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 150%;
+    border-radius: 12px;
+    transition: var(--main-trans);
+}
+.footerBottomContent-top .leftSide > button:hover{
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+}
+.footerBottomContent-top .rightSide{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 20px;
+}
+.footerBottomContent-top .rightSide > p{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 150%;
+    color: var(--color-primary);
+}
+.rightSide .socialMedia-footer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-direction: row-reverse;
+}
+.rightSide .socialMedia-footer > a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    transition: var(--main-trans);
+}
+.rightSide .socialMedia-footer svg{
+    color: var(--color-secondary);
+    font-size: 20px;
+    transition: var(--main-trans);
+}
+.rightSide .socialMedia-footer > a:hover{
+    transform: translateY(-10px) scale(1.1);
+    background-color: var(--color-secondary);
+}
+.rightSide .socialMedia-footer > a:hover svg{
+    color: var(--color-primary);
+}
+.footerBottomContent-bottom{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.footerBottomContent-bottom .policy{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    color: var(--color-primary);
+}
+.footerBottomContent-bottom .policy a{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+    color:var(--color-primary);
+    text-decoration: none;
+}
+.footerBottomContent-bottom .policy a:hover{
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+.hafeza{
+    font-size: 14px;
+    color:var(--color-primary);
+    font-weight: 800;
+    line-height: 150%;
+}

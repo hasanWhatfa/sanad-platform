@@ -1,0 +1,14 @@
+.TopArariclesComponent{
+    background-color: var(--color-light);
+    border-radius: 8px;
+    padding: 16px;
+}
+.TopArariclesComponent > h3{
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.topPostsContainer .topPostsContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

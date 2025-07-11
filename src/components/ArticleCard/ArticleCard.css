@@ -1,0 +1,99 @@
+.ArticleCard{
+    display: flex;
+    flex-direction: column;
+    align-items:flex-end;
+    justify-content:flex-start;
+    gap: 32px;
+    width:32%;
+    min-height: 480px;
+}
+.ArticleCard .imgContainer{
+    width: 100%;
+    height: 230px;
+    overflow: hidden;
+}
+.ArticleCard:hover  .imgContainer img{
+    transform: scale(1.1);
+}
+.ArticleCard  img{
+    width: 100%;
+    height: 230px;
+    transition: 300ms ease;
+}
+.articleCardTop{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+}
+.articeCardText{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: column;
+    text-align: end;
+    width: 100%;
+}
+.ArticleCardTitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    width: 100%;
+}
+.articeCardText h2{
+    font-size: 24px;
+    color: var(--text-primary);
+    font-weight: 800;
+}
+.articeCardText p{
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+.ArticleCard .svgContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+}
+.ArticleCard  svg{
+    font-size: 32px;
+    font-weight: 400;
+    transform: rotate(45deg);
+    cursor: pointer;
+    transition: 400ms ease;
+}
+.ArticleCard  svg:hover{
+    transform: rotate(405deg);
+}
+.articeCategory{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-direction: row-reverse;
+    margin-top: 14px;
+}
+.articeCategory p{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+    padding: 7px 10px;
+    border-radius: 20px;
+}
+.articeCategory p:first-child{
+    background-color: #F0F9FF;
+    color:#026AA2;
+}
+.articeCategory p:nth-child(2){
+    background-color:#EEF4FF;
+    color: #3538CD;
+}
+.articeCategory p:nth-child(3){
+    background-color: #FFF6ED;
+    color: #C4320A;
+}
+.articeCategory p:nth-child(4){
+    background-color: #FFF6ED;
+    color: #3538CD;
+}

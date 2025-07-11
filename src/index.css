@@ -1,0 +1,103 @@
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Cairo", sans-serif;
+}
+html{
+  scroll-behavior: smooth !important;
+}
+:root {
+  /* ألوان أساسية */
+  
+  --color-primary:#1D3557;
+  --color-secondary:#CAF0F8;
+  --color-accent:#457B9D;   
+  --color-light:#EDF6F9;
+  --color-highlight: #B5D9C9; 
+      
+
+  
+  --color-white: #ffffff;          
+  --color-black: #1E1E1E;   
+ 
+  
+  
+ 
+
+  /* ألوان نصوص */
+  --text-primary: #333333;         
+  --text-muted: #777777;             
+
+
+
+  /* تدرجات وظلال */
+  --shadow-soft: 0 2px 6px rgba(0, 0, 0, 0.1);
+  --border-light: #e0e0e0;
+
+
+  --main-trans:300ms ease;
+
+}
+.RootClass{
+  overflow: hidden;
+}
+#root::-webkit-scrollbar{
+    width: 10px;
+    height: 10px;
+}
+#root::-webkit-scrollbar-track {
+    background: var(--color-primary);       
+    border-radius: 100px;
+}
+.motion_div_override{
+  width: 100%;
+}
+.mainHero{
+  margin-bottom: 100px;
+}
+section , .subHero{
+  padding-bottom: 70px;
+  padding-top: 30px;
+}
+a,button{
+  outline: none;
+}
+
+.px-162 {
+  padding-left: 8.4375% !important;
+  padding-right: 8.4375% !important; 
+}
+.ltr-dir{
+  direction: rtl;
+}
+.cursor-none{
+    cursor: none !important;
+}
+.flex-row-reverse{
+  flex-direction: row-reverse;
+}
+@media (max-width: 1919px) {
+  .px-162 {
+    padding-left: 5.55%;
+    padding-right: 5.55%;
+  }
+}
+@media (max-width: 992px) {
+  .px-162 {
+      padding-left: 7.459677419354839%;
+      padding-right: 7.459677419354839%;
+  }
+  section{
+  padding-bottom: 50px;
+}
+.mainHero , .subHero {
+  margin-bottom: 50px;
+}
+}
+@media (max-width: 768px) {
+  .px-162 {
+    padding-left: 4.101%;
+    padding-right: 4.101%;
+  }
+}
