@@ -11,7 +11,7 @@ const TitleComponent = ({title,desc} : TitleComponentProps) => {
   return (
     <div className='titleComponent'>
       <div className="logoContainer">
-        <img src="/icons/logo1.webp" alt="logo" className='logo' />
+        <img src="/icons/logo2.png" alt="logo" className='logo' />
       </div>
       <div className='titleHeader'>
       <svg className="scribble" viewBox="0 0 200 30" xmlns="http://www.w3.org/2000/svg">

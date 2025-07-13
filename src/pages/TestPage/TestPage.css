@@ -17,10 +17,20 @@
     background-position: right;
     min-height:60vh;
 }
+
+
+/* for each test change the background image here */
 .TestPage.attachment .testPage_hero {
     /* this image wil be different for each test so */
     background-image: url(/public/images/attachmentImage.webp);
 }
+.TestPage.anxiety .testPage_hero{
+    background-image: url(/public/images/anxietyImage.jpg);
+}
+.TestPage.adhd .testPage_hero{
+    background-image: url(/public/images/adhmImage.jpg);
+}
+/* end change */
 .TestPage .testPage_hero::after{
     content: '';
     position: absolute;
