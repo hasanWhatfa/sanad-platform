@@ -1,7 +1,8 @@
-import { NavLink } from "react-router-dom"
+import { NavLink} from "react-router-dom"
 import './NavBar.css'
 import { useEffect, useState } from "react"
 import DropDownMenu, { type DropDownLink } from "../DropDownMenu/DropDownMenu"
+import { useAuthModal } from "../../context/AuthModalContext"
 
 interface NavBarProps{
   links:{
@@ -17,6 +18,7 @@ const NavBar = ({links} : NavBarProps) => {
   const[showMenu,setShowMenu] = useState(false);
   const[scrolling,setScrolling] = useState(false);   
 
+  const {openModal} = useAuthModal();
     //track the scrolling to chage the appreance of the navBar
     useEffect(() => {
       const handleScroll = () => {
@@ -74,8 +76,8 @@ const NavBar = ({links} : NavBarProps) => {
           }
         </div>
         <div className="navBtns">
-          <button>تسجل دخول</button>
-          <button>ابدأ الاّن</button>
+          <button onClick={() => openModal('login')}>تسجل دخول</button>
+          <button onClick={() => openModal('signup')}>ابدأ الاّن</button>
         </div>
       </nav>
 
@@ -97,8 +99,8 @@ const NavBar = ({links} : NavBarProps) => {
                     </div>
                 </div>
                 <div className="navBtns">
-                  <button>تسجل دخول</button>
-                  <button>ابدأ الاّن</button>
+                  <button  onClick={() => openModal('login')}>تسجل دخول</button>
+                  <button  onClick={() => openModal('signup')}>ابدأ الاّن</button>
                 </div>
           </div>
       </nav>

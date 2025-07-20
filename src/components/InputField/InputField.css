@@ -1,0 +1,49 @@
+.input_field{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    align-items: flex-start;
+    justify-content: space-between;
+    direction: rtl;
+    width: 100%;
+    min-height: 75px;
+    margin-bottom: 20px;
+}
+.input_field label{
+    font-size: 18px;
+    color: var(--text-primary);
+    font-weight: 600;
+    line-height: 100%;
+}
+.input_field input{
+    background-color: none;
+    width: 100%;
+    border: 1px solid var(--text-muted);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 125%;
+    padding: 12px 20px;
+    border-radius: 8px;
+    flex-grow: 0;
+}
+.input_field select{
+    font-size: 16px;
+    color: var(--text-primary);
+    font-weight: 600;
+    padding: 5px 20px;
+    width: 100%;
+    border-radius: 8px;
+    flex-grow: 0;
+}
+.input_field select option{
+    color: var(--text-primary);
+    background-color: var(--color-light);
+}
+.input_field select option:hover{
+    background-color: var(--color-secondary);
+}
+.errorMessage{
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(253, 58, 58);
+}

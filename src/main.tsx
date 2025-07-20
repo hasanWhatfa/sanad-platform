@@ -5,7 +5,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Root from './components/Root/Root'
 import About from './pages/About/About'
-import Login from './pages/Login/Login'
 import ServicesPage from './pages/ServicesPage/ServicesPage'
 import Articles from './pages/Articles/Articles'
 import Library from './pages/Library/Library'
@@ -18,6 +17,8 @@ import FaqAll from './pages/FaqAll/FaqAll'
 import TestPage from './pages/TestPage/TestPage'
 import GamePage from './pages/GamePage/GamePage'
 import QuestionsPage from './pages/QuestionsPage/QuestionsPage'
+import { AuthModalProvider } from './context/AuthModalContext'
+import AuthModal from './pages/Auth/AuthModal'
 const routes = createBrowserRouter(
   [
     {
@@ -50,11 +51,6 @@ const routes = createBrowserRouter(
         {
           path:'doctor/:id',
           element:<DoctorPage />
-        }
-        ,
-        {
-          path:'login',
-          element:<Login />
         },
         {
           path:'services',
@@ -95,6 +91,9 @@ const routes = createBrowserRouter(
 )
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <RouterProvider  router={routes} />
+   <AuthModalProvider>
+     <RouterProvider router={routes} />
+     <AuthModal />
+   </AuthModalProvider>
   </StrictMode>
 )

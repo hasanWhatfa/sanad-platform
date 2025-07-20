@@ -55,19 +55,19 @@ export const  footerLinksData : FooterLinkData[] =[{
         links:[
             {
                 linkName:'الاكتئاب',
-                linkTo:'/articles/depression'
+                linkTo:'/article/depression'
             },        
             {
                 linkName:'اضطراب ما بعد الصدمة',
-                linkTo:'/articles/truma'
+                linkTo:'/article/truma'
             },        
             {
                 linkName:'لغة الجسد',
-                linkTo:'/articles/bodyLanguage'
+                linkTo:'/article/bodyLanguage'
             },        
             {
                 linkName:'نوبات الهلع',
-                linkTo:'/articles/panicAttacks'
+                linkTo:'/article/panicAttacks'
             },        
         
         ]
