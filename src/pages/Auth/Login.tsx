@@ -1,9 +1,9 @@
 import { useRef, useState, type FormEvent } from "react";
-import { FaEnvelope, FaLock } from "react-icons/fa";
-import type { AuthData } from "../../data/AuthData";
-import InputField from "../../components/InputField/InputField";
-import "./Auth.css";
+// import { FaEnvelope, FaLock } from "react-icons/fa";
 import axios from "axios";
+import InputField from "../../components/InputField/InputField";
+import type { AuthData } from "../../data/AuthData";
+import "./Auth.css";
 
 interface LoginFormData {
   formData: AuthData | undefined;
@@ -12,9 +12,11 @@ interface LoginFormData {
 const Login = ({ formData }: LoginFormData) => {
   const email = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
-  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
-// =============put the API here=============
-  const base_url : string =''
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>(
+    {}
+  );
+  // =============put the API here=============
+  const base_url: string = "http://127.0.0.1:8000/api/login";
 
   const handleFormSubmited = (e: FormEvent) => {
     e.preventDefault();
@@ -39,48 +41,62 @@ const Login = ({ formData }: LoginFormData) => {
       return;
     }
 
-
-// uncomment to send request
-    // axios.post(base_url,{
-    //   email:email.current?.value,
-    //   password:password.current?.value
-    // },{
-    //   headers:{
-    //     Accept:"Application/json",
-    //   }
-    // })
-    // .then((res)=>{
-    //   localStorage.setItem('token',res.data.token)
-    // })
-    // .catch(err=>console.log(err))
+    // uncomment to send request
+    axios
+      .post(
+        base_url,
+        {
+          email: email.current?.value,
+          password: password.current?.value,
+        },
+        {
+          headers: {
+            Accept: "Application/json",
+          },
+        }
+      )
+      .then((res) => {
+        localStorage.setItem("token", res.data.access_token);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
-  <form onSubmit={handleFormSubmited} className="auth_login_form">
-    <h3 className="auth_title">{formData?.data.title}</h3>
+    <form onSubmit={handleFormSubmited} className="auth_login_form">
+      <h3 className="auth_title">{formData?.data.title}</h3>
 
-    <div className="auth_fields_container">
-      <InputField ref={email} fieldData={formData?.data.emailField} errorMessage={errors.email}/>
-      <InputField ref={password} fieldData={formData?.data.passwordField} errorMessage={errors.password}/>
-    </div>
-
-    <div className="auth_submit_section">
-      <div className="auth_policy_check">
-        <input type="checkbox" id="policy" />
-        <label htmlFor="policy">
-          أوافق على <span className="highlight">سياسات الخصوصية والأمان</span>
-        </label>
+      <div className="auth_fields_container">
+        <InputField
+          ref={email}
+          fieldData={formData?.data.emailField}
+          errorMessage={errors.email}
+        />
+        <InputField
+          ref={password}
+          fieldData={formData?.data.passwordField}
+          errorMessage={errors.password}
+        />
       </div>
-      <button type="submit" className="auth_submit_btn">
-        {formData?.data.btnContent}
-      </button>
-    </div>
 
-    <p className="auth_switch_link">
-      {formData?.data.dontYou.text}
-      <span className="auth_switch_action">{formData?.data.dontYou.linkWords}</span>
-    </p>
-  </form>
+      <div className="auth_submit_section">
+        <div className="auth_policy_check">
+          <input type="checkbox" id="policy" />
+          <label htmlFor="policy">
+            أوافق على <span className="highlight">سياسات الخصوصية والأمان</span>
+          </label>
+        </div>
+        <button type="submit" className="auth_submit_btn">
+          {formData?.data.btnContent}
+        </button>
+      </div>
+
+      <p className="auth_switch_link">
+        {formData?.data.dontYou.text}
+        <span className="auth_switch_action">
+          {formData?.data.dontYou.linkWords}
+        </span>
+      </p>
+    </form>
   );
 };
 
