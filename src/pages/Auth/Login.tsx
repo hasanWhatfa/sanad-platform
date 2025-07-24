@@ -4,17 +4,44 @@ import axios from "axios";
 import InputField from "../../components/InputField/InputField";
 import type { AuthData } from "../../data/AuthData";
 import "./Auth.css";
+import { useNavigate } from "react-router-dom";
 
 interface LoginFormData {
   formData: AuthData | undefined;
 }
 
+type frontEndErrors = {
+  email?:string;
+  password?:string;
+}
+
+type serverErrorMessage = {
+  email?:string;
+  password?:string; 
+}
+
 const Login = ({ formData }: LoginFormData) => {
   const email = useRef<HTMLInputElement>(null);
   const password = useRef<HTMLInputElement>(null);
-  const [errors, setErrors] = useState<{ email?: string; password?: string }>(
-    {}
-  );
+  const [errors, setErrors] = useState<frontEndErrors>({});
+  const [apiErrors,setApiErrors] = useState<serverErrorMessage>();
+  const navigate = useNavigate();
+
+    const checkRole = (role : string)=>{
+      switch(role){
+        case 'patient':
+        navigate('/patient-dash')
+        break;
+
+        case 'doctor' : 
+        navigate('/doctor-dash')
+        break;
+
+        default:
+          navigate('/admin-dash')
+      }
+    }
+
   // =============put the API here=============
   const base_url: string = "http://127.0.0.1:8000/api/login";
 
@@ -57,8 +84,10 @@ const Login = ({ formData }: LoginFormData) => {
       )
       .then((res) => {
         localStorage.setItem("token", res.data.access_token);
+        checkRole(res.data.user.role);
+        localStorage.setItem("user_data",JSON.stringify(res.data.user));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setApiErrors(err.response.data.errors));
   };
 
   return (
@@ -70,11 +99,13 @@ const Login = ({ formData }: LoginFormData) => {
           ref={email}
           fieldData={formData?.data.emailField}
           errorMessage={errors.email}
+          serverErrorMessage={apiErrors?.email}
         />
         <InputField
           ref={password}
           fieldData={formData?.data.passwordField}
           errorMessage={errors.password}
+          serverErrorMessage={apiErrors?.password}
         />
       </div>
 

@@ -9,36 +9,26 @@ html{
 }
 :root {
   /* ألوان أساسية */
-  
   --color-primary:#1D3557;
   --color-secondary:#CAF0F8;
   --color-accent:#457B9D;   
   --color-light:#EDF6F9;
   --color-highlight: #B5D9C9; 
-      
-
-  
   --color-white: #ffffff;          
   --color-black: #1E1E1E;   
- 
-  
-  
- 
-
   /* ألوان نصوص */
   --text-primary: #333333;         
   --text-muted: #646363;             
-
-
-
   /* تدرجات وظلال */
   --shadow-soft: 0 2px 6px rgba(0, 0, 0, 0.1);
   --border-light: #e0e0e0;
-
-
   --main-trans:300ms ease;
-
 }
+
+.happy_font{
+  font-family:"Rubik", sans-serif;
+}
+
 .RootClass{
   overflow: hidden;
 }
@@ -77,6 +67,9 @@ a,button{
 .flex-row-reverse{
   flex-direction: row-reverse;
 }
+.p60{
+  padding-inline: 60px;
+}
 @media (max-width: 1919px) {
   .px-162 {
     padding-left: 5.55%;
@@ -100,4 +93,11 @@ a,button{
     padding-left: 4.101%;
     padding-right: 4.101%;
   }
+}
+
+/* dashboard styles */
+.dashboard_Root{
+  display: flex;
+  gap: 0;
+  width: 100%;
 }

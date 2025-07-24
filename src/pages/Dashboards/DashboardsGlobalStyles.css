@@ -1,0 +1,58 @@
+.DashContentWrapper{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.DashContentWrapper .content_wrapper{
+    flex-grow: 1;
+}
+/* patient main page sytles */
+.patient_main_page{
+    padding-top: 70px;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    background-color:#faf8f8;
+}
+.welcome_phrase{
+    font-size: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom:30px;
+    font-weight: 700;
+    gap: 8px;
+}
+.userName_span{
+    display: inline-block;
+    padding: 0 10px;
+    background-image: url("/images/userNameBg.png");
+    background-position: center;
+    background-size: 140%;
+    color: white;
+}
+.welcome_phrase .our_name{
+    background: hsla(217, 100%, 50%, 1);
+    background: linear-gradient(309deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 93%, hsla(158, 77%, 77%, 1) 100%);
+    background: -moz-linear-gradient(309deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 93%, hsla(158, 77%, 77%, 1) 100%);
+    background: -webkit-linear-gradient(309deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 93%, hsla(158, 77%, 77%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0061FF", endColorstr="#60EFFF", GradientType=1 );
+    color: white;
+    padding: 10px;
+}
+.patient_main_page .cards_container{
+    display: flex;
+    gap:20px;
+    align-items: center;
+    justify-content: space-between;
+}
+.patient_main_page .cards_container .cards_row{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}

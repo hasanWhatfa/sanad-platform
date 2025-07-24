@@ -2,10 +2,16 @@ import { createPortal } from "react-dom";
 import { useAuthModal } from "../../context/AuthModalContext";
 import AuthForm from "./AuthForm";
 import "./Auth.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const AuthModal = () => {
   const { authType, closeModal } = useAuthModal();
+  const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const container = document.getElementById("custom-portal-root");
+    setPortalContainer(container);
+  }, []);
 
   useEffect(() => {
     if (authType) {
@@ -19,6 +25,8 @@ const AuthModal = () => {
     };
   }, [authType]);
 
+  if (!portalContainer) return null;
+
   return createPortal(
     authType ? (
       <div className="modal-overlay" onClick={closeModal}>
@@ -27,7 +35,7 @@ const AuthModal = () => {
         </div>
       </div>
     ) : null,
-    document.body
+    portalContainer
   );
 };
 

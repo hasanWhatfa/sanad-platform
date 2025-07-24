@@ -1,0 +1,57 @@
+.colorFulCard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+    position: relative;
+    cursor: pointer;
+    color: white;
+    transition: 200ms;
+    border-radius: 12px;
+    width: 200px;
+    height: 200px;
+    width:100%;
+    box-shadow: 5px 3px 11px 0px black;
+}
+.colorFulCard.toBlueBG{
+    background: hsla(217, 100%, 50%, 1);
+    background: linear-gradient(309deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 93%, hsla(158, 77%, 77%, 1) 100%);
+    background: -moz-linear-gradient(309deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 93%, hsla(158, 77%, 77%, 1) 100%);
+    background: -webkit-linear-gradient(309deg, hsla(217, 100%, 50%, 1) 0%, hsla(186, 100%, 69%, 1) 93%, hsla(158, 77%, 77%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0061FF", endColorstr="#60EFFF", GradientType=1 );
+}
+.colorFulCard:hover{
+    opacity: 0.9;
+    transform: translateY(-4px) scale(1.04);
+    
+}
+.colorFulCard.toPurpulrBG{
+    background: hsla(266, 75%, 55%, 1);
+    background: linear-gradient(289deg, hsla(266, 75%, 55%, 1) 37%, hsla(303, 100%, 54%, 1) 99%, hsla(340, 47%, 77%, 1) 100%);
+    background: -moz-linear-gradient(289deg, hsla(266, 75%, 55%, 1) 37%, hsla(303, 100%, 54%, 1) 99%, hsla(340, 47%, 77%, 1) 100%);
+    background: -webkit-linear-gradient(289deg, hsla(266, 75%, 55%, 1) 37%, hsla(303, 100%, 54%, 1) 99%, hsla(340, 47%, 77%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8338E3", endColorstr="#FF12F3", GradientType=1 );
+}
+.colorFulCard.toGreenBG{
+    background: hsla(145, 84%, 73%, 1);
+    background: linear-gradient(90deg, hsla(145, 84%, 73%, 1) 0%, hsla(150, 61%, 48%, 1) 100%);
+    background: -moz-linear-gradient(90deg, hsla(145, 84%, 73%, 1) 0%, hsla(150, 61%, 48%, 1) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(145, 84%, 73%, 1) 0%, hsla(150, 61%, 48%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#82F4B1", endColorstr="#30C67C", GradientType=1 );
+}
+.colorFulCard.toOrangeBG{
+    background: hsla(358, 85%, 68%, 1);
+    background: linear-gradient(225deg, hsla(358, 85%, 68%, 1) 0%, hsla(41, 98%, 49%, 1) 100%);
+    background: -moz-linear-gradient(225deg, hsla(358, 85%, 68%, 1) 0%, hsla(41, 98%, 49%, 1) 100%);
+    background: -webkit-linear-gradient(225deg, hsla(358, 85%, 68%, 1) 0%, hsla(41, 98%, 49%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#f3696e", endColorstr="#f8a902", GradientType=1 );
+}
+.colorFulCard .colorFulCardP{
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+}
+.colorFulCard .icon_container{
+    font-size: 30px;
+}

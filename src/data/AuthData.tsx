@@ -4,7 +4,7 @@ export interface AuthData{
 }
 
 interface FormInterface{
-    title:string;
+    title?:string;
     passwordField:Filed;
     confirmPass?:Filed;
     emailField:Filed;
@@ -14,13 +14,14 @@ interface FormInterface{
     ageField?:Filed;
     gender?:Filed;
     img?:Filed
+    mobileNumber?:Filed;
     dontYou:{
         text:string;
         linkWords:string;
     }
 }
 export interface Filed{
-    title:string;
+    title?:string;
     placeholder:string;
     type?:'email'|'text'|'date'|'time'|'password'|'number'|'select'|'file';
     options?:Array<string>;
@@ -87,6 +88,11 @@ export const authDataFinal :  AuthData[] = [
             title:'تأكيد كلمة المرور: ',
             placeholder:"اعد ادخال كلمة المرور",
             type:"password"
+        },
+        mobileNumber:{
+            title:'رقم الهاتف: ',
+            placeholder:"ادخل رقم هاتفك",
+            type:"text"
         },
         btnContent:"انشئ حساب",
         dontYou:{

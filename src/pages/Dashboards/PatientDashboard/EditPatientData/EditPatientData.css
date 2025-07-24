@@ -1,0 +1,253 @@
+.Edit_patient_data_page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafaf8;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    min-height: 100vh;
+    position: relative;
+}
+.edit_patient_data_form{
+    position: relative;
+    padding: 30px 40px;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    accent-color: var(--color-accent);
+    caret-color: var(--color-primary);
+    background: rgb(94, 163, 228);
+    /* background: linear-gradient(270deg, hsla(239, 100%, 67%, 1) 0%, hsla(187, 100%, 89%, 1) 100%);
+    background: -moz-linear-gradient(270deg, hsla(239, 100%, 67%, 1) 0%, hsla(187, 100%, 89%, 1) 100%);
+    background: -webkit-linear-gradient(270deg, hsla(239, 100%, 67%, 1) 0%, hsla(187, 100%, 89%, 1) 100%); */
+    background-image: url("/images/blueSky.png");
+    background-position: top;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.Edit_patient_data_page .img_name_container{
+    align-self: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.Edit_patient_data_page .img_name_container .img_container{
+    width: 200px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-bottom: 16px;
+    border: 2px solid var(--border-light);
+    img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.img_name_container .img_overLay{
+    transform: translateY(-100%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(3px);
+    transition: 300ms ease;
+    border-bottom: 1px solid var(--color-primary);
+    button{
+        border: none;
+        padding: 8px 12px;
+        font-size: 14px;
+        color: var(--color-primary);
+        background-color:#caf0f888;
+        backdrop-filter:blur(15px);
+        font-weight: 600;
+        border: 1px solid white;
+        border-radius: 4px;
+        transition: 200ms;
+        cursor: pointer;
+    }
+}
+.img_name_container .img_overLay button:hover{
+    background-color: var(--color-secondary);
+}
+.Edit_patient_data_page .img_name_container .img_container:hover .img_overLay{
+    transform: translateY(0);
+}
+.img_name_container .userName{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    > p{
+        font-size: 20px;
+        font-weight: 500;
+        background-color: #fafaf8;
+        border-radius: 4px;
+        border: 1px solid var(--border-light);
+        padding: 8px 12px;
+        color: var(--text-primary);
+    }
+    .icon_container{
+        height: 42px;
+        width: 40px;
+        background-color:#fafaf8;
+        border-radius: 4px;
+        border: 1px solid var(--border-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: 200ms;
+        svg{
+        width: 20px;
+        height: 20px;
+        color: var(--color-accent);
+        }
+    }
+
+    
+}
+.userName .icon_container:hover{
+    background-color: var(--color-accent);
+    color: white;
+    svg{
+        color: white;
+    }
+}
+
+
+.done_editing_message{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    padding: 8px 12px;
+    background-color: rgb(17, 209, 17);
+    color: white;
+    border-radius: 4px;
+    border: 1px solid green;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+}
+
+.Edit_patient_data_page .inputs_container{
+    margin-top: 40px;
+    width:100%;
+    display: flex;
+    align-items: flex-end;
+    /* gap: 40px; */
+    flex-direction: column;
+}
+.Edit_patient_data_page .inputs_container .inputs_row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    width: 100%;
+    gap: 20px;
+}
+
+.Edit_patient_data_page .inputs_container .inputs_col{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+} 
+
+.Edit_patient_data_page .inputs_container .submitBtn{
+    align-self: center;
+    padding: 8px 16px;
+    font-size: 18px;
+    border:1px solid transparent;
+    background: hsla(159, 82%, 55%, 1);
+    background: linear-gradient(90deg, hsla(159, 82%, 55%, 1) 0%, hsla(206, 98%, 48%, 1) 100%);
+    background: -moz-linear-gradient(90deg, hsla(159, 82%, 55%, 1) 0%, hsla(206, 98%, 48%, 1) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(159, 82%, 55%, 1) 0%, hsla(206, 98%, 48%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#2FEAA8", endColorstr="#028CF3", GradientType=1 );
+    width: 150px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-soft);
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    transition: 300ms;
+}
+.Edit_patient_data_page .inputs_container .submitBtn:hover{
+    opacity: 0.8;
+    transform: translateY(-3px);
+}
+
+
+.Edit_patient_data_page .field{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    gap: 12px;
+}
+.Edit_patient_data_page .inputs_row .field{
+    width: 48%;
+}
+.Edit_patient_data_page .inputs_col .field{
+    width: 70%;
+    justify-content: space-between;
+}
+.Edit_patient_data_page .field .input_container{
+    display: flex;
+    flex-direction: column;
+    max-width: 230px;
+}
+.Edit_patient_data_page .inputs_col .field .input_container{
+    max-width: 350px;
+}
+.Edit_patient_data_page .field .input_container{
+    flex-grow: 1;
+}
+.Edit_patient_data_page .field label{
+    direction: rtl;
+}
+.Edit_patient_data_page .field input{
+    padding: 8px 20px;
+    direction: rtl;
+    border-radius: 12px;
+    border:1px solid var(--color-accent);
+    font-size: 16px;
+    font-family: "Rubik", sans-serif;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+.Edit_patient_data_page .field input:focus-visible{
+    outline:2px solid var(--color-secondary);
+}
+.Edit_patient_data_page .field label{
+    position: relative;
+    display: inline-block;
+    font-size: 18px !important;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    align-items: center; 
+    flex-direction: row-reverse;
+    z-index: 3;
+    background-image: url("/images/userNameBg.png");
+    background-position: center;
+    background-clip: border-box;
+    background-size: 120%;
+    background-repeat: no-repeat;
+    height: 90px;
+}
+
+

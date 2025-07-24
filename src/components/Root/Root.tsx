@@ -4,6 +4,8 @@ import Footer from "../Footer/Footer"
 import { useEffect } from "react"
 import { type DropDownLink } from "../DropDownMenu/DropDownMenu"
 import ScrollToTop from "../ScrollToTop/ScrollToTop"
+import AuthForm from "../../pages/Auth/AuthForm"
+import { useAuthModal } from "../../context/AuthModalContext"
 
 interface LinksObject {
     linkName:string,
@@ -79,9 +81,31 @@ const Root = () => {
       linkTo:'contactus'
     },
   ]
+  const { authType, closeModal } = useAuthModal();
+  useEffect(() => {
+    if (authType) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+
+    return () => {
+      document.body.classList.remove("no-scroll");
+    };
+  }, [authType]);
   return (
     <div className="RootClass">
     <NavBar links={links} />
+    {
+      authType ? (
+      <div className="ModalContainer" onClick={closeModal}>
+        <div className="modal-wrapper" onClick={(e) => e.stopPropagation()}>
+          <AuthForm />
+        </div>
+      </div>
+      ): null
+    }
+
     <ScrollToTop />
         <Outlet />
     <Footer />

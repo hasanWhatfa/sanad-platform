@@ -5,10 +5,11 @@ import './InputField.css';
 interface InputFieldProps {
   fieldData: Filed | undefined;
   errorMessage:string | undefined;
+  serverErrorMessage:string | undefined;
 }
 
 const InputField = forwardRef<HTMLInputElement | HTMLSelectElement, InputFieldProps>(
-  ({ fieldData,errorMessage }, ref) => {
+  ({ fieldData,errorMessage ,serverErrorMessage}, ref) => {
     return (
       <div className="input_field">
         <label>{fieldData?.title}</label>
@@ -28,7 +29,14 @@ const InputField = forwardRef<HTMLInputElement | HTMLSelectElement, InputFieldPr
             ref={ref as React.Ref<HTMLInputElement>}
           />
         )}
-        <p className="errorMessage">{errorMessage}</p>
+        {
+          errorMessage && 
+          <p className="errorMessage">{errorMessage}</p>
+        }
+        {
+          serverErrorMessage && 
+          <p className="errorMessage">{serverErrorMessage}</p>
+        }
       </div>
     );
   }
