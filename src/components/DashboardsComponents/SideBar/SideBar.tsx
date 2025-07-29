@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import './SideBar.css'
 import { useState, type ReactNode } from 'react';
 import { FiLogOut } from "react-icons/fi";
-import type { User } from '../../../data/generalTypes';
+import { image_base, type User } from '../../../data/generalTypes';
 interface SideBarProps{
     links:{
         linkText:string;
@@ -26,7 +26,7 @@ const SideBar = ({links}:SideBarProps) => {
 
         <div className="user_info_section">
             <div className="user_image_container">
-                <img src={user_data?.avatar} alt="user-image" />
+                <img src={`${image_base}/${user_data?.avatar}`} alt="user-image" />
             </div>
             <h3>{user_full_name ? user_full_name :'اسم المستخدم'}</h3>
         </div>

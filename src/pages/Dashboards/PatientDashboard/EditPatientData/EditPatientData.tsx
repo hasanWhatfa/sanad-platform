@@ -1,6 +1,6 @@
 import {useRef, useState, type ChangeEvent, type FormEvent } from 'react'
 import './EditPatientData.css'
-import type { User } from '../../../../data/generalTypes';
+import { image_base, type User } from '../../../../data/generalTypes';
 import { MdEdit, MdOutlineDoneOutline } from 'react-icons/md';
 import SlideIn from '../../../../layouts/SlideIn';
 import PageWrapper from '../../../../components/Root/PageWrapper/PageWrapper';
@@ -121,11 +121,12 @@ const EditPatientData = () => {
     fd.append("gender", genderField || "");
     fd.append("phone_number", phoneNumber || "");
 
-    const base_url :string = 'blablabla'
+    const base_url :string = 'http://127.0.0.1:8000/api/patient/update'
 
     axios.post(base_url,fd,{
       headers:{
-        Accept:"application/json"
+        Accept:"application/json",
+        Authorization:`Bearer ${localStorage.getItem("token")}`
       }
     }).
     then((res) => {
@@ -151,7 +152,7 @@ const EditPatientData = () => {
         <form onSubmit={handleEditData} className='edit_patient_data_form'>
           <div className="img_name_container">
             <div className="img_container">
-              <img src={choosedImage ? choosedImage : user_data?.avatar} alt={`${user_data?.first_name}'s photo`} />
+              <img src={choosedImage ? choosedImage : `${image_base}/${user_data?.avatar}`} alt={`${user_data?.first_name}'s photo`} />
               {
                 apiErrors.avatar &&
                 <p className='error_input'>{apiErrors.avatar}</p>
