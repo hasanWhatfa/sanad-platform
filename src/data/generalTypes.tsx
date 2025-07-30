@@ -38,7 +38,7 @@ enum SessionStatus  {
 
 export interface Appointment {
     patient_id:number;
-    doctor_id:string;
+    doctor:DoctorMainType;
     scheduled_at:string;
     status:SessionStatus.pending | SessionStatus.approved | SessionStatus.cancled;
     updated_at:string;

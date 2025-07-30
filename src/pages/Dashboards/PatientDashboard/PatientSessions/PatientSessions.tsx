@@ -33,6 +33,8 @@ const PatientSessions = () => {
     .then(
       (res)=>{
         setSessions(res.data.data);
+        console.log('sessions:');
+        console.log(res.data.data)
       }
     )
     .catch(err=>{
@@ -52,6 +54,8 @@ const PatientSessions = () => {
     })
     .then((res)=>{
       setDoctorsList(res.data.data);
+      console.log('doctors')
+      console.log(res.data.data)
     })
     .catch((err)=>{setFetchDoctorsApiError('لا يمكننا جلب قائمة الاطباء الان, حاول لاحقا.');
       console.log(err)
@@ -62,13 +66,6 @@ const PatientSessions = () => {
   const handleAddSession = ()=>{
     setShowModal((prev)=>!prev);
   }
-
-
-  const getDoctorName = (id: string) => {
-    const doctor = doctorsList?.find((doc) => doc.id === Number(id));
-    return doctor ? `${doctor.first_name} ${doctor.last_name}` : "غير معروف";
-  }
-
   const getDate = (fulDate: string) => {
     const sessDate = new Date(fulDate);
     const year = sessDate.getFullYear();
@@ -83,6 +80,10 @@ const PatientSessions = () => {
     const minutes = String(sessDate.getMinutes()).padStart(2, "0");
     return `${hours}:${minutes}`;
   };
+
+  const getDoctorName = (doctor:DoctorMainType) : string=>{
+    return `${doctor.first_name} ${doctor.last_name}`
+  }
 
   useEffect(()=>{
   fetchSessions();
@@ -130,7 +131,7 @@ const PatientSessions = () => {
                 return(
                   <tr key={ses.id}>
                     <td>{ses.id}</td>
-                    <td>{getDoctorName(ses.doctor_id)}</td>
+                    <td>{getDoctorName(ses.doctor)}</td>
                     <td>{ses.status}</td>
                     <td>{getDate(ses.created_at)}</td>
                     <td>{getHours(ses.created_at)}</td>
