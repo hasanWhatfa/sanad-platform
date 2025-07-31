@@ -33,8 +33,6 @@ const PatientSessions = () => {
     .then(
       (res)=>{
         setSessions(res.data.data);
-        console.log('sessions:');
-        console.log(res.data.data)
       }
     )
     .catch(err=>{
@@ -54,8 +52,6 @@ const PatientSessions = () => {
     })
     .then((res)=>{
       setDoctorsList(res.data.data);
-      console.log('doctors')
-      console.log(res.data.data)
     })
     .catch((err)=>{setFetchDoctorsApiError('لا يمكننا جلب قائمة الاطباء الان, حاول لاحقا.');
       console.log(err)

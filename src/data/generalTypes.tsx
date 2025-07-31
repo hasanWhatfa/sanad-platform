@@ -46,3 +46,21 @@ export interface Appointment {
     id:number;
 }
 
+
+export interface Notification{
+    id:string;
+    type:string;
+    notifiable_type:string;
+    notifiable_id:number;
+    data:{
+        message:string;
+        appointment_id:number,
+        patient_name:string;
+        scheduled_at:string;
+    };
+    read_at:string;
+    created_at:string;
+    updated_at:string;
+    
+}
+

@@ -50,7 +50,7 @@ const AddSessionModal = ({doctorsList,showModal,fetchDoctorsErro,setShowModal}:A
 
 
     const getFreeTimes = ()=>{
-        const base_url : string = `http://127.0.0.1:8000/api/patient/doctor/${doctor_id.current?.value}/free`;
+        const base_url : string = `http://127.0.0.1:8000/api/doctor/${doctor_id.current?.value}/free`;
         axios.post(base_url,{date : date.current?.value},{
           headers:{
               Accept:'application/json',
@@ -68,10 +68,6 @@ const AddSessionModal = ({doctorsList,showModal,fetchDoctorsErro,setShowModal}:A
       .catch((err)=>{
         console.log(err);
         setGettingFreeTimes(false);
-        // thoes things are for test DELETEHW
-        setShowTimeSelect(true);
-        setShowSubmitBtn(true);
-        setFreeTimes(['09:30','10:00' , '11:00'])
       });
     }
 
@@ -83,11 +79,14 @@ const AddSessionModal = ({doctorsList,showModal,fetchDoctorsErro,setShowModal}:A
       if(time.current?.value && time.current?.value != 'defaultOption'){
         setSelectTimeError('');
         const choosed_time : string = date.current?.value + ' ' + time.current?.value;
+
         const data = {
           doctor_id:doctor_id.current?.value,
           scheduled_at : choosed_time
         }
+
         axios.post(base_url,data,{
+
           headers:{
               Accept:'application/json',
               Authorization:`Bearer ${localStorage.getItem("token")}`

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './SideBar.css'
 import { useState, type ReactNode } from 'react';
 import { FiLogOut } from "react-icons/fi";
@@ -16,11 +16,13 @@ const SideBar = ({links}:SideBarProps) => {
     const user_data = user_data_raw ? JSON.parse(user_data_raw) as User : null;
     const user_full_name = (user_data?.first_name +" "+ user_data?.last_name).includes('undefined') ? 'اسم المستخدم' 
     : user_data?.first_name +" "+ user_data?.last_name
-
+    const navigate = useNavigate();
     // for the log out request
-    const handleLogOut =()=>[
-        console.log('loged out')
-    ]
+    const handleLogOut =()=>{
+        localStorage.removeItem("token");
+        localStorage.removeItem("user_data");
+        navigate('/');
+    }
   return (
     <div className='sideBar_container'>
 

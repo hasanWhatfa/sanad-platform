@@ -1,0 +1,171 @@
+.NotificationsDrawerContainer{
+    position: absolute;
+    top: 0;
+    background-color:rgba(0, 0, 0, 0.342);
+    display: flex;
+    align-items: flex-start;
+    z-index: 10000;
+    width: 0px;
+    height: 100%;
+    display: none;
+}
+.NotificationsDrawerContainer .drawer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 30px 24px;
+    background-color: var(--color-secondary);
+    position: relative;
+
+    transition-duration: 300ms ease;
+    transition-delay: 200ms;
+    position: relative;
+    opacity: 0;
+    width: 70%;
+    height: 0px;
+    max-width: 0px;
+}
+.NotificationsDrawerContainer.showDrawer{
+    display: flex !important;
+    width: 100%;
+}
+
+
+.NotificationsDrawerContainer .drawer.showDrawer{
+    opacity: 1;
+    height: 100%;
+    max-width:50%;
+}
+.drawer .icon_container{
+    align-self: center;
+}
+.drawer .icon_container svg{
+    width: 24px;
+    height: 24px;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: 200ms;
+}
+.drawer .icon_container svg:hover{
+    color: var(--color-primary);
+    transform: scale(1.06);
+}
+
+
+
+.NotificationsDrawerContainer .drawer .btns_container{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+.NotificationsDrawerContainer .drawer .btns_container button{
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    transition: 200ms;
+    color: white;
+}
+.NotificationsDrawerContainer .drawer .btns_container button:hover{
+    transform: translate(0,-4px);
+    box-shadow:var(--shadow-soft);
+}
+.NotificationsDrawerContainer .drawer .btns_container .read_all{
+    background-color: rgb(14, 212, 14);
+}
+.NotificationsDrawerContainer .drawer .btns_container .delete_all{
+    background-color: rgb(255, 37, 37);
+}
+.NotificationsDrawerContainer .drawer .btns_container .unread_all{
+    background-color: var(--color-primary);
+}
+
+.NotificationsDrawerContainer .drawer .notifications_container{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.NotificationsDrawerContainer .drawer .notifications_container .notification{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    background-color: var(--color-light);
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-soft);
+
+    .ntification_text{
+        font-size: 16px;
+        color: var(--text-primary);
+        font-weight: 600;
+        word-wrap: normal;
+        text-align: right;
+    }
+}
+
+.NotificationsDrawerContainer .drawer .notifications_container .notification .notif_actions{
+    display: flex;
+    gap: 12px;
+    button{
+        font-size: 14px;
+        padding: 4px;
+        border-radius: 4px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        color: white;
+        transition: 200ms;
+    }
+}
+.NotificationsDrawerContainer .drawer .notifications_container .notification .notif_actions .mark_as_read{
+    background-color:rgb(14, 212, 14);
+}
+.NotificationsDrawerContainer .drawer .notifications_container .notification .notif_actions .mark_as_read:hover{
+    background-color: rgb(5, 134, 5);
+}
+.NotificationsDrawerContainer .drawer .notifications_container .notification .notif_actions .deleter_noti{
+    background-color: rgb(255, 37, 37);
+}
+.NotificationsDrawerContainer .drawer .notifications_container .notification .notif_actions .deleter_noti:hover{
+    background-color: rgb(160, 8, 8);
+}
+.isReadDot{
+    width: 10px;
+    height: 10px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+}
+
+.errorMessage_drawer p{
+    position: absolute;
+    top: 7%;
+    left:50%;
+    transform: translate(-50%,0);
+    background-color: rgb(247, 35, 35);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--color-primary);
+    font-size: 14px;
+}
+.doneMessage_drawer{
+    position: absolute;
+    top: 7%;
+    left:50%;
+    transform: translate(-50%,0);
+    background-color: rgb(0, 189, 0);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--color-primary);
+    font-size: 14px;
+}
+

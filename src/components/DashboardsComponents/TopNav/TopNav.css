@@ -32,10 +32,21 @@
     border:none;
     cursor:pointer;
     color: var(--text-muted);
+    position: relative;
     svg{
         width: 32px;
         height:32px;
+        position: relative;
     }
+}
+.thereIsNotifs{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color:rgb(14, 212, 14);
+    position: absolute;
+    top: 6px;
+    left: 54%;
 }
 .TopNavDashboards .icon_container:hover{
     animation: ring 1s linear 0s 1 normal;

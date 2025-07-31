@@ -6,6 +6,7 @@
 }
 .DashContentWrapper .content_wrapper{
     flex-grow: 1;
+    position: relative;
 }
 /* patient main page sytles */
 .patient_main_page{
