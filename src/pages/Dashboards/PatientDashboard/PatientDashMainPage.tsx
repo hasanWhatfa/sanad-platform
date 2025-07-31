@@ -29,7 +29,7 @@ const PatientDashMainPage = () => {
         {
           data_rows.map((row,rowIndex)=>{
             return(
-              <div className='cards_row'>
+              <div className='cards_row' key={rowIndex}>
                 {row.map((card,idx)=>{
                   return(
                     <ColorfulCard data={card} key={idx}/>
