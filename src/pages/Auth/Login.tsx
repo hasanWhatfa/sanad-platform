@@ -26,7 +26,7 @@ const Login = ({ formData }: LoginFormData) => {
   const [errors, setErrors] = useState<frontEndErrors>({});
   const [apiErrors,setApiErrors] = useState<serverErrorMessage>();
   const navigate = useNavigate();
-
+  const [loading,setLoading] = useState<boolean>(false);
     const checkRole = (role : string)=>{
       switch(role){
         case 'patient':
@@ -67,7 +67,7 @@ const Login = ({ formData }: LoginFormData) => {
       setErrors(newErrors);
       return;
     }
-
+    setLoading(true)
     // uncomment to send request
     axios
       .post(
@@ -87,7 +87,8 @@ const Login = ({ formData }: LoginFormData) => {
         checkRole(res.data.user.role);
         localStorage.setItem("user_data",JSON.stringify(res.data.user));
       })
-      .catch((err) => setApiErrors(err.response.data.errors));
+      .catch((err) => setApiErrors(err.response.data.errors))
+      .finally(()=>setLoading(false))
   };
 
   return (
@@ -116,8 +117,9 @@ const Login = ({ formData }: LoginFormData) => {
             أوافق على <span className="highlight">سياسات الخصوصية والأمان</span>
           </label>
         </div>
-        <button type="submit" className="auth_submit_btn">
-          {formData?.data.btnContent}
+        <button type="submit" className="auth_submit_btn"
+        disabled={loading}>
+         {loading ? '......' : formData?.data.btnContent}
         </button>
       </div>
 

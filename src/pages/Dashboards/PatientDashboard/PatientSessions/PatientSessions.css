@@ -70,8 +70,49 @@
     flex-grow: 1;
     width: 100%;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.patient-sessions-page .show-sessions-table .refresh_btn{
+    align-self: flex-start;
+    padding: 12px;
+    background-color: transparent;
+    border: none;
+    margin-bottom: 20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: 4px;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    align-items: center;
     justify-content: center;
+    border: 1px solid transparent;
+    transition: 200ms;
+    svg{
+        width: 30px;
+        height: 30px;
+    }
+}
+.patient-sessions-page .show-sessions-table .refresh_btn:hover{
+    background-color: white;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+}
+.patient-sessions-page .show-sessions-table .refresh_btn.loading{
+animation: spining 700ms ease-in-out 0s infinite ;
+}
+
+@keyframes spining {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
 }
 
 .patient-sessions-page .show-sessions-table table{

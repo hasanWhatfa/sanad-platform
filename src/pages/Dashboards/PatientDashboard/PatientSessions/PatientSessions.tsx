@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { IoMdAdd } from "react-icons/io";
 import {type Appointment } from "../../../../data/generalTypes";
 import './PatientSessions.css'
+import { IoRefresh } from "react-icons/io5";
 
 const PatientSessions = () => {
   const [sessions,setSessions] = useState<Array<Appointment>>();
@@ -14,6 +15,7 @@ const PatientSessions = () => {
   const [showModal,setShowModal] = useState<boolean>(false);
   const [doctorsList,setDoctorsList] = useState<Array<DoctorMainType>>();
   const [fetchDoctorsErro,setFetchDoctorsApiError] = useState<string>();
+  const [isloading,setIsLoading] = useState<boolean>(false)
   const navigate = useNavigate();
 
   // get doctors names to use it in the table
@@ -24,7 +26,8 @@ const PatientSessions = () => {
   
   // fetch sessions Function
   const fetchSessions = ()=>{
-    const base_url:string ='http://127.0.0.1:8000/api/patient/sessions'
+    const base_url:string ='http://127.0.0.1:8000/api/patient/sessions';
+    setIsLoading(true)
     const headers ={
       Accept:"application/json",
       Authorization:`Bearer ${localStorage.getItem("token")}`    
@@ -33,6 +36,7 @@ const PatientSessions = () => {
     .then(
       (res)=>{
         setSessions(res.data.data);
+        setIsLoading(false);
       }
     )
     .catch(err=>{
@@ -111,6 +115,9 @@ const PatientSessions = () => {
         </button>
       </div>
       <div className="show-sessions-table">
+        <button className={`refresh_btn ${isloading ? 'loading' : ''}`} onClick={fetchSessions}>
+          <IoRefresh />
+        </button>
         <table>
           <thead>
               <th className="happy_font">معرف الجلسة</th>
@@ -129,8 +136,8 @@ const PatientSessions = () => {
                     <td>{ses.id}</td>
                     <td>{getDoctorName(ses.doctor)}</td>
                     <td>{ses.status}</td>
-                    <td>{getDate(ses.created_at)}</td>
-                    <td>{getHours(ses.created_at)}</td>
+                    <td>{getDate(ses.scheduled_at)}</td>
+                    <td>{getHours(ses.scheduled_at)}</td>
                   </tr>
                 )
               })

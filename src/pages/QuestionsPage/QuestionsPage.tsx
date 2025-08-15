@@ -1,15 +1,22 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {testsData } from "../../data/PsychTest";
 import { type PsychTest } from "../../data/PsychTest";
 import './QuestionsPage.css';
+import axios from "axios";
 
 
 interface Answer {
   questionId: number;
   score: number;
 }
+
+
+//++++++++++++==========++++++++=+=++++++++=====+===+=+=+=+=+=+=+=+===+=+==+++===+++===+++
+// ===--this component is responsible for displaying the questions and the progress bar
+// the main compo
+// ========================================================================-=-=-=-=-=-=-=-=
 
 const QuestionsPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -21,10 +28,10 @@ const QuestionsPage: React.FC = () => {
   const [showEndBtn,setShowEndBtn] = useState<boolean>(false);
   const [showProgress,setShowProgress] = useState<boolean>(true);
   const progress = ((currentIndex + (showEndBtn ? 1 : 0)) / test!.questions.length) * 100;
+
   // handle when the user chooses an answer, update the state by adding the quesId and the score of the answer he choosed
   const handleAnswered = (questionId: number, score: number) => {
-    setAnswers((prev) => [...prev, { questionId, score }]);
-
+    setAnswers((prev) => [...prev,{ questionId,score}]);
     if (currentIndex < (test?.questions.length ?? 0) - 1) {
       setCurrentIndex((prev) => prev + 1);
     } else {
@@ -146,27 +153,71 @@ interface ResulteProps{
 }
 
 const ResultComponent = ({answers,currentTest}:ResulteProps)=>{
+  const navigate = useNavigate();
+  const calcResult = (answers: Answer[]): number =>
+    answers.reduce((sum, answer) => sum + answer.score, 0);
 
-  // this function will calculate the sum of score that the user choosed.
-
-  const calcResult = (answers : Answer[]) : number =>answers.reduce((sum,answer)=> sum + answer.score,0);
-
-  // calculate the maximum result that could come from the test.
   const maxScoreFromTest = currentTest.questions.reduce((acc, q) => {
-    const maxScorePerQuestion = Math.max(...q.options.map(opt => opt.score));
+    const maxScorePerQuestion = Math.max(...q.options.map((opt) => opt.score));
     return acc + maxScorePerQuestion;
   }, 0);
 
-  // calculate user's result:
-  const rs : number = calcResult(answers);
+  const rs: number = calcResult(answers);
   const userResult = (rs / maxScoreFromTest) * 100;
   const roundedResult = Math.round(userResult);
 
-  const userLevel = currentTest.resultLevels?.find((level) =>
+
+    const userLevel = currentTest.resultLevels?.find((level) =>
     roundedResult >= level.min && roundedResult <= level.max
   );
 
-  console.log(`userLevel is : \n ${userLevel}`);
+
+  // summary
+  const buildSummary = (
+    test:PsychTest,
+    answersArr: Answer[],
+    resultNum: number,
+    result_desc:string | undefined
+    )=>{
+      const answers_arr = answersArr.map((ans) => {
+        const questionObj = test.questions.find((q) => q.questId === ans.questionId)!;
+        const optionObj = questionObj.options.find((o) => o.score === ans.score)!;
+        return {
+          [questionObj.questionText]: optionObj.optionText
+        };
+      });
+
+      return {
+      test_name: test.id,
+      result: resultNum.toString(),
+      answers : answers_arr,
+      result_desc: userLevel?.label
+    };
+  }
+
+  const summaryObject = buildSummary(currentTest, answers, roundedResult,userLevel?.label);
+  console.log("خلاصة الاختبار:", summaryObject);
+
+  if(localStorage.getItem("token") && summaryObject){
+    const baseUrl:string = "http://127.0.0.1:8000/api/patient/tests/store"
+    axios.post(baseUrl,{
+      test_name: summaryObject.test_name,
+      result: summaryObject.result,
+      result_desc: summaryObject.result_desc,
+      answers: summaryObject.answers
+    },
+    {
+      headers:{
+        Accept:'application/json',
+        Authorization:`Bearer ${localStorage.getItem("token")}`            
+      }
+    }
+  )
+  .then((res)=>{
+      navigate('/patient-dash/patient-tests')
+  })
+  }
+
   return(
     <div className="ShowTestResult">
       <div className="result_title_container">
@@ -177,7 +228,7 @@ const ResultComponent = ({answers,currentTest}:ResulteProps)=>{
         <p>{roundedResult}%</p>
       </div>
       <div className="label_and_talk">
-        <h3>{userLevel?.label}</h3>
+        <h3 className="user_LEVEL">{userLevel?.label}</h3>
         <p>{userLevel?.description}</p>
       </div>
 

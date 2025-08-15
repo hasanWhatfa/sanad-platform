@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { Notification } from '../../../data/generalTypes';
 import './TopNav.css'
 import { IoMdNotificationsOutline } from "react-icons/io"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface TopNavProps{
   setNotifications:React.Dispatch<React.SetStateAction<Notification[]>>;
@@ -16,6 +16,7 @@ interface TopNavProps{
 
 const TopNav = ({setNotifications,setDrawerOpened,setNotificationFetchErr,notifcations}:TopNavProps) => {
 
+  // must be more complecated , but ok for now
   const [hasNofi,setHasNotif] = useState<boolean>(false);
   const handleNotificationBtnClicked = ()=>{
     setDrawerOpened((prev)=>!prev);
@@ -33,7 +34,9 @@ const TopNav = ({setNotifications,setDrawerOpened,setNotificationFetchErr,notifc
     })
     .catch((err)=>setNotificationFetchErr(err.message))
   }
-
+  useEffect(()=>{
+    notifcations.length > 0 ? setHasNotif(true) : setHasNotif(false);
+  },[notifcations])
   return (
     <div className='TopNavDashboards'>
         <div className="logo_container">
@@ -41,7 +44,10 @@ const TopNav = ({setNotifications,setDrawerOpened,setNotificationFetchErr,notifc
         </div>
       <button className="icon_container" onClick={handleNotificationBtnClicked}>
         <IoMdNotificationsOutline />
-        <div className="thereIsNotifs"></div>
+          {
+            hasNofi &&
+            <div className="thereIsNotifs"></div>
+          }
       </button>
     </div>
   )

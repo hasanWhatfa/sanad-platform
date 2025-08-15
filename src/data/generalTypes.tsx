@@ -29,9 +29,9 @@ export interface DoctorMainType {
 
 export const image_base : string = "http://127.0.0.1:8000/storage";
 
-enum SessionStatus  {
+export enum SessionStatus  {
     pending = "pending",
-    approved = "approved",
+    approved = "accepted",
     cancled = "canceled"
 }
 
@@ -64,3 +64,12 @@ export interface Notification{
     
 }
 
+export interface Session{
+    id:number;
+    created_at:string;
+    scheduled_at:string;
+    updated_at:string;
+    status:SessionStatus.approved | SessionStatus.pending | SessionStatus.cancled;
+    doctor:DoctorMainType;
+    patint:User;
+}

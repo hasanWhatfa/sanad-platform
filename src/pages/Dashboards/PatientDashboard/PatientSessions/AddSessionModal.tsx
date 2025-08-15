@@ -129,7 +129,7 @@ const AddSessionModal = ({doctorsList,showModal,fetchDoctorsErro,setShowModal}:A
         setAppointmentMessage('');
         setAppointmentErro('');
       }
-    ,3500)
+    ,1500)
     }
 
   return (

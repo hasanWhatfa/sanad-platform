@@ -4,6 +4,7 @@ import score_2 from '/icons/score_2.svg'
 import score_3 from '/icons/score_3.svg'
 import anxietyImage from '/images/anxietyImage.jpg'
 import adhdImage from '/images/adhmImage.jpg'
+
 export interface PsychTest {
   id: string;                        
   testName: string;
@@ -111,13 +112,13 @@ questions: [
     },
     {
       questId: 5,
-      questionText: "هل تميل إلى المثالية أو الإفراط في التعلّق عندما تحب؟",
-      questionDesc: "مثل الشعور بأنك لا تستطيع العيش دون الطرف الآخر.",
+      questionText: "كيفك جواد؟",
+      questionDesc: "هل انت منيح",
       options: [
-        { optionText: "نعم، جداً", score: 3 },
-        { optionText: "أحياناً", score: 2 },
-        { optionText: "نادراً", score: 1 },
-        { optionText: "لا، عندي توازن", score: 0 },
+        { optionText: "منيح", score: 3 },
+        { optionText: "عادي", score: 2 },
+        { optionText: "تعبان", score: 1 },
+        { optionText: "ماني منيح", score: 0 },
       ]
     },
     {
@@ -351,7 +352,7 @@ questions: [
     ,
 resultLevels: [
   {
-    label: "تعلّق منخفض (أقرب إلى النمط الآمن)",
+    label: "تعلّق منخفض",
     min: 0,
     max: 30,
     description: `تُظهر إجاباتك مستوى منخفضًا من أنماط التعلّق غير الآمن. من المحتمل أنك تملك توازنًا عاطفيًا جيدًا، 
@@ -380,7 +381,7 @@ resultLevels: [
     emoji: score_1
   },
   {
-    label: "تعلّق متوسط (قد يشير إلى نمط قلق)",
+    label: "تعلّق متوسط",
     min: 31,
     max: 70,
     description: `نتيجتك تشير إلى أنك تميل أحيانًا لنمط تعلّق غير آمن، وغالبًا ما يكون أقرب إلى **نمط التعلّق القلق**.
@@ -418,7 +419,7 @@ resultLevels: [
     emoji:score_2,
   },
   {
-    label: "تعلّق مرتفع (قد يشير إلى نمط تجنّبي)",
+    label: "تعلّق مرتفع",
     min: 71,
     max: 100,
     description: `تشير نتيجتك إلى وجود مستوى مرتفع من التعلّق غير الآمن، يُحتمل أن يكون أقرب إلى **نمط التعلّق التجنّبي**.
@@ -705,7 +706,7 @@ questions: [
 ,
   resultLevels: [
     {
-      label: "قلق منخفض (في النطاق الطبيعي)",
+      label: "قلق منخفض",
       min: 0,
       max: 30,
       description: `إجاباتك تشير إلى أن مستوى القلق لديك في النطاق الطبيعي. من المحتمل أنك تتعامل مع التوتر اليومي بمرونة، وتملك أدوات داخلية تساعدك على التهدئة والتركيز. 
@@ -729,7 +730,7 @@ questions: [
       emoji: score_1,
     },
     {
-      label: "قلق متوسط (يستحق الانتباه)",
+      label: "قلق متوسط",
       min: 31,
       max: 70,
       description: `تشير نتيجتك إلى مستوى **متوسط من القلق**، قد يظهر في شكل توتر دائم أو أفكار متكررة تشتت انتباهك. 
@@ -753,7 +754,7 @@ questions: [
       emoji: score_2,
     },
     {
-      label: "قلق مرتفع (يستدعي الدعم النفسي)",
+      label: "قلق مرتفع",
        min: 71,
         max: 100,
       description: `نتيجتك تشير إلى **مستوى مرتفع من القلق**. من المحتمل أن يؤثر القلق على تركيزك، علاقاتك، نومك، أو حتى صحتك الجسدية. 
@@ -940,6 +941,260 @@ questions: [
       tips: [],
       showJoinButton: true,
       emoji: score_3
+    }
+  ]
+},
+{
+  id: "depression",
+  testName: "الاكتئاب",
+  testTitle: "اختبار مقياس الاكتئاب",
+  hook: "هل تشعر بالحزن المستمر أو فقدان الشغف تجاه الأنشطة التي كنت تستمتع بها؟ هذا الاختبار يساعدك على تقييم مستوى الأعراض التي قد تكون مرتبطة بالاكتئاب.",
+  testSentence: "هذا الاختبار ليس تشخيصاً طبياً، بل هو أداة للمساعدة في فهم حالتك المزاجية. استشارة مختص نفسي ضرورية للتشخيص الدقيق.",
+  testImage: "depressionImage",
+  testTitleQuestion: "هل تشعر بأن الحزن يسيطر على أيامك؟",
+  testQuestionDesc: "أجب عن الأسئلة التالية بصدق لتقييم ما إذا كنت تعاني من أعراض الاكتئاب.",
+  aboutDisorder: [
+    "الاكتئاب هو اضطراب مزاجي يسبب شعوراً دائماً بالحزن وفقدان الاهتمام. يؤثر على شعورك، طريقة تفكيرك، وتصرفاتك، ويمكن أن يؤدي إلى مجموعة متنوعة من المشاكل العاطفية والجسدية.",
+    "تشمل أعراض الاكتئاب الشعور باليأس، اضطرابات النوم، فقدان الطاقة، صعوبة التركيز، وتغيرات في الشهية.",
+    "الاكتئاب حالة قابلة للعلاج. يمكن للدعم النفسي، العلاج السلوكي، وفي بعض الحالات الأدوية، أن تساعد في تحسين الحالة بشكل كبير."
+  ],
+  questions: [
+ {
+      questId: 1,
+      questionText: "هل تشعر بالحزن أو الفراغ معظم اليوم، كل يوم تقريباً؟",
+      questionDesc: "مثل الشعور باليأس أو عدم وجود أمل.",
+      options: [
+        { optionText: "دائمًا", score: 3 },
+        { optionText: "غالبًا", score: 2 },
+        { optionText: "أحيانًا", score: 1 },
+        { optionText: "نادراً أو أبدًا", score: 0 }
+      ]
+    },
+    {
+      questId: 2,
+      questionText: "كيفك جواد؟",
+      questionDesc: "هل انت منيح",
+      options: [
+        { optionText: "منيح", score: 3 },
+        { optionText: "عادي", score: 2 },
+        { optionText: "تعبان", score: 1 },
+        { optionText: "ماني منيح", score: 0 },
+      ]
+    },
+    {
+      questId: 3,
+      questionText: "هل لاحظت تغيراً كبيراً في وزنك أو شهيتك (زيادة أو نقصان)؟",
+      questionDesc: "دون اتباع نظام غذائي معين.",
+      options: [
+        { optionText: "نعم، تغير كبير", score: 3 },
+        { optionText: "نعم، تغير ملحوظ", score: 2 },
+        { optionText: "تغير طفيف", score: 1 },
+        { optionText: "لا يوجد تغير", score: 0 }
+      ]
+    },
+    {
+      questId: 4,
+      questionText: "هل تعاني من صعوبة في النوم، أو النوم أكثر من اللازم؟",
+      questionDesc: "مثل الأرق أو الشعور بالنعاس الدائم.",
+      options: [
+        { optionText: "بشكل يومي تقريباً", score: 3 },
+        { optionText: "عدة مرات في الأسبوع", score: 2 },
+        { optionText: "أحيانًا", score: 1 },
+        { optionText: "نادراً أو أبدًا", score: 0 }
+      ]
+    },
+    {
+      questId: 5,
+      questionText: "هل تشعر بالتعب أو فقدان الطاقة معظم الأيام؟",
+      questionDesc: "حتى المهام الصغيرة تبدو مرهقة.",
+      options: [
+        { optionText: "دائمًا", score: 3 },
+        { optionText: "غالبًا", score: 2 },
+        { optionText: "أحيانًا", score: 1 },
+        { optionText: "نادراً أو أبدًا", score: 0 }
+      ]
+    },
+    {
+      questId: 6,
+      questionText: "هل تشعر بانعدام القيمة أو الذنب المفرط؟",
+      questionDesc: "مثل لوم النفس على أشياء ليست من مسؤوليتك.",
+      options: [
+        { optionText: "نعم، بشدة", score: 3 },
+        { optionText: "نعم، إلى حد ما", score: 2 },
+        { optionText: "قليلاً", score: 1 },
+        { optionText: "لا أشعر بذلك", score: 0 }
+      ]
+    },
+    {
+      questId: 7,
+      questionText: "هل تجد صعوبة في التركيز، تذكر الأشياء، أو اتخاذ القرارات؟",
+      questionDesc: "مثل صعوبة متابعة حديث أو قراءة كتاب.",
+      options: [
+        { optionText: "نعم، بشكل كبير", score: 3 },
+        { optionText: "أحيانًا", score: 2 },
+        { optionText: "نادراً", score: 1 },
+        { optionText: "لا، تركيزي جيد", score: 0 }
+      ]
+    },
+    {
+      questId: 8,
+      questionText: "هل لاحظت أنك أصبحت أكثر تباطؤاً في الحركة والكلام أو العكس (متململ ومهتاج)؟",
+      questionDesc: "بشكل ملحوظ للآخرين.",
+      options: [
+        { optionText: "نعم، بشكل واضح", score: 3 },
+        { optionText: "قليلاً", score: 2 },
+        { optionText: "بشكل غير ملحوظ", score: 1 },
+        { optionText: "لا يوجد تغير", score: 0 }
+      ]
+    },
+    {
+      questId: 9,
+      questionText: "هل تراودك أفكار متكررة عن الموت أو إيذاء النفس؟",
+      questionDesc: "إذا كنت تشعر بذلك، من الضروري طلب المساعدة فوراً.",
+      options: [
+        { optionText: "نعم، كثيرًا", score: 3 },
+        { optionText: "أحيانًا", score: 2 },
+        { optionText: "نادراً جداً", score: 1 },
+        { optionText: "أبداً", score: 0 }
+      ]
+    },
+    {
+      questId: 10,
+      questionText: "هل تشعر بأنك أصبحت سريع الانفعال أو الغضب بسهولة؟",
+      questionDesc: "حتى بسبب أمور بسيطة.",
+      options: [
+        { optionText: "نعم، دائمًا تقريبًا", score: 3 },
+        { optionText: "غالبًا", score: 2 },
+        { optionText: "أحيانًا", score: 1 },
+        { optionText: "نادراً أو أبدًا", score: 0 }
+      ]
+    },
+    {
+      questId: 11,
+      questionText: "هل تشعر بالعزلة أو تميل إلى الانسحاب من الأصدقاء والعائلة؟",
+      questionDesc: "تفضل البقاء وحيداً على المشاركة في التجمعات.",
+      options: [
+        { optionText: "نعم، معظم الوقت", score: 3 },
+        { optionText: "غالبًا", score: 2 },
+        { optionText: "أحيانًا", score: 1 },
+        { optionText: "نادراً أو أبدًا", score: 0 }
+      ]
+    },
+    {
+      questId: 12,
+      questionText: "هل تعاني من آلام جسدية غير مبررة؟",
+      questionDesc: "مثل الصداع، آلام العضلات، أو مشاكل في المعدة ليس لها سبب طبي واضح.",
+      options: [
+        { optionText: "نعم، بشكل متكرر", score: 3 },
+        { optionText: "أحيانًا", score: 2 },
+        { optionText: "نادراً", score: 1 },
+        { optionText: "لا أعاني منها", score: 0 }
+      ]
+    },
+    {
+      questId: 13,
+      questionText: "هل تشعر بالتشاؤم أو اليأس تجاه المستقبل؟",
+      questionDesc: "تشعر بأن الأمور لن تتحسن أبدًا.",
+      options: [
+        { optionText: "نعم، بشدة", score: 3 },
+        { optionText: "إلى حد ما", score: 2 },
+        { optionText: "قليلاً", score: 1 },
+        { optionText: "لا، أنا متفائل", score: 0 }
+      ]
+    },
+    {
+      questId: 14,
+      questionText: "هل أهملت مظهرك الشخصي أو نظافتك مؤخراً؟",
+      questionDesc: "تجد صعوبة في الاهتمام بنفسك كما في السابق.",
+      options: [
+        { optionText: "نعم، بشكل واضح", score: 3 },
+        { optionText: "قليلاً", score: 2 },
+        { optionText: "بشكل غير ملحوظ", score: 1 },
+        { optionText: "لا، أهتم بنفسي كالمعتاد", score: 0 }
+      ]
+    },
+    {
+      questId: 15,
+      questionText: "هل تجد صعوبة في البكاء أو التعبير عن مشاعرك؟",
+      questionDesc: "تشعر بالخدر العاطفي أو الفراغ.",
+      options: [
+        { optionText: "نعم، دائمًا", score: 3 },
+        { optionText: "غالبًا", score: 2 },
+        { optionText: "أحيانًا", score: 1 },
+        { optionText: "لا، أعبر عن مشاعري", score: 0 }
+      ]
+    },
+    {
+      questId: 16,
+      questionText: "هل تشعر بالقلق أو التوتر دون سبب واضح؟",
+      questionDesc: "شعور دائم بالتوتر أو أن شيئاً سيئاً سيحدث.",
+      options: [
+        { optionText: "نعم، بشكل يومي", score: 3 },
+        { optionText: "غالبًا", score: 2 },
+        { optionText: "أحيانًا", score: 1 },
+        { optionText: "نادراً أو أبدًا", score: 0 }
+      ]
+    },
+    {
+      questId: 17,
+      questionText: "هل تشعر بأن الآخرين سيكونون أفضل حالاً بدونك؟",
+      questionDesc: "تشعر بأنك عبء على من حولك.",
+      options: [
+        { optionText: "نعم، أفكر بذلك كثيرًا", score: 3 },
+        { optionText: "أحيانًا", score: 2 },
+        { optionText: "نادراً جداً", score: 1 },
+        { optionText: "لا أفكر بذلك أبدًا", score: 0 }
+      ]
+    }
+  ],
+    tips
+: [
+    "تحدث مع شخص تثق به حول مشاعرك.",
+    "حاول الحفاظ على روتين يومي منتظم للنوم والأكل.",
+    "مارس نشاطًا بدنيًا بسيطًا، مثل المشي لمدة 15 دقيقة يوميًا.",
+    "لا تتردد في طلب المساعدة من طبيب أو معالج نفسي.",
+    "قسّم المهام الكبيرة إلى أجزاء صغيرة لتجنب الشعور بالإرهاق."
+  ],
+  resultLevels: [
+    {
+      label: "لا توجد مؤشرات واضحة للاكتئاب",
+      min: 0,
+      max: 30,
+      description: "إجاباتك لا تشير إلى وجود أعراض اكتئاب واضحة في الوقت الحالي. من الجيد أن تهتم بصحتك النفسية بشكل مستمر.",
+      hook: "حافظ على نمط حياتك الصحي، وتذكر أن طلب الدعم عند الحاجة هو علامة قوة.",
+        tips
+: [],
+      showJoinButton: false,
+      emoji: "score_1"
+    },
+    {
+      label: "مؤشرات خفيفة إلى متوسطة للاكتئاب",
+      min: 31,
+      max: 70,
+      description: "قد تكون تعاني من بعض أعراض الاكتئاب التي تؤثر على حياتك اليومية. من المهم أن تبدأ في اتخاذ خطوات للعناية بصحتك النفسية.",
+      hook: "التحدث مع مختص يمكن أن يساعدك في فهم هذه الأعراض ووضع خطة لتحسين حالتك.",
+        tips
+      : [
+        {
+          id:1,
+          message:"don't panic",
+          messageTips:['be ready to fight'],
+          title:'use yoyr mind'
+        }
+      ],
+      showJoinButton: true,
+      emoji: "score_2"
+    },
+    {
+      label: "مؤشرات عالية على وجود الاكتئاب",
+      min: 71,
+      max: 100,
+      description: "تشير إجاباتك إلى وجود أعراض اكتئاب شديدة ومؤثرة. من الضروري جداً أن تتحدث مع طبيب أو مختص نفسي في أقرب وقت ممكن للحصول على التقييم والعلاج المناسبين.",
+      hook: "أنت لست وحدك، والدعم المتخصص متاح لمساعدتك على تجاوز هذه الفترة الصعبة.",
+        tips
+: [],
+      showJoinButton: true,
+      emoji: "score_3"
     }
   ]
 }

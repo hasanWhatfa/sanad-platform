@@ -1,0 +1,211 @@
+.DoctorSessions_page{
+    width: 100%;
+    height: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: right;
+    position: relative;
+}
+.DoctorSessions_page  .content{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content:flex-start;
+}
+.DoctorSessions_page .tabs_container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    gap: 0px;
+    button{
+        padding:10px 14px;
+        border: none;
+        background-color: var(--color-secondary);
+        color: var(--text-primary);
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+    }
+}
+.DoctorSessions_page .tabs_container button:first-child{
+    border-top-right-radius: 8px;
+}
+.DoctorSessions_page .tabs_container button:last-child{
+    border-top-left-radius: 8px;
+}
+.DoctorSessions_page .tabs_container button.active{
+    background-color: var(--color-primary);
+    color: white;
+}
+.DoctorSessions_page .loader{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color:#caf0f848;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    backdrop-filter: blur(5px);
+}
+
+.DoctorSessions_page .tabel_container{
+    width: 100%;
+    background-color: var(--color-light);
+    border-bottom-left-radius:12px ;
+    border-bottom-right-radius: 12px;
+    border-top-left-radius: 12px;
+    padding:60px 24px;
+}
+
+.DoctorSessions_page .ContentContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+.DoctorSessions_page .ContentContainer .title{
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 150%;
+    margin-bottom: 20px;
+    /* can be more elegant but there is no time */
+}
+.DoctorSessions_page .ContentContainer .user_message{
+    position: absolute;
+    top:7%;
+    left: 50%;
+    background-color: var(--color-primary);
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transform: translateX(-50%);
+    border: 2px solid white;
+    box-shadow: var(--shadow-soft);
+}
+
+
+
+
+
+
+.DoctorSessions_page .doctor_table{
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    border-radius: 8px;
+    border-collapse: collapse;
+    border: 1px solid var(--border-light);
+    direction: rtl;
+}
+.DoctorSessions_page .doctor_table thead {
+    border-radius: 8px;
+    background-color: var(--color-primary);
+    color: white;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.DoctorSessions_page .doctor_table th{
+    font-size: 18px;
+    font-weight: 600;
+    padding: 14px 0px;
+}
+.DoctorSessions_page .doctor_table tr{
+    transition: 200ms ease;
+}
+.DoctorSessions_page .doctor_table tr:nth-child(odd){
+    background-color:var(--color-secondary);
+}
+.DoctorSessions_page .doctor_table tr:nth-child(even){
+    background-color: var(--color-light);
+}
+.DoctorSessions_page .doctor_table tr:hover{
+    background-color: var(--color-accent);
+    color: white !important;
+}
+.DoctorSessions_page .doctor_table td{
+    padding: 12px 0px;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-primary);
+    transition: 200ms ease;
+}
+.DoctorSessions_page .doctor_table td img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 8px;
+    margin-bottom: -10px;
+}
+.DoctorSessions_page .doctor_table tr:hover td{
+    color: white !important;
+}
+
+.DoctorSessions_page .doctor_table td button{
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 14px;
+    padding: 4px 8px;
+    cursor: pointer;
+    border: none;
+    margin: 0px 4px;
+    color: white;
+}
+.DoctorSessions_page .doctor_table td .accept_sessions{
+    background-color:rgb(7, 182, 7);
+}
+.DoctorSessions_page .doctor_table td .decline_sessions{
+    background-color: rgb(248, 35, 35);
+}
+.DoctorSessions_page .doctor_table td .edit_session{
+    background-color: var(--color-primary);
+}
+
+
+.editForm_cotnaiener{
+    position: absolute;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    background-color:#caf0f848;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+.editForm_cotnaiener .content{
+    width: 60%;
+    max-width: 350px;
+    background-color: var(--color-light);
+    max-height: 300px;
+    padding: 20px;
+    border-radius: 24px;
+    border: 2px solid var(--color-primary);
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+    gap:14px;
+    direction:rtl
+}
+
+.editForm_cotnaiener .content .inputContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+}
+
+.editForm_cotnaiener.showForm{
+    display: flex;
+}

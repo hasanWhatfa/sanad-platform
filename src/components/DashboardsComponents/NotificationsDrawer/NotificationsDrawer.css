@@ -16,7 +16,7 @@
     padding: 30px 24px;
     background-color: var(--color-secondary);
     position: relative;
-
+    overflow-y: scroll;
     transition-duration: 300ms ease;
     transition-delay: 200ms;
     position: relative;
@@ -38,12 +38,12 @@
 }
 .drawer .icon_container{
     align-self: center;
+    height: 24px;
 }
 .drawer .icon_container svg{
     width: 24px;
     height: 24px;
     color: var(--color-accent);
-    margin-bottom: 20px;
     cursor: pointer;
     transition: 200ms;
 }
@@ -90,33 +90,60 @@
     flex-direction: column;
     gap: 16px;
 }
-
+.notifications_container > div{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    >p{
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--text-muted);
+        direction: rtl;
+    }
+}
+.notifs{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
 .NotificationsDrawerContainer .drawer .notifications_container .notification{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-direction: row-reverse;
+    flex-direction: column;
     background-color: var(--color-light);
     padding: 8px 12px;
     border-radius: 8px;
     border: 1px solid var(--border-light);
     box-shadow: var(--shadow-soft);
-
+    gap: 16px;
     .ntification_text{
+        padding: 8px;
+        border-radius: 4px;
+        width: 100%;
         font-size: 16px;
-        color: var(--text-primary);
+        color: var(--text-muted);
         font-weight: 600;
         word-wrap: normal;
         text-align: right;
+        background-color: var(--color-secondary);
     }
 }
+.drawer .notifications_container .notification .ntification_text.readed{
+    background-color: var(--border-light);
+}
+
+
 
 .NotificationsDrawerContainer .drawer .notifications_container .notification .notif_actions{
     display: flex;
     gap: 12px;
     button{
         font-size: 14px;
-        padding: 4px;
+        padding:10px 16px;
         border-radius: 4px;
         background-color: transparent;
         border: none;
@@ -168,4 +195,40 @@
     border: 1px solid var(--color-primary);
     font-size: 14px;
 }
+.NotificationsDrawerContainer .drawer .icons_container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
 
+}
+.drawer .icons_container .refresh_contiainer{
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+.drawer .icons_container .refresh_contiainer svg{
+    width: 24px;
+    height: 24px;
+    color: var(--color-accent);
+    cursor: pointer;
+    transition: 200ms;
+}
+.drawer .icons_container .refresh_contiainer svg:hover{
+    color: var(--color-primary);
+    transform: scale(1.06);
+}
+
+@keyframes spining {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}

@@ -192,9 +192,9 @@ const routes = createBrowserRouter(
   ]
 )
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+  <>
    <AuthModalProvider>
      <RouterProvider router={routes} />
    </AuthModalProvider>
-  </StrictMode>
+  </>
 )
