@@ -1,0 +1,173 @@
+/* DoctorsManagement.css */
+
+/* --- تعريف متغيرات الألوان --- */
+:root {
+  /* ألوان أساسية */
+  --color-primary: #1D3557;
+  --color-secondary: #CAF0F8;
+  --color-accent: #457B9D;
+  --color-light: #EDF6F9;
+  --color-highlight: #B5D9C9;
+  --color-white: #ffffff;
+  --color-black: #1E1E1E;
+  /* ألوان نصوص */
+  --text-primary: #333333;
+  --text-muted: #646363;
+  /* تدرجات وظلال */
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --border-light: #e0e0e0;
+}
+
+/* --- التنسيق العام للصفحة --- */
+.doctors-management-container {
+  padding: 2rem;
+  background-color: var(--color-light);
+  min-height: 100vh;
+  font-family: 'Cairo', sans-serif; /* يفضل إضافة خط عربي مثل كايرو */
+}
+
+/* --- تنسيق رأس الصفحة --- */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.page-header h1 {
+  color: var(--color-primary);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.btn-add {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-add:hover {
+  background-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.plus-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* --- تنسيق شبكة عرض الأطباء --- */
+.doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* --- تنسيق بطاقة الطبيب --- */
+.doctor-card {
+  background-color: var(--color-white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.doctor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.doctor-card-image-container {
+  height: 200px;
+}
+
+.doctor-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.doctor-card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.doctor-card-info {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+.doctor-name {
+  color: var(--color-primary);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+  cursor: pointer;
+}
+
+.doctor-name:hover {
+  text-decoration: underline;
+  color: var(--color-accent);
+}
+
+.doctor-specialty {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* --- تنسيق أزرار الإجراءات --- */
+.doctor-card-actions {
+  display: flex;
+  gap: 0.75rem;
+  border-top: 1px solid var(--border-light);
+  padding-top: 1rem;
+  margin-top: auto;
+}
+
+.doctor-card-actions button {
+  flex-grow: 1;
+  padding: 0.6rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-edit {
+  background-color: var(--color-secondary);
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+}
+
+.btn-edit:hover {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.btn-delete {
+  background-color: transparent;
+  color: #c0392b;
+  border: 1px solid #c0392b;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+  color: var(--color-white);
+}

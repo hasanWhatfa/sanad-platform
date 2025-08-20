@@ -10,7 +10,8 @@ const TestPatient = () => {
       <div className="tests-grid">
         {testCardData.map((card,idx)=>{
           return(
-            <TestCard key={idx} description={card.description}  title={card.title} testID={card.testID}/>
+            <TestCard key={idx} description={card.description}  title={card.title} name_id={card.name_id}
+            id={card.id}/>
           )
         })}
       </div>

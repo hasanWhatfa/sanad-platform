@@ -118,7 +118,9 @@ const Login = ({ formData }: LoginFormData) => {
           </label>
         </div>
         <button type="submit" className="auth_submit_btn"
-        disabled={loading}>
+        disabled={loading}
+        style={loading ?{cursor:'not-allowed'} : {cursor:'pointer'}}
+        >
          {loading ? '......' : formData?.data.btnContent}
         </button>
       </div>

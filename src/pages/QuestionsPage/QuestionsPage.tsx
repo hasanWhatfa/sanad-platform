@@ -177,7 +177,8 @@ const ResultComponent = ({answers,currentTest}:ResulteProps)=>{
     test:PsychTest,
     answersArr: Answer[],
     resultNum: number,
-    result_desc:string | undefined
+    result_descriptio:string | undefined,
+    test_name:PsychTest
     )=>{
       const answers_arr = answersArr.map((ans) => {
         const questionObj = test.questions.find((q) => q.questId === ans.questionId)!;
@@ -188,15 +189,15 @@ const ResultComponent = ({answers,currentTest}:ResulteProps)=>{
       });
 
       return {
-      test_name: test.id,
+      test_id: test.test_id,
       result: resultNum.toString(),
       answers : answers_arr,
-      result_desc: userLevel?.label
+      result_desc: userLevel?.label,
+      test_name : test.id,
     };
   }
 
-  const summaryObject = buildSummary(currentTest, answers, roundedResult,userLevel?.label);
-  console.log("خلاصة الاختبار:", summaryObject);
+  const summaryObject = buildSummary(currentTest, answers, roundedResult,userLevel?.label,currentTest);
 
   if(localStorage.getItem("token") && summaryObject){
     const baseUrl:string = "http://127.0.0.1:8000/api/patient/tests/store"
@@ -204,17 +205,26 @@ const ResultComponent = ({answers,currentTest}:ResulteProps)=>{
       test_name: summaryObject.test_name,
       result: summaryObject.result,
       result_desc: summaryObject.result_desc,
-      answers: summaryObject.answers
+      answers: summaryObject.answers,
+      test_id : summaryObject.test_id,
     },
     {
       headers:{
         Accept:'application/json',
-        Authorization:`Bearer ${localStorage.getItem("token")}`            
+        Authorization:`Bearer ${localStorage.getItem("token")}`,
+        'Content-Type': 'application/json'
       }
     }
   )
   .then((res)=>{
-      navigate('/patient-dash/patient-tests')
+      // navigate('/patient-dash/patient-tests')
+      console.log(res);
+  })
+  .catch((err)=>{
+    console.log(err)
+  })
+  .finally(()=>{
+    console.log('Request Sent');
   })
   }
 

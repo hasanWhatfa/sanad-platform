@@ -4,20 +4,22 @@ import { FaPlay, FaChartLine } from "react-icons/fa";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const TestCard = ({title,description,testID}:TestCardProps) => {
+const TestCard = ({title,description,name_id,id}:TestCardProps) => {
 
     const [testRes,setTestRes] = useState<string>('');
-    const [noTests,setNoTest] = useState<string>('')
-    const [loading , setLoading] = useState<boolean>(false)
+    const [noTests,setNoTest] = useState<string>('');
+    const [loading , setLoading] = useState<boolean>(false);
 
-    const fetchPatientRes = (id:string)=>{
+    const fetchPatientRes = (id:number)=>{
         setLoading(true)
-        const bestTestId : string = id.trim();
-        const baseUrl : string = `http://127.0.0.1:8000/api/patient/tests/${bestTestId}/show`
+        const baseUrl : string = `http://127.0.0.1:8000/api/patient/tests/${id}/show`
+        console.log(`${name_id} test url: `,baseUrl);
+        console.log(`type of the url : ${typeof baseUrl}`)
+        console.log(`----------${name_id}------------------`)
         axios.get(baseUrl,{
         headers:{
                 Accept:'application/json',
-                Authorization:`Bearer ${localStorage.getItem("token")}`     
+                Authorization:`Bearer ${localStorage.getItem("token")}`,
             }
         })
         .then((res)=>{
@@ -28,7 +30,8 @@ const TestCard = ({title,description,testID}:TestCardProps) => {
         .catch((err)=>{
             if(err.response.data.message)            
             setNoTest("لم تقم بالاختبار سابقا")
-            console.log(`for (${testID.trim()}), you didn't take the test before`)
+            console.log(`for (${name_id}), you didn't take the test before`)
+            console.log(err)
         })
         .finally(()=>{
             setLoading(false)
@@ -38,7 +41,7 @@ const TestCard = ({title,description,testID}:TestCardProps) => {
 
 
     const goToQuesPage = ()=>{
-        nagivate(`/questionsPage/${testID}`)
+        nagivate(`/questionsPage/${name_id}`)
     }
 
     const handleShowDetails = ()=>{
@@ -46,7 +49,7 @@ const TestCard = ({title,description,testID}:TestCardProps) => {
     }
 
     useEffect(()=>{
-    fetchPatientRes(testID)
+    fetchPatientRes(id)
     },[])
   return (
     <div className="test-card">

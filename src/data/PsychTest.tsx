@@ -6,7 +6,8 @@ import anxietyImage from '/images/anxietyImage.jpg'
 import adhdImage from '/images/adhmImage.jpg'
 
 export interface PsychTest {
-  id: string;                        
+  id: string;               
+  test_id:number;         
   testName: string;
   testTitle: string;
   hook: string;
@@ -53,6 +54,7 @@ export const testsData: PsychTest[] =
 [
   {
     id: "attachment",
+    test_id:1,
     testName: "التعلق",
     testTitle: "اختبار أنماط التعلق",
     hook: "اكتشف نمط تعلقك في العلاقات العاطفية والاجتماعية.",
@@ -461,6 +463,7 @@ resultLevels: [
  },
  {
   id: "anxiety",
+  test_id:2,
   testName: "القلق",
   testTitle: "اختبار مستوى القلق العام",
   hook: "اختبر مستوى القلق لديك واكتشف كيف يؤثر على حياتك اليومية.",
@@ -781,6 +784,7 @@ questions: [
 },
 {
   id: "adhd",
+  test_id:3,
   testName: "نقص الانتباه",
   testTitle: "اختبار اضطراب نقص الانتباه والتركيز",
   hook: "هل تواجه صعوبة في التركيز، التنظيم، أو إنهاء المهام؟ هذا الاختبار يساعدك على تقييم مدى تأثير اضطراب نقص الانتباه في حياتك.",
@@ -946,6 +950,7 @@ questions: [
 },
 {
   id: "depression",
+  test_id:4,
   testName: "الاكتئاب",
   testTitle: "اختبار مقياس الاكتئاب",
   hook: "هل تشعر بالحزن المستمر أو فقدان الشغف تجاه الأنشطة التي كنت تستمتع بها؟ هذا الاختبار يساعدك على تقييم مستوى الأعراض التي قد تكون مرتبطة بالاكتئاب.",
