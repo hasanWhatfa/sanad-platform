@@ -1,0 +1,350 @@
+.doctor_patients{
+    padding-top:40px;
+    padding-bottom:40px;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: var(--color-light);
+    flex-grow: 1;
+    gap: 30px;
+    min-height: 95vh;
+}
+
+
+.page_header {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-light));
+  border-radius: 0 0 2rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ديكور خفيف بالخلفية */
+.page_header::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: var(--color-highlight);
+  border-radius: 50%;
+  opacity: 0.25;
+  animation: float 6s infinite ease-in-out;
+}
+
+.page_header::after {
+  content: "";
+  position: absolute;
+  bottom: -60px;
+  left: -60px;
+  width: 160px;
+  height: 160px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: float 8s infinite ease-in-out reverse;
+}
+
+.page_title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.page_title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin: 0.5rem auto 0;
+  background: var(--color-accent);
+  border-radius: 2px;
+}
+
+.page_subtitle {
+  font-size: 1rem;
+  color: var(--color-black);
+  max-width: 500px;
+  margin: 0.75rem auto 0;
+  line-height: 1.6;
+}
+
+/* Animation for circles */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(15px); }
+}
+
+/* 📱 Responsive */
+@media (max-width: 640px) {
+  .page_title {
+    font-size: 2rem;
+  }
+  .page_subtitle {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+  }
+}
+.doctor_patients .patients_container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr; /* 👈 افتراضياً كرت واحد */
+}
+
+@media (min-width: 640px) {
+  .doctor_patients .patients_container {
+    grid-template-columns: repeat(2, 1fr); /* 🟦 شاشات متوسطة = كرتين */
+  }
+}
+
+@media (min-width: 1024px) {
+  .doctor_patients .patients_container {
+    grid-template-columns: repeat(3, 1fr); /* 🟩 شاشات كبيرة = 3 كروت */
+  }
+}
+
+
+/* -=--=-===============================================================
+=====================================================================
+===================================================================
+===========================================================
+==================================================
+======================================
+===============================
+=====================
+=======================
+=================
+=============
+===========
+=========
+========
+========
+=====
+====
+==
+==
+= */
+.patient_card {
+  background: var(--color-white);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  direction: rtl;           /* 👈 النص والاتجاه */
+  max-width: 340px;         /* 👈 الكارد أعرض شوي من الموبايل */
+  margin: 1rem auto;        /* وسطي */
+  min-width: 280px;
+}
+
+.patient_card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* Header */
+.patient_card .header {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: var(--color-white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.patient_card .p_name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.patient_card .p_image {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: 3px solid var(--color-highlight);
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.patient_card:hover .p_image {
+  transform: rotate(6deg) scale(1.05);
+}
+
+/* Details */
+.patient_card .details {
+  padding: 1rem;
+  background: var(--color-light);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-black);
+  height: 100%;
+}
+
+.patient_card .details p {
+  margin: 0.5rem 0;
+}
+
+.patient_card .pat_val {
+  margin-right: 0.3rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* Illness & Notes */
+.patient_card .expected_illness,
+.patient_card .notes {
+  margin: 1rem 0;
+}
+
+.patient_card .expected_illness p:first-child,
+.patient_card .notes p{
+  font-weight: bold;
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+  line-clamp: 2;
+
+}
+.note{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+.patient_card .expected_illness div,
+.patient_card .notes_container {
+  background: var(--color-white);
+  border: 1px solid var(--color-highlight);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  transition: background 0.3s ease;
+}
+
+.patient_card .expected_illness div:hover,
+.patient_card .notes_container:hover {
+  background: var(--color-secondary);
+}
+
+/* Link */
+.patient_card a {
+  display: inline-block;
+  margin-top: 1rem;
+  text-decoration: none;
+  color: var(--color-white);
+  font-weight: 600;
+  transition: color 0.3s ease, transform 0.2s ease;
+  background-color:var(--color-accent);
+  padding: 4px;
+  border-radius: 4px;
+  border:1px solid transparent
+}
+
+.patient_card a:hover {
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  background-color: var(--color-white);
+}
+
+/* 📱 Responsive tweaks */
+@media (max-width: 480px) {
+  .patient_card {
+    max-width: 95%;   /* خليه ياخد أغلب عرض الشاشة */
+  }
+
+  .patient_card .p_name {
+    font-size: 1rem;
+  }
+
+  .patient_card .p_image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .patient_card .details {
+    font-size: 0.85rem;
+  }
+}
+
+
+
+
+/* SKELETON STYLES */
+
+.skeleton_card {
+  background: var(--color-white);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  max-width: 340px;
+  margin: 1rem auto;
+  direction: rtl;
+  min-width: 280px;
+}
+
+/* Base skeleton style */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 37%,
+    #f0f0f0 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: 8px;
+}
+
+/* Variations */
+.skeleton-text.line {
+  height: 14px;
+  margin: 0.5rem 0;
+  width: 70%;
+}
+
+.skeleton-text.name {
+  height: 18px;
+  width: 40%;
+}
+
+.skeleton-circle.image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.skeleton-text.box {
+  height: 50px;
+  width: 100%;
+  margin: 0.8rem 0;
+  border-radius: 0.75rem;
+}
+
+.skeleton-text.button {
+  height: 16px;
+  width: 50%;
+  margin-top: 1rem;
+}
+
+/* Layout */
+.skeleton_card .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.skeleton_card .details {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Animation */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}

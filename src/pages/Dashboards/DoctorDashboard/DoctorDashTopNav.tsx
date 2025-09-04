@@ -4,32 +4,37 @@ import '../DashboardsGlobalStyles.css'
 import { useState } from "react";
 import type { Notification } from "../../../data/generalTypes";
 import NotificationsDrawer from "../../../components/DashboardsComponents/NotificationsDrawer/NotificationsDrawer";
+
+// Redux imports 👇
+import { store } from "../../../redux/store";
+import { Provider } from "react-redux";
+
 const DoctorDashTopNav = () => {
-  
-  const [drawerOpend,setDrawerOpened] = useState<boolean>(false);
-
-  const [notifcations,setNotifications] = useState<Notification[]>([]);
-
-  const[notifcationsFetchErr,setNotificationFetchErr] = useState<string>();
+  const [drawerOpend, setDrawerOpened] = useState<boolean>(false);
+  const [notifcations, setNotifications] = useState<Notification[]>([]);
+  const [notifcationsFetchErr, setNotificationFetchErr] = useState<string>();
 
   return (
-    <div className="DashContentWrapper">
-      <TopNav 
-      setNotifications={setNotifications} 
-      setDrawerOpened={setDrawerOpened}
-      setNotificationFetchErr={setNotificationFetchErr}
-      notifcations={notifcations}
-      />
-      <div className="content_wrapper">
-        <Outlet />
-      <NotificationsDrawer 
-        notifcations={notifcations} 
-        setNotifications={setNotifications} 
-        drawerOpend={drawerOpend} 
-        setDrawerOpened={setDrawerOpened}    
-      />
+    <Provider store={store}>
+      <div className="DashContentWrapper">
+        <TopNav
+          setNotifications={setNotifications}
+          setDrawerOpened={setDrawerOpened}
+          setNotificationFetchErr={setNotificationFetchErr}
+          notifcations={notifcations}
+        />
+        <div className="content_wrapper">
+          <Outlet />
+
+          <NotificationsDrawer
+            notifcations={notifcations}
+            setNotifications={setNotifications}
+            drawerOpend={drawerOpend}
+            setDrawerOpened={setDrawerOpened}
+          />
+        </div>
       </div>
-    </div>
+    </Provider>
   )
 }
 

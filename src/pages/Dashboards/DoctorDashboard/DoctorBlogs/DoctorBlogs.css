@@ -1,0 +1,153 @@
+/* DoctorBlogsPage.css */
+.doctor-blogs-container {
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+  direction: rtl; /* لدعم اللغة العربية */
+  text-align: right;
+  background-color: var(--color-light);
+  min-height: 100vh;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  color: var(--text-primary);
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.add-blog-btn {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color var(--main-trans);
+}
+
+.add-blog-btn:hover {
+  background-color: var(--color-primary);
+}
+
+.blogs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.blog-card {
+  background-color: var(--color-white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--main-trans), box-shadow var(--main-trans);
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.blog-image-wrapper {
+  width: 100%;
+  height: 200px; /* لتحديد ارتفاع موحد للصور */
+  overflow: hidden;
+}
+
+.blog-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* لضمان ملء الصورة للحاوية بشكل صحيح */
+  transition: transform var(--main-trans);
+}
+
+.blog-card:hover .blog-image {
+  transform: scale(1.05);
+}
+
+.blog-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.blog-content h2 {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.blog-date {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.blog-actions {
+  margin-top: auto; /* لدفع الأزرار إلى الأسفل */
+  display: flex;
+  gap: 0.5rem;
+}
+
+.edit-btn,
+.delete-btn {
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color var(--main-trans), color var(--main-trans);
+  font-weight: bold;
+}
+
+.edit-btn {
+  background-color: var(--color-highlight);
+  color: var(--color-primary);
+}
+
+.edit-btn:hover {
+  background-color: #9cd4bd;
+}
+
+.delete-btn {
+  background-color: #ff6347;
+  color: var(--color-white);
+}
+
+.delete-btn:hover {
+  background-color: #e5533d;
+}
+
+/* تنسيقات الشاشات الصغيرة */
+@media (max-width: 768px) {
+  .doctor-blogs-container {
+    padding: 1rem;
+  }
+  
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .add-blog-btn {
+    padding: 0.6rem 1rem;
+  }
+}
+
+/* تنسيقات الشاشات الكبيرة */
+@media (min-width: 1200px) {
+  .blogs-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

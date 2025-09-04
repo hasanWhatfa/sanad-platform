@@ -1,173 +1,140 @@
-/* DoctorsManagement.css */
-
-/* --- تعريف متغيرات الألوان --- */
-:root {
-  /* ألوان أساسية */
-  --color-primary: #1D3557;
-  --color-secondary: #CAF0F8;
-  --color-accent: #457B9D;
-  --color-light: #EDF6F9;
-  --color-highlight: #B5D9C9;
-  --color-white: #ffffff;
-  --color-black: #1E1E1E;
-  /* ألوان نصوص */
-  --text-primary: #333333;
-  --text-muted: #646363;
-  /* تدرجات وظلال */
-  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
-  --border-light: #e0e0e0;
-}
-
-/* --- التنسيق العام للصفحة --- */
-.doctors-management-container {
-  padding: 2rem;
-  background-color: var(--color-light);
+/* ManageDoctorsPage.css */
+.manage-doctors-page {
+  padding: 40px 30px;
+  background: var(--color-light);
   min-height: 100vh;
-  font-family: 'Cairo', sans-serif; /* يفضل إضافة خط عربي مثل كايرو */
+  direction: rtl;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* --- تنسيق رأس الصفحة --- */
-.page-header {
+/* ====== Header ====== */
+.manage-doctors-page .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 40px;
 }
 
-.page-header h1 {
+.manage-doctors-page .header .title {
+  font-size: 26px;
+  font-weight: 800;
   color: var(--color-primary);
-  font-size: 2rem;
-  font-weight: 700;
+  border-bottom: 3px solid var(--color-accent);
+  padding-bottom: 4px;
 }
 
-.btn-add {
-  background-color: var(--color-primary);
+.manage-doctors-page .header .add-btn {
+  padding: 12px 28px;
+  background: var(--color-accent);
   color: var(--color-white);
-  border: none;
-  border-radius: 8px;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
+  font-size: 15px;
   font-weight: 600;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background var(--main-trans), transform var(--main-trans);
 }
 
-.btn-add:hover {
-  background-color: var(--color-accent);
+.manage-doctors-page .header .add-btn:hover {
+  background: var(--color-primary);
   transform: translateY(-2px);
 }
 
-.plus-icon {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-/* --- تنسيق شبكة عرض الأطباء --- */
+/* ====== Grid Layout ====== */
 .doctors-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 25px;
 }
 
-/* --- تنسيق بطاقة الطبيب --- */
-.doctor-card {
-  background-color: var(--color-white);
-  border-radius: 12px;
+/* ====== Doctor Card ====== */
+.doctorCard {
+  background: var(--color-white);
+  border-radius: 16px;
   box-shadow: var(--shadow-soft);
-  overflow: hidden;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid var(--border-light);
+  transition: transform var(--main-trans), box-shadow var(--main-trans);
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  align-items: center;
+  max-width: 270px;
 }
 
-.doctor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+.doctorCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
-.doctor-card-image-container {
-  height: 200px;
+/* صورة الطبيب */
+.img_container {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 15px;
+  border: 3px solid var(--color-accent);
+  background: var(--color-light);
 }
 
-.doctor-card-image {
+.img_container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.doctor-card-content {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
-.doctor-card-info {
-  flex-grow: 1;
-  margin-bottom: 1rem;
-}
-
-.doctor-name {
-  color: var(--color-primary);
-  font-size: 1.3rem;
+/* النصوص */
+.doctorCard h3 {
+  font-size: 18px;
   font-weight: 700;
-  margin: 0 0 0.25rem 0;
-  cursor: pointer;
+  color: var(--text-primary);
+  margin-bottom: 6px;
 }
 
-.doctor-name:hover {
-  text-decoration: underline;
-  color: var(--color-accent);
-}
-
-.doctor-specialty {
+.doctorCard p {
+  font-size: 14px;
   color: var(--text-muted);
-  font-size: 1rem;
-  margin: 0;
+  margin-bottom: 16px;
 }
 
-/* --- تنسيق أزرار الإجراءات --- */
-.doctor-card-actions {
+/* ====== أزرار الأكشن ====== */
+.btn_container {
   display: flex;
-  gap: 0.75rem;
-  border-top: 1px solid var(--border-light);
-  padding-top: 1rem;
-  margin-top: auto;
+  gap: 12px;
+  justify-content: center;
 }
 
-.doctor-card-actions button {
-  flex-grow: 1;
-  padding: 0.6rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 600;
+.btn_container button {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--main-trans), transform var(--main-trans);
 }
 
-.btn-edit {
-  background-color: var(--color-secondary);
-  color: var(--color-accent);
-  border: 1px solid var(--color-accent);
-}
-
-.btn-edit:hover {
-  background-color: var(--color-accent);
+/* زر الحذف */
+.delete-doctor {
+  background: #e63946;
   color: var(--color-white);
 }
 
-.btn-delete {
-  background-color: transparent;
-  color: #c0392b;
-  border: 1px solid #c0392b;
+.delete-doctor:hover {
+  background: #b91c1c;
+  transform: scale(1.1);
 }
 
-.btn-delete:hover {
-  background-color: #c0392b;
+/* زر التعديل */
+.edit-doctor {
+  background: var(--color-accent);
   color: var(--color-white);
+}
+
+.edit-doctor:hover {
+  background: var(--color-primary);
+  transform: scale(1.1);
 }

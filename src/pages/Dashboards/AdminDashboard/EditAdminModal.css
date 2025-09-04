@@ -1,0 +1,212 @@
+/* الألوان الأساسية والمتغيرات مستخدمة من ملف CSS العام */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn var(--main-trans);
+}
+
+.modal-content {
+  background-color: var(--color-white);
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-soft);
+  width: 90%;
+  max-width: 600px;
+  animation: scaleIn var(--main-trans);
+  position: relative;
+  direction: rtl; /* اتجاه الكتابة من اليمين لليسار */
+}
+
+/* الرأس وزر الإغلاق */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 1rem;
+}
+
+.modal-header h2 {
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color var(--main-trans);
+}
+
+.close-btn:hover {
+  color: var(--color-black);
+}
+
+/* قسم الصورة الشخصية */
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.errorMessage{
+  color: red;
+  font-size: 14px;
+  margin: 20px 0px;
+}
+/* حاوية الصورة: تتحكم في المقاس بشكل صارم */
+.avatar-preview-wrap {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;              /* قص الزوايد */
+  border: 4px solid var(--color-light);
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 1rem;
+}
+
+/* الصورة نفسها تُملأ الحاوية فقط */
+.avatar-preview {
+  width: 100% !important;        /* حتى لو عندك img { width:100% } عالمياً، هنا هي 100% من 120px */
+  height: 100% !important;       /* يضمن عدم الشدّ الطولي */
+  object-fit: cover;             /* قص لطيف */
+  display: block;                /* إزالة فراغات inline */
+}
+
+.file-input-label {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color var(--main-trans);
+  font-size: 0.9rem;
+}
+
+.file-input-label:hover {
+  background-color: var(--color-primary);
+}
+
+.file-input-hidden {
+  display: none;
+}
+
+/* حقول النموذج */
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  padding-right: 38px !important;
+  border: 1px solid var(--border-light);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background-color: var(--color-light);
+  transition: border-color var(--main-trans), box-shadow var(--main-trans);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(69, 123, 157, 0.2);
+}
+
+/* أزرار الإجراءات */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.form-actions button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform var(--main-trans), background-color var(--main-trans);
+}
+
+.form-actions button:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent);
+}
+
+.btn-cancel {
+  background-color: var(--color-light);
+  color: var(--text-muted);
+}
+
+.btn-cancel:hover {
+  background-color: var(--border-light);
+  color: var(--color-black);
+}
+
+/*
+  التصميم المستجيب (Responsive Design)
+  ------------------------------------
+  على الشاشات الصغيرة، يتم تكديس الحقول بدلاً من عرضها جنبًا إلى جنب.
+*/
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    padding: 2rem 1.5rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/* حركات الدخول والخروج */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}

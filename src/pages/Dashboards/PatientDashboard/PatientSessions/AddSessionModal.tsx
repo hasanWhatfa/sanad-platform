@@ -82,7 +82,9 @@ const AddSessionModal = ({doctorsList,showModal,fetchDoctorsErro,setShowModal}:A
 
         const data = {
           doctor_id:doctor_id.current?.value,
-          scheduled_at : choosed_time
+          scheduled_at : choosed_time,
+          card_num:'12121211212',
+          amount:3000
         }
 
         axios.post(base_url,data,{

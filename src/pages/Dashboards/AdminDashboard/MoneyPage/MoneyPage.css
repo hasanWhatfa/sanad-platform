@@ -1,0 +1,277 @@
+/*
+  الأنماط العامة
+  ----------------------
+  تأكد أن متغيرات الألوان موجودة في ملف CSS عام
+*/
+.transactions-page {
+  padding: 2rem;
+  direction: rtl; /* اتجاه الكتابة من اليمين لليسار */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  color: var(--text-primary);
+  background-color: var(--color-light);
+  min-height: 100vh;
+}
+
+/*
+  رأس الصفحة وعناصر التحكم
+  ----------------------
+*/
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.page-header h1 {
+  color: var(--color-primary);
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.filter-controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.search-input, .status-filter {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background-color: var(--color-white);
+  color: var(--text-primary);
+  transition: border-color var(--main-trans);
+}
+
+.search-input:focus, .status-filter:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+/*
+  الجدول
+  ----------------------
+*/
+.table-container {
+  overflow-x: auto;
+  background-color: var(--color-white);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.transactions-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.transactions-table th, .transactions-table td {
+  padding: 1.25rem 1.5rem;
+  text-align: right;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.transactions-table th {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.transactions-table tr:hover {
+  background-color: var(--color-light);
+}
+
+.transactions-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/*
+  عناصر داخل الخلايا
+  ----------------------
+*/
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  white-space: nowrap;
+}
+
+.user-info .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-light);
+}
+
+.user-specialization {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+.status-success {
+  background-color: var(--color-highlight);
+}
+
+.status-pending {
+  background-color: var(--color-accent);
+}
+
+.status-failed {
+  background-color: #e74c3c; /* لون أحمر للفشل */
+}
+
+.details-btn {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  cursor: pointer;
+  font-weight: bold;
+  transition: color var(--main-trans);
+}
+
+.details-btn:hover {
+  color: var(--color-primary);
+}
+
+.no-data-msg {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+}
+
+/*
+  التنقل بين الصفحات (Pagination)
+  ----------------------
+*/
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.pagination button {
+  background-color: var(--color-white);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light);
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background-color var(--main-trans), color var(--main-trans);
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: var(--color-light);
+}
+
+.pagination button.active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/*
+  النافذة المنبثقة (Modal) للتفاصيل
+  ----------------------
+  (تم إعادة استخدام الأنماط من التصميم السابق لضمان التناسق)
+*/
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 300ms ease;
+}
+
+.modal-content {
+  background-color: var(--color-white);
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-soft);
+  width: 90%;
+  max-width: 500px;
+  animation: scaleIn 300ms ease;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.modal-header h2 {
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.modal-body p {
+  line-height: 1.8;
+  border-bottom: 1px dashed var(--border-light);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.modal-body p:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/*
+  استجابة التصميم
+  ----------------------
+*/
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .filter-controls {
+    width: 100%;
+  }
+
+  .search-input, .status-filter {
+    width: 100%;
+  }
+
+  .transactions-table th, .transactions-table td {
+    padding: 0.75rem;
+  }
+}

@@ -10,7 +10,7 @@ export interface User{
     phone_number?:string;
     gender?:"ذكر" | "انثى";
     created_at?:string;
-    password:string;
+    password?:string;
 }
 
 export interface DoctorMainType {
@@ -73,3 +73,53 @@ export interface Session{
     doctor:DoctorMainType;
     patint:User;
 }
+
+
+export interface Pateint{
+age?: number;
+avatar?: string
+created_at?:string;
+email?: string;
+first_name?: string;
+gender?: string;
+id?: number;
+last_name?:string;
+phone_number?: string;
+role?: string;
+user_id?: number;
+}
+
+
+export interface TestResult {
+    patient_id:string;
+    result:string;
+    result_description:string;
+    test_name:string;
+    answers:Array<Record<string,string>>;
+    created_at:string;
+    updated_at:string;
+}
+
+
+
+export interface RateResponse{
+    comment:string;
+    created_at:string;
+    updated_at:string;
+    patient:Pateint;
+    id:number;
+    doctor:DoctorMainType;
+    rate:number;
+}
+
+export interface Transaction{
+    amount:number;
+    card_number:string;
+    doctor:DoctorMainType;
+    id:number;
+    patient:Pateint;
+    reservation_date:string;
+    status:string;
+    updated_at:string;
+}
+

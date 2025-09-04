@@ -1,0 +1,160 @@
+
+/* Page */
+.patient_details_page {
+  font-family: "Tajawal", sans-serif;
+  padding: 1.5rem;
+  direction: rtl;
+  color: var(--color-black);
+}
+
+/* Header */
+.patient_header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, var(--color-secondary), var(--color-light));
+  padding: 2rem;
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+}
+
+.patient_avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid var(--color-accent);
+  object-fit: cover;
+}
+
+.patient_name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.3rem;
+}
+
+.patient_info {
+  color: var(--color-black);
+  font-size: 1rem;
+}
+
+/* Test Result */
+.test_result_section {
+  background: var(--color-white);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-bottom: 2rem;
+}
+
+.test_result_section h2 {
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+
+.test_progress {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  border: 8px solid var(--color-highlight);
+  border-top: 8px solid var(--color-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  animation: spin 1500ms ease-in-out 1 both;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.description {
+  flex: 1;
+  color: var(--color-black);
+}
+
+/* Answers Table */
+.answers_table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.answers_table th, .answers_table td {
+  border: 1px solid var(--color-light);
+  padding: 0.75rem;
+  text-align: right;
+}
+
+.answers_table th {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Notes */
+.notes_section {
+  background: var(--color-white);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.notes_section h2 {
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+
+.notes_section textarea {
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid var(--color-highlight);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  font-family: inherit;
+}
+
+.notes_section button {
+  background: var(--color-accent);
+  color: var(--color-white);
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  transition: background 0.3s ease;
+}
+
+.notes_section button:hover {
+  background: var(--color-primary);
+}
+
+/* Note Cards */
+.notes_list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.note_card {
+  background: var(--color-light);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.05);
+  border-left: 4px solid var(--color-accent);
+  font-size: 0.95rem;
+  font-style: italic;
+}

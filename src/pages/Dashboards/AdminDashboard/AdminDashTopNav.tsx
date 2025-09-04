@@ -4,6 +4,8 @@ import '../DashboardsGlobalStyles.css'
 import { useState } from "react";
 import type { Notification } from "../../../data/generalTypes";
 import NotificationsDrawer from "../../../components/DashboardsComponents/NotificationsDrawer/NotificationsDrawer";
+import { Provider } from "react-redux";
+import { store } from "../../../redux/store";
 
 const AdminDashTopNav = () => {
     const [drawerOpend,setDrawerOpened] = useState<boolean>(false);
@@ -12,6 +14,7 @@ const AdminDashTopNav = () => {
 
   const[notifcationsFetchErr,setNotificationFetchErr] = useState<string>();
   return (
+    <Provider store={store}>
     <div className="DashContentWrapper">
       <TopNav 
       setNotifications={setNotifications} 
@@ -29,6 +32,7 @@ const AdminDashTopNav = () => {
         <Outlet />
       </div>
     </div>
+    </Provider>
   )
 }
 

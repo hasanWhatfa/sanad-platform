@@ -1,5 +1,4 @@
 import './index.css'
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './pages/Home/Home'
@@ -36,6 +35,10 @@ import AdminDashMainPage from './pages/Dashboards/AdminDashboard/AdminDashMainPa
 import MoneyPage from './pages/Dashboards/AdminDashboard/MoneyPage/MoneyPage'
 import AdminShowData from './pages/Dashboards/AdminDashboard/AdminShowData/AdminShowData'
 import ManageDoctorsPage from './pages/Dashboards/AdminDashboard/ManageDoctorsPage/ManageDoctorsPage'
+import PatientDetails from './pages/Dashboards/DoctorDashboard/DoctorPatiens/PatientDetails'
+import DoctorDetailsPage from './pages/Dashboards/AdminDashboard/ManageDoctorsPage/DoctorDetailsPage'
+import DocMainp from './pages/Dashboards/AdminDashboard/ManageDoctorsPage/DocMainp'
+import {DoctorBlogsPage} from './pages/Dashboards/DoctorDashboard/DoctorBlogs/DoctorBlogs'
 
 const routes = createBrowserRouter(
   [
@@ -151,11 +154,19 @@ const routes = createBrowserRouter(
             },
             {
               path:'doctor-patients',
-              element:<DoctorPatiens />
+              element:<DoctorPatiens />,
+            },
+            {
+              path:'doctor-patients/patient-details/:id',
+              element:<PatientDetails />
             },
             {
               path:'doctor-sessions',
               element:<DoctorSessions />
+            },
+            {
+              path:'doctor-blogs',
+              element:<DoctorBlogsPage />
             }
           ]
         }
@@ -184,6 +195,18 @@ const routes = createBrowserRouter(
             {
               path:'manage-doctors',
               element:<ManageDoctorsPage />
+            },
+            {
+              path:'manage-doctors/doctor-details/:id',
+              element:<DoctorDetailsPage />
+            },
+            {
+              path:'manage-doctors/mainp-doc/edit/:id',
+              element:<DocMainp />
+            },
+            {
+              path:'manage-doctors/mainp-doc/add',
+              element:<DocMainp /> 
             }
           ]
         }

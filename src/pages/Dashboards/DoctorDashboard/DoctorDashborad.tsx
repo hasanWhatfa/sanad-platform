@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom"
 import SideBar from "../../../components/DashboardsComponents/SideBar/SideBar"
 import type { ReactNode } from "react";
 import { IoIosHome, IoIosListBox } from "react-icons/io";
-import { FaUserDoctor } from "react-icons/fa6";
+import { FaNewspaper, FaUserDoctor } from "react-icons/fa6";
 
 export interface linkObject{
   linkText:string;
@@ -25,6 +25,11 @@ const DoctorDashborad = () => {
       linkText:'الحلسات',
       linkTo:'doctor-sessions',
       icon:<IoIosListBox />
+    },
+    {
+      linkText:'المقالات',
+      linkTo:'doctor-blogs',
+      icon:<FaNewspaper />
     }
   ]
 

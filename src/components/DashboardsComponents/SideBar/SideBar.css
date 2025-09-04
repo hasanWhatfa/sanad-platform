@@ -1,15 +1,79 @@
-.sideBar_container{
-    background-color:var(--color-primary);
-    width: 27%;
-    max-width: 300px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    position: sticky;
+.sideBar_container {
+  background-color: var(--color-primary);
+  width: 27%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  padding: 20px 15px;
+  padding-top: 50px;
+  transition: all 0.3s ease;
+}
+
+/* ====== Tablets ====== */
+@media (max-width: 1024px) {
+  .sideBar_container {
+    width: 220px;
+    max-width: 220px;
+    padding: 15px 10px;
+  }
+
+  .sideBar_container .user_info_section .user_image_container {
+    width: 120px;
+    height: 120px;
+  }
+
+  .links_section nav a {
+    font-size: 16px;
+    gap: 15px;
+  }
+}
+
+/* ====== Mobile ====== */
+@media (max-width: 768px) {
+  .sideBar_container {
+    position: fixed;
+    left: -100%;
     top: 0;
-    padding:20px 15px;
-    padding-top: 50px;
+    height: 100%;
+    width: 70%; /* Sidebar takes most of the screen */
+    max-width: none;
+    z-index: 999;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
+  }
+
+  .sideBar_container.active {
+    left: 0; /* show sidebar when active */
+  }
+
+  .links_section nav a {
+    font-size: 16px;
+    justify-content: flex-start;
+    gap: 12px;
+  }
+}
+
+/* ====== Small Mobile ====== */
+@media (max-width: 480px) {
+  .sideBar_container {
+    width: 85%; /* occupy more width for tiny screens */
+  }
+
+  .sideBar_container .user_info_section .user_image_container {
+    width: 90px;
+    height: 90px;
+  }
+
+  .sideBar_container .user_info_section h3 {
+    font-size: 16px;
+  }
+
+  .links_section nav a {
+    font-size: 14px;
+  }
 }
 .sideBar_container .user_info_section{
     display: flex;
@@ -96,4 +160,24 @@
     background-color: var(--color-accent);
     color: white;
     transform: translateY(-3px);
+}
+
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: var(--color-black);
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Show hamburger only on small screens */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
 }

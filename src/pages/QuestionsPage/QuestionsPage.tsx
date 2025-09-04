@@ -177,8 +177,8 @@ const ResultComponent = ({answers,currentTest}:ResulteProps)=>{
     test:PsychTest,
     answersArr: Answer[],
     resultNum: number,
-    result_descriptio:string | undefined,
-    test_name:PsychTest
+    resultDescription:string | undefined,
+    testName:PsychTest
     )=>{
       const answers_arr = answersArr.map((ans) => {
         const questionObj = test.questions.find((q) => q.questId === ans.questionId)!;
@@ -192,8 +192,8 @@ const ResultComponent = ({answers,currentTest}:ResulteProps)=>{
       test_id: test.test_id,
       result: resultNum.toString(),
       answers : answers_arr,
-      result_desc: userLevel?.label,
-      test_name : test.id,
+      result_desc: resultDescription,
+      test_name : testName.id,
     };
   }
 
@@ -217,8 +217,7 @@ const ResultComponent = ({answers,currentTest}:ResulteProps)=>{
     }
   )
   .then((res)=>{
-      // navigate('/patient-dash/patient-tests')
-      console.log(res);
+      navigate('/patient-dash/patient-tests')
   })
   .catch((err)=>{
     console.log(err)
