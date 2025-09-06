@@ -1,1 +1,156 @@
-2
+/* src/style.css */
+--- General Styles --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Main Library Container --- */
+.library-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-light);
+  padding: 40px 5%; /* Use percentage for responsive padding */
+  padding-top: 110px;
+}
+
+/* --- Header Section --- */
+.library-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.library-header h1 {
+  color: var(--color-primary);
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.library-header .library-subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+
+/* --- Tabs and Tags Buttons --- */
+.tabs-container, .tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.tab-button, .tag-button {
+  border: none;
+  padding: 10px 22px;
+  border-radius: 50px; /* Fully rounded buttons */
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--main-trans);
+  background-color: var(--color-white);
+  color: var(--color-accent);
+  border: 2px solid var(--color-secondary);
+}
+
+.tab-button:hover, .tag-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+}
+
+.tab-button.active, .tag-button.active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 8px rgba(29, 53, 87, 0.2);
+}
+
+/* --- Media Grid Layout --- */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* --- Media Card Design --- */
+.media-card {
+  background-color: var(--color-white);
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--main-trans), box-shadow var(--main-trans);
+}
+
+.media-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.card-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* Prevents image stretching */
+  display: block;
+}
+
+.card-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allows the button to stick to the bottom */
+}
+
+.card-title {
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.card-description {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  flex-grow: 1; /* Pushes the button down */
+}
+
+.card-button {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  transition: background-color var(--main-trans);
+}
+
+.card-button:hover {
+  background-color: var(--color-primary);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .library-container {
+    padding: 25px 4%;
+  }
+
+  .library-header h1 {
+    font-size: 2rem;
+  }
+  
+  .media-grid {
+    grid-template-columns: 1fr; /* Single column on small screens */
+  }
+}

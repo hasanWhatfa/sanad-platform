@@ -32,8 +32,8 @@ footer{
     text-align: right;
 }
 .footerTopContent .logoContainer img{
-    width:65px;
-    height: 65px;
+    width:120px;
+    height: 120px;
 }
 .footerTopContent .footerLink{
     display: flex;

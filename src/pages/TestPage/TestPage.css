@@ -30,6 +30,12 @@
 .TestPage.adhd .testPage_hero{
     background-image: url(/public/images/adhmImage.jpg);
 }
+.TestPage.phobia .testPage_hero{
+    background-image:url(/public/images/SocialPhobia.PNG);
+}
+.TestPage.depression .testPage_hero{
+    background-image:url(/public/images/depressionGuYFromTHeWIndow.jpg);
+}
 /* end change */
 .TestPage .testPage_hero::after{
     content: '';

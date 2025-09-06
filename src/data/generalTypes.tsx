@@ -123,3 +123,22 @@ export interface Transaction{
     updated_at:string;
 }
 
+export interface BlogSection{
+    id:number;
+    blog_id:number;
+    section_title:string;
+    section_text:string;
+    created_at:string;
+    updated_at:string;
+}
+
+export interface Blog{
+    id:number;
+    blog_title:string;
+    blog_img:string;
+    author:DoctorMainType;
+    published_at:string;
+    sections:Array<BlogSection>
+}
+
+

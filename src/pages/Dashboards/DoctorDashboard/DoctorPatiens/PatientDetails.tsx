@@ -74,7 +74,7 @@ const PatientDetails = () => {
     <div className="patient_details_page">
       {/* Header */}
       <header className="patient_header">
-        <img src={loading ? '/public/images/heroImage2.webp' : `${image_base}/${patient?.avatar}`} alt={`${patient?.first_name} ${patient?.last_name}'s image`} className="patient_avatar" />
+        <img src={loading ? '/images/heroImage2.webp' : `${image_base}/${patient?.avatar}`} alt={`${patient?.first_name} ${patient?.last_name}'s image`} className="patient_avatar" />
         <div>
           <h1 className="patient_name">{loading ? '......': `${patient?.first_name} ${patient?.last_name}`}</h1>
           <p className="patient_info">العمر: {patient?.age} | الجنس: {patient?.gender}</p>

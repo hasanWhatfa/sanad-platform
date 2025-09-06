@@ -1,0 +1,160 @@
+.edit-blog-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background: var(--color-white);
+  border-radius: 18px;
+  box-shadow: var(--shadow-soft);
+  direction: rtl;
+  text-align: right;
+  font-family: "Cairo", sans-serif;
+  transition: var(--main-trans);
+}
+
+/* ===== العنوان وبيانات المقال ===== */
+.blog-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: 10px;
+  border-bottom: 3px solid var(--color-highlight);
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+.blog-author,
+.blog-date {
+  color: var(--text-muted);
+  margin: 5px 0;
+  font-size: 15px;
+}
+
+.blog-image {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin: 20px 0 25px;
+  border: 3px solid var(--color-light);
+}
+
+/* ===== الأقسام ===== */
+.sections-header {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--color-accent);
+  margin: 25px 0 18px;
+}
+
+.sections-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.section-item {
+  background: var(--color-light);
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 18px;
+  transition: var(--main-trans);
+}
+
+.section-item:hover {
+  background: var(--color-secondary);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft);
+}
+
+.section-item h4 {
+  color: var(--color-primary);
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.section-item p {
+  color: var(--text-primary);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+/* ===== نموذج إضافة قسم ===== */
+.add-section-form {
+  margin-top: 35px;
+  padding: 24px;
+  background: var(--color-secondary);
+  border-radius: 16px;
+  border: 2px dashed var(--color-highlight);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.add-section-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  color: var(--text-primary);
+  font-size: 15px;
+}
+
+.add-section-form input,
+.add-section-form textarea {
+  margin-top: 6px;
+  padding: 12px;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  font-size: 15px;
+  resize: vertical;
+  background: var(--color-white);
+  transition: var(--main-trans);
+}
+
+.add-section-form input:focus,
+.add-section-form textarea:focus {
+  border-color: var(--color-accent);
+  outline: none;
+  box-shadow: 0 0 5px var(--color-highlight);
+}
+
+.add-section-form button {
+  align-self: flex-start;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 12px 26px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  transition: var(--main-trans);
+}
+
+.add-section-form button:hover {
+  background: var(--color-accent);
+}
+
+.add-section-form button:disabled {
+  background: var(--text-muted);
+  cursor: not-allowed;
+}
+
+/* ===== الرسائل ===== */
+.message {
+  margin-top: 18px;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 14px;
+  border-radius: 10px;
+}
+
+.message:has(> .success) {
+  background: var(--color-highlight);
+  color: var(--color-primary);
+}
+
+.message:has(> .error) {
+  background: #ffe5e5;
+  color: red;
+}

@@ -58,7 +58,6 @@ const AdminDashMainPage: React.FC = () => {
       })
       .then((res)=>{
         setNumOfSessions(res.data.data);
-
       })
       .catch((err)=>{
         console.log(err)
@@ -82,6 +81,7 @@ const AdminDashMainPage: React.FC = () => {
       const sessionDate = new Date(s.scheduled_at.replace(" ", "T"));
       return sessionDate >= startOfWeek && sessionDate <= endOfWeek;
     });
+    console.log('sessions this week',sessionsThisWeek)
     const numOfSessionThisWeek = sessionsThisWeek?.length;
 
     const todayString = today.toISOString().split('T')[0]; // "2025-09-04"
@@ -90,7 +90,8 @@ const AdminDashMainPage: React.FC = () => {
       return date.scheduled_at.startsWith(todayString);
     });    
 
-    const todayResvs = todaysAppointment_arr?.length;
+    const todayResvs = todaysAppointment_arr &&  todaysAppointment_arr?.length > 0 ? todaysAppointment_arr?.length : 0;
+
 
     // transactions info
     const moneyAmount = transactions.reduce(
@@ -98,7 +99,6 @@ const AdminDashMainPage: React.FC = () => {
       0
     );
 
-    console.log('money amount',moneyAmount)
 
     useEffect(()=>{
       dispatch(fetchAllPateins());
@@ -166,14 +166,16 @@ const AdminDashMainPage: React.FC = () => {
             <StatCard title="إجمالي الأطباء" value={`${loading ? '...' : numberOfDoctors}`} />
             <StatCard title="إجمالي المرضى" value={`${loading ? '...' : numberOfPatients}`} />
             <StatCard title="إجمالي الجلسات" value={numOfSession ? numOfSession.length : '...'} />
-            <StatCard title="جلسات هذا الأسبوع" value={numOfSessionThisWeek ? numOfSessionThisWeek : ".."} subtitle="آخر 7 أيام" />
+            <StatCard title="جلسات هذا الأسبوع" value={numOfSessionThisWeek ? numOfSessionThisWeek : "0"} subtitle="آخر 7 أيام" />
             <StatCard title="حجوزات اليوم" value={todayResvs && todayResvs > 0 ? todayResvs : 'X'} subtitle="اليوم" />
             <StatCard title="كمية الاموال المدفوعة" value={loadingFinincial ? '...' : moneyAmount} subtitle="$" />
           </section>
 
           {/* قسم الجدول (recent appointments) */}
           <section className="card recent-appts">
-            <h2 className="card-title">المواعيد الأخيرة</h2>
+            <h2 className="card-title">
+              الجلسات لهذا الأسبوع
+            </h2>
             <div className="table-wrap">
               <table className="appts-table">
                 <thead>

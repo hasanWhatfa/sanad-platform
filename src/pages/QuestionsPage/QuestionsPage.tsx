@@ -216,7 +216,7 @@ const ResultComponent = ({answers,currentTest}:ResulteProps)=>{
       }
     }
   )
-  .then((res)=>{
+  .then(()=>{
       navigate('/patient-dash/patient-tests')
   })
   .catch((err)=>{

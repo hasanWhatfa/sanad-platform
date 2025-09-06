@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className="px-162">
       <div className="footerTopContent">
         <div className="logoContainer">
-          <img src="/images/leenslogo.webp" alt="logo" className="logoFooter" />
+          <img src="/icons/logo3.png" alt="logo" className="logoFooter" />
           <p>
             منصة سند هي منصة عربية تهدف لمساعدة الناس على الحصول على حياة افضل.
             منصة سند هي منصة عربية تهدف لمساعدة الناس على الحصول على حياة افضل.
@@ -56,7 +56,7 @@ const Footer = () => {
             |
             <a href="#">حقوق الملكية</a>
           </div>
-          <p className="hafeza">جميع الحقوق محفوظة لدى حفيظة</p>
+          <p className="hafeza">جميع الحقوق محفوظة لدى منصة سند</p>
         </div>
       </div>
     </footer>

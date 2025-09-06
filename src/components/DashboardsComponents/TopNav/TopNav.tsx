@@ -40,7 +40,7 @@ const TopNav = ({setNotifications,setDrawerOpened,setNotificationFetchErr,notifc
   return (
     <div className='TopNavDashboards'>
         <div className="logo_container">
-            <img src="/public/icons/logo3.png" alt="sanad-logo" />
+            <img src="/icons/logo3.png" alt="sanad-logo" />
         </div>
       <button className="icon_container" onClick={handleNotificationBtnClicked}>
         <IoMdNotificationsOutline />

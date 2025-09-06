@@ -3,6 +3,7 @@ import patientsReducer from "./slices/PatientsSlice";
 import doctorsReducer  from "./slices/DoctorosSliceAdmin";
 import patientsAdminReducre from './slices/PatientsAdminSlice'
 import transactionsReducer from './slices/FinincialSlice'
+import pubDoctors from './slices/PubDoctors.tsx'
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     doctors:doctorsReducer,
     adminPatients : patientsAdminReducre,
     transations : transactionsReducer,
+    doctorsPub:pubDoctors
   },
 });
 

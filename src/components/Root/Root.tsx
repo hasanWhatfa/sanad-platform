@@ -6,6 +6,8 @@ import { type DropDownLink } from "../DropDownMenu/DropDownMenu"
 import ScrollToTop from "../ScrollToTop/ScrollToTop"
 import AuthForm from "../../pages/Auth/AuthForm"
 import { useAuthModal } from "../../context/AuthModalContext"
+import { Provider } from "react-redux"
+import { store } from "../../redux/store"
 
 interface LinksObject {
     linkName:string,
@@ -55,10 +57,6 @@ const Root = () => {
           linkTo:'anxiety'
         },
         {
-          linkText:'اختبار الإدمان',
-          linkTo:'addiction'
-        },
-        {
           linkText:'اختبار اضطراب نقص الانتباه',
           linkTo:'adhd'
         },
@@ -95,7 +93,9 @@ const Root = () => {
   }, [authType]);
   return (
     <div className="RootClass">
+
     <NavBar links={links} />
+    <Provider store={store}>
     {
       authType ? (
       <div className="ModalContainer" onClick={closeModal}>
@@ -108,6 +108,8 @@ const Root = () => {
 
     <ScrollToTop />
         <Outlet />
+
+      </Provider>
     <Footer />
     </div>
   )

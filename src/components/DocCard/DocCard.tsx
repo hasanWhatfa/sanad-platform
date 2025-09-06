@@ -1,19 +1,26 @@
+import { image_base } from '../../data/generalTypes';
 import './DocCard.css'
 
+
+
 interface DocCardProps{
-  docName:string;
-  docImage:string;
-  docDesc:string;
-  docID:number;
+  docName:string | undefined;
+  docImage:string | undefined;
+  docDesc:string | undefined;
+  docID:number | undefined;
   choosenDoc?:boolean
 }
 
-const DocCard = ({docName,docImage,docDesc,docID , choosenDoc} : DocCardProps) => {
+
+
+const DocCard = ({docName,docImage,docDesc,choosenDoc} : DocCardProps) => {
+
+
   return (
     <div className={`DocCardComponent ${choosenDoc ? 'DocCardActive' : ''}`}>
       <div className="topPART">
         <div className="docCardImage">
-          <img src={docImage} alt="" />
+          <img src={`${image_base}/${docImage}`} />
         </div>
       </div>
       <div className="bottomPart">

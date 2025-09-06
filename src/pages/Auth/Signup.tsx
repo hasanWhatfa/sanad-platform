@@ -122,7 +122,7 @@ const Signup = ({ formData }: SignupFormData) => {
       console.log("الأخطاء:", errors);
       return;
     }
-
+    
     // preparing the data as form data
     const fd = new FormData();
     fd.append("first_name", firstName || "");
@@ -163,7 +163,7 @@ const Signup = ({ formData }: SignupFormData) => {
           </div>
           <div className="form_logo_container">
             <img
-              src="/public/icons/logo3.png"
+              src="/icons/logo3.png"
               alt="logo"
               className="sign-up-form-logo"
             />

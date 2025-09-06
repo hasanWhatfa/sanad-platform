@@ -1,185 +1,169 @@
-import ArticleCard from "../../components/ArticleCard/ArticleCard"
-import { articlesData } from "../../data/atriclesData"
-import sliceArray from "../../components/SliceArr"
-import './Articles.css'
-import { useEffect, useMemo, useState } from "react"
-import { CiSearch } from "react-icons/ci"
-import PaganationControl from "../../components/PaganationControl/PaganationControl"
-import TopPostComponent from "../../components/TopPostComponent/TopPostComponent"
-import TopArariclesComponent from "../../components/TopArariclesComponent/TopArariclesComponent"
-import PageWrapper from "../../components/Root/PageWrapper/PageWrapper"
+// Articles.tsx
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import './Articles.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { image_base } from '../../data/generalTypes';
 
-
-// تابع لتوحيد التصنيفات
-const mapCategory = (cat: string): string => {
-  if (["اضطرابات عصبية", "أمراض دماغية"].includes(cat)) return "اضطرابات عصبية ودماغية"
-  if (["لغة الجسد", "مهارات شخصية", "التواصل"].includes(cat)) return "مهارات التواصل والشخصية"
-  if (["اكتئاب", "قلق", "نوبات هلع", "اضطرابات نفسية", "علاج نفسي", "وصمة مجتمعية"].includes(cat)) return "اضطرابات نفسية وعلاجها"
-  if (["إدمان", "دعم نفسي", "تعافي", "تطوير الذات"].includes(cat)) return "الإدمان والدعم النفسي"
-  if (["علاقات", "الأسرة"].includes(cat)) return "العلاقات الأسرية والاجتماعية"
-  if (["الصحة النفسية"].includes(cat)) return "الصحة النفسية"
-  if (["تثقيف صحي"].includes(cat)) return "تثقيف صحي"
-  return cat
+// تعريف الواجهات (Interfaces)
+export interface DoctorMainType {
+  user_id?: number;
+  id?: number;
+  first_name?: string;
+  last_name?: string;
+  avatar?: string;
+  specialization?: string;
+  role?: 'doctor';
 }
-const unifiedCategories = [
-  "اضطرابات عصبية ودماغية",
-  "مهارات التواصل والشخصية",
-  "اضطرابات نفسية وعلاجها",
-  "الإدمان",
-  "الدعم النفسي",
-  "العلاقات الأسرية والاجتماعية",
-  "الصحة النفسية",
-  "تثقيف صحي"
-];
-const Articles = () => {
-  const [currentIndex, setCurrentIndex] = useState<number>(0)
-  const [searchTerm, setSearchTerm] = useState<string>("")
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
-  const pageSize = 6
 
-  const [disabledBtns, setDisabledBtns] = useState<{ nextBtn: boolean; prevBtn: boolean }>({
-    nextBtn: false,
-    prevBtn: false
-  })
-  // فلترة المقالات حسب البحث والتصنيف معًا
-  const filteredArticles = useMemo(() => {
-    return articlesData.filter((article) => {
-      const matchSearch =
-        article.title.toLowerCase().includes(searchTerm.toLowerCase().trim()) ||
-        article.description.toLowerCase().includes(searchTerm.toLowerCase().trim())
+export interface BlogSection {
+  id: number;
+  blog_id: number;
+  section_title: string;
+  section_text: string;
+  created_at: string;
+  updated_at: string;
+}
 
-      const matchCategory =
-        !selectedCategory ||
-        article.categ.some((cat) => mapCategory(cat) === selectedCategory)
+export interface Blog {
+  id: number;
+  blog_title: string;
+  blog_img: string;
+  author: DoctorMainType;
+  published_at: string;
+  sections: BlogSection[];
+}
 
-      return matchSearch && matchCategory
-    })
-  }, [searchTerm, selectedCategory])
-  const articlesGroups = useMemo(() => sliceArray(filteredArticles, pageSize), [filteredArticles])
-  const displayedGroup = articlesGroups[currentIndex] || []
-  const topArticles = articlesData.slice(6, 11)
-  const handleNextPage = () => {
-    const idx = Math.min(currentIndex + 1, articlesGroups.length - 1)
-    setCurrentIndex(idx)
-    setDisabledBtns({
-      nextBtn: idx === articlesGroups.length - 1,
-      prevBtn: idx === 0
-    })
-  }
-  const handlePrevPage = () => {
-    const idx = Math.max(0, currentIndex - 1)
-    setCurrentIndex(idx)
-    setDisabledBtns({
-      nextBtn: idx === articlesGroups.length - 1,
-      prevBtn: idx === 0
-    })
-  }
-  // إعادة ضبط الصفحة عند تغيير البحث أو التصنيف
+const API_URL = 'http://127.0.0.1:8000/api/blogs/all';
+
+export const Articles: React.FC = () => {
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [filteredBlogs, setFilteredBlogs] = useState<Blog[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  // جلب البيانات من الـ API
   useEffect(() => {
-    setCurrentIndex(0)
-  }, [searchTerm, selectedCategory])
+    const fetchBlogs = async () => {
+      try {
+        const response = await axios.get<{ data: Blog[] }>(API_URL);
+        const fetchedBlogs = response.data.data;
+        setBlogs(fetchedBlogs);
+        setFilteredBlogs(fetchedBlogs);
+      } catch (err) {
+        console.error('Failed to fetch blogs:', err);
+        setError('فشل في جلب المقالات. يرجى المحاولة مرة أخرى.');
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBlogs();
+  }, []);
+
+  // منطق البحث
+  useEffect(() => {
+    const term = searchTerm.toLowerCase();
+    const result = blogs.filter((blog) => {
+      const titleMatch = blog.blog_title.toLowerCase().includes(term);
+      const authorMatch = `${blog.author?.first_name} ${blog.author?.last_name}`.toLowerCase().includes(term);
+      const contentMatch = blog.sections.some((section) => section.section_text.toLowerCase().includes(term));
+      return titleMatch || authorMatch || contentMatch;
+    });
+    setFilteredBlogs(result);
+  }, [searchTerm, blogs]);
+
+  if (loading) {
+    return <div className="loading-state">جاري تحميل المقالات...</div>;
+  }
+
+  if (error) {
+    return <div className="error-state">{error}</div>;
+  }
+  
+  // عرض المقالات المميزة في Swiper
+  const featuredBlogs = blogs.slice(0, 5);
 
   return (
-    <PageWrapper>
-      <main className="ArticlesPage px-162">
-        <div className="newThing">
-          {/* المحتوى الرئيسي */}
-          <div className="articlesContainer">
-            <div className="cardsContainer">
-              {displayedGroup.map((item, index) => (
-                <ArticleCard
-                  key={index}
-                  categ={item.categ}
-                  desImage={item.img}
-                  desName={item.title}
-                  desTalk={item.description}
-                  id={item.id}
-                />
-              ))}
-            </div>
-
-            <div className="paganation-controls">
-              <PaganationControl
-                className={`flex-row-reverse ${disabledBtns.nextBtn ? "disabledBtn" : ""}`}
-                onClick={handleNextPage}
-              >
-                <img src="/icons/arrow-right.svg" alt="الصفحة التالية" />
-                <p>الصفحة التالية</p>
-              </PaganationControl>
-
-              <div className="numbers-container">
-                {articlesGroups.map((_, groupIndex) => (
-                  <PaganationControl
-                    key={groupIndex}
-                    className={`${groupIndex === currentIndex ? "activeTab" : ""}`}
-                    onClick={() => setCurrentIndex(groupIndex)}
-                  >
-                    <p>{groupIndex + 1}</p>
-                  </PaganationControl>
-                ))}
-              </div>
-
-              <PaganationControl
-                className={`${disabledBtns.prevBtn ? "disabledBtn" : ""}`}
-                onClick={handlePrevPage}
-              >
-                <img src="/icons/arrow-left.svg" alt="الصفحة السابقة" />
-                <p>الصفحة السابقة</p>
-              </PaganationControl>
-            </div>
-          </div>
-
-          {/* الشريط الجانبي */}
-          <div className="leftSideNav">
-            {/* البحث */}
-            <div className="serachBox">
-              <input
-                type="text"
-                placeholder="ابحث عن مقال معين.."
-                dir="rtl"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-              <CiSearch />
-            </div>
-            {/* التصنيفات */}
-            <div className="categorize-container">
-              <h3>التصنيفات</h3>
-              <ul>
-                {unifiedCategories.map((cat) => (
-                  <li
-                    key={cat}
-                    className={cat === selectedCategory ? "activeCategory" : ""}
-                    onClick={() => setSelectedCategory(cat)}
-                  >
-                    {cat}
-                  </li>
-                ))}
-                {selectedCategory && (
-                  <li className="resetCategory" onClick={() => setSelectedCategory(null)}>
-                    عرض الكل
-                  </li>
-                )}
-              </ul>
-            </div>
-            <TopArariclesComponent arrayOfObject={topArticles} heading="أفضل المقالات"/>
-            {/* الصور */}
-            <div className="imgs-container">
-              <h3>صور</h3>
-              <div className="container">
-                <img src="/images/docPhoto3.webp" />
-                <img src="/images/manStanding2.webp" />
-                <img src="/images/woman3.webp" />
-                <img src="/images/social phobia.webp" />
-                <img src="/images/ثنائي القطب.webp" />
-                <img src="/images/heroImage3.webp" />
-              </div>
-            </div>
-          </div>
+    <div className="articles-page-container">
+      <header className="articles-header">
+        <h1>مقالاتنا الطبية</h1>
+        <div className="search-box">
+          <input
+            type="text"
+            placeholder="البحث حسب العنوان، الطبيب، أو المحتوى..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
+          <span className="search-icon">🔍</span>
         </div>
-      </main>
-    </PageWrapper>
-  )
-}
+      </header>
 
-export default Articles
+      {/* قسم المقالات المميزة باستخدام Swiper.js */}
+      <section className="featured-articles">
+        <h2>أحدث المقالات</h2>
+        <Swiper
+          spaceBetween={30}
+          slidesPerView={1}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
+          navigation={true}
+          modules={[Pagination, Navigation, Autoplay]}
+          className="mySwiper"
+        >
+          {featuredBlogs.map((blog) => (
+            <SwiperSlide key={blog.id}>
+              <div className="swiper-slide-content">
+                <img src={`${image_base}/${blog.blog_img}`} alt={blog.blog_title} className="swiper-image" />
+                <div className="swiper-text">
+                  <h3>{blog.blog_title}</h3>
+                  <p>
+                    بقلم: د. {blog.author?.first_name} {blog.author?.last_name}
+                  </p>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </section>
+
+      {/* قسم جميع المقالات */}
+      <section className="all-articles">
+        <h2>كل المقالات</h2>
+        {filteredBlogs.length > 0 ? (
+          <div className="articles-grid">
+            {filteredBlogs.map((blog) => (
+              <div key={blog.id} className="article-card">
+                <div className="card-image-wrapper">
+                  <img src={`${image_base}/${blog.blog_img}`} alt={blog.blog_title} className="article-image" />
+                </div>
+                <div className="card-content">
+                  <h3 className="article-title">{blog.blog_title}</h3>
+                  <p className="article-author">
+                    بقلم: د. {blog.author?.first_name} {blog.author?.last_name}
+                  </p>
+                  <p className="article-date">نشر بتاريخ: {blog.published_at.split('T')[0]}</p>
+                  <p className="article-summary">
+                    {blog.sections[0]?.section_text.substring(0, 100)}...
+                  </p>
+                  <a href={`/article/${blog.id}`} className="read-more-btn">
+                    اقرأ المزيد
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="no-results">
+            <p>لا توجد مقالات تطابق معايير البحث.</p>
+          </div>
+        )}
+      </section>
+    </div>
+  );
+};

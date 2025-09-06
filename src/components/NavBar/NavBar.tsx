@@ -51,7 +51,7 @@ const NavBar = ({links} : NavBarProps) => {
       <nav className={`bg-screen-nav px-162 ${scrolling ? 'scrollingNav' : ''}`}>
         <div className="logoContainer">
           <h1>
-            <img src="/icons/logo2.png" />
+            <img src="/icons/logo3.png" />
           </h1>
         </div>
         <div className="navLinks">

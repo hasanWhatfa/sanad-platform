@@ -10,13 +10,21 @@ import 'swiper/css/pagination';
 
 import { RiArrowLeftDoubleLine } from "react-icons/ri";
 
-import doctorsData from '../../data/doctorsData';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import type { AppDispatch, RootState } from '../../redux/store';
+import { fetchDox } from '../../redux/slices/PubDoctors';
+import { image_base, type DoctorMainType } from '../../data/generalTypes';
 
 const WorkTeam = () => {
   // نخزن الطبيب المختار كاملاً لتسهيل التعامل مع البيانات
-  const [chosenDoctor, setChosenDoctor] = useState(doctorsData[0]);
+  const [chosenDoctor, setChosenDoctor] = useState<DoctorMainType>();
+  const {doctorsPub ,loadingDoctors } = useSelector((state : RootState)=>state.doctorsPub);
+  const dispatch = useDispatch<AppDispatch>();
 
+  useEffect(()=>{
+   dispatch(fetchDox());
+  },[])
   return (
     <section className='workTeam'>
       <div className="workTeamHeader">
@@ -28,16 +36,16 @@ const WorkTeam = () => {
           <div className="top">
             <div className="choosenDocImage">
               {/* الصورة الآن تتغير حسب الطبيب المختار */}
-              <img src={chosenDoctor.image || "/images/docPhoto.webp"} alt={`${chosenDoctor.name} photo`} />
+              <img src={`${image_base}/${chosenDoctor?.avatar}` || "/images/docPhoto.webp"} alt={`${chosenDoctor?.first_name} photo`} />
             </div>
           </div>
           <div className="displayedDocInfo">
             <div className="docName">
-              <h3>{chosenDoctor.name}</h3>
-              <p className='someBoldTextAboutTheDoc'>{chosenDoctor.description}</p>
+              <h3>{chosenDoctor?.first_name + ' ' + chosenDoctor?.last_name}</h3>
+              <p className='someBoldTextAboutTheDoc'>{chosenDoctor?.specialization}</p>
             </div>
             <ul className="docAchivments">
-              {chosenDoctor.achievements.map((ach, index) => (
+              {chosenDoctor?.achievements?.split(",").map((ach, index) => (
                 <li key={index}>
                   {ach} <RiArrowLeftDoubleLine />
                 </li>
@@ -55,6 +63,10 @@ const WorkTeam = () => {
             <p>الاطباء لدينا جيدون جدا يمكنهم معالجتك من اي جنون لديك بدون اي مشكلة, اختر الطبيب الذي يناسبك ونحن لك بالمرصاد</p>
           </div>
           <div className="doctors-all">
+            {
+              loadingDoctors ? 
+              <p>loading doctors please wait....</p>
+              :
             <Swiper
               className="mySwiper"
               slidesPerView={3}
@@ -63,22 +75,24 @@ const WorkTeam = () => {
               }}
               modules={[Pagination]}
             >
-              {doctorsData.map((doc) => (
+              {doctorsPub.map((doc) => (
                 <SwiperSlide
                   key={doc.id}
                   onClick={() => setChosenDoctor(doc)}
                   style={{ cursor: "pointer" }}
                 >
                   <DocCard
-                    docName={doc.name}
-                    docImage={doc.image}
-                    docDesc={doc.description}
+                    docName={doc.first_name + " " + doc.last_name}
+                    docImage={doc.avatar}
+                    docDesc={doc.specialization}
                     docID={doc.id}
-                    choosenDoc={chosenDoctor.id == doc.id}
+                    choosenDoc={chosenDoctor?.id == doc.id}
                   />
                 </SwiperSlide>
               ))}
             </Swiper>
+            }
+
           </div>
         </div>
       </div>

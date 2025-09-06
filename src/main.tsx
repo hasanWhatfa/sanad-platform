@@ -5,10 +5,10 @@ import Home from './pages/Home/Home'
 import Root from './components/Root/Root'
 import About from './pages/About/About'
 import ServicesPage from './pages/ServicesPage/ServicesPage'
-import Articles from './pages/Articles/Articles'
-import Library from './pages/Library/Library'
+import {Articles} from './pages/Articles/Articles'
+import Library from './pages/Library/LibraryPage'
 import ContactUs from './pages/ContactUs/ContactUs'
-import ArticlePage from './pages/ArticlePage/ArticlePage'
+import {ArticlePage} from './pages/ArticlePage/ArticlePage'
 import Doctors from './pages/Doctors/Doctors'
 import DoctorPage from './pages/Doctors/DoctorPage'
 import AboutUsChild from './pages/About/AboutUsChild'
@@ -39,6 +39,9 @@ import PatientDetails from './pages/Dashboards/DoctorDashboard/DoctorPatiens/Pat
 import DoctorDetailsPage from './pages/Dashboards/AdminDashboard/ManageDoctorsPage/DoctorDetailsPage'
 import DocMainp from './pages/Dashboards/AdminDashboard/ManageDoctorsPage/DocMainp'
 import {DoctorBlogsPage} from './pages/Dashboards/DoctorDashboard/DoctorBlogs/DoctorBlogs'
+import AddBlog from './pages/Dashboards/DoctorDashboard/DoctorBlogs/AddBlog/AddBlog'
+import EditBLog from './pages/Dashboards/DoctorDashboard/DoctorBlogs/EditBLog/EditBLog'
+import MediaPage from './pages/MediaPage/MediaPage'
 
 const routes = createBrowserRouter(
   [
@@ -97,6 +100,10 @@ const routes = createBrowserRouter(
         {
           path:'library',
           element:<Library />
+        },
+        {
+          path:'library/media-page/:id',
+          element:<MediaPage />
         },
         {
           path:'contactus',
@@ -167,6 +174,14 @@ const routes = createBrowserRouter(
             {
               path:'doctor-blogs',
               element:<DoctorBlogsPage />
+            },
+            {
+              path:'doctor-blogs/add-blog',
+              element:<AddBlog />
+            },
+            {
+              path:'doctor-blogs/edit-blog/:id',
+              element:<EditBLog />
             }
           ]
         }
