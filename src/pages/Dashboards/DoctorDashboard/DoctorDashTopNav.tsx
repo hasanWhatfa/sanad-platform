@@ -12,7 +12,6 @@ import { Provider } from "react-redux";
 const DoctorDashTopNav = () => {
   const [drawerOpend, setDrawerOpened] = useState<boolean>(false);
   const [notifcations, setNotifications] = useState<Notification[]>([]);
-  const [notifcationsFetchErr, setNotificationFetchErr] = useState<string>();
 
   return (
     <Provider store={store}>
@@ -20,7 +19,6 @@ const DoctorDashTopNav = () => {
         <TopNav
           setNotifications={setNotifications}
           setDrawerOpened={setDrawerOpened}
-          setNotificationFetchErr={setNotificationFetchErr}
           notifcations={notifcations}
         />
         <div className="content_wrapper">

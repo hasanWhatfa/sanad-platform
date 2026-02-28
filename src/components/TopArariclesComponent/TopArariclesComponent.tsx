@@ -1,5 +1,4 @@
 import './TopArariclesComponent.css'
-import type { ReactNode } from "react";
 import { type Article } from "../../data/atriclesData";
 import TopPostComponent from '../TopPostComponent/TopPostComponent';
 

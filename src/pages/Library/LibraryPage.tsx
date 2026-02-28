@@ -1,5 +1,5 @@
 // src/components/LibraryPage.tsx
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { mediaData} from '../../data/media';
 import MediaCard from '../../components/MediaCard/MediaCard';
 import './Library.css'

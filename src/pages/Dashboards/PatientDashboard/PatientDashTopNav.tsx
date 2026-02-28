@@ -10,14 +10,11 @@ const PatientDashTopNav = () => {
 
   const [notifcations,setNotifications] = useState<Notification[]>([]);
 
-  const[notifcationsFetchErr,setNotificationFetchErr] = useState<string>();
-
   return (
     <div className="DashContentWrapper">
       <TopNav 
       setNotifications={setNotifications} 
       setDrawerOpened={setDrawerOpened}
-      setNotificationFetchErr={setNotificationFetchErr}
       notifcations={notifcations}
       />
       

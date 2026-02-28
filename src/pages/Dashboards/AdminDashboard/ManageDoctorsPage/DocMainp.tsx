@@ -1,5 +1,5 @@
 import { useState, useEffect,type ChangeEvent,type FormEvent } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import type { RootState } from "../../../../redux/store";
 import {image_base, type DoctorMainType } from "../../../../data/generalTypes";
@@ -9,7 +9,6 @@ import axios from "axios";
 const DocMainp = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const isEditing = Boolean(id);
     const [submiting,setSumbmiting] = useState<boolean>(false);
 
@@ -115,6 +114,7 @@ const DocMainp = () => {
             })
             .then((res)=>{
                 console.log(res);
+                navigate('/admin-dash/manage-doctors');
             })
             .catch((err)=>{
                 console.log(err);

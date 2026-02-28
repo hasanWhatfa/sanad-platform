@@ -1,242 +1,194 @@
-import { useState, useEffect, type ChangeEvent, type KeyboardEvent } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import './ChatBot.css'
-import { PiChatCircle } from "react-icons/pi";
-import { BsChat, BsStop } from "react-icons/bs";
-import { BiSend } from "react-icons/bi";
-type Message = {
-  role: "user" | "bot";
-  content: string;
-  timestamp: string;
-};
+import { useRef, useEffect, useState, type ChangeEvent, type KeyboardEvent } from "react";
+import type { Message } from "./WelcomeTipEffect";
+import { InitialWelcomeMessage, WelcomeTipEffect } from './WelcomeTipEffect';
+import { chatbotTexts } from "../../data/chatbotData";
+import { ChatHandler } from "./ChatHandler";
+import "./ChatBot.css"; // استدعاء ملف الـ CSS
+import {
+  BsChat,
+  BsSend,
+  BsStop,
+  BsArrowsFullscreen, // ✨ Added icon
+  BsArrowsAngleContract, // ✨ Added icon
+} from "react-icons/bs";
+import { BiBot } from "react-icons/bi";
+import { CgCloseO } from "react-icons/cg";
 
 const ChatBot = () => {
-  const [input, setInput] = useState<string>("");
+  const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [showWelcomeTip, setShowWelcomeTip] = useState<boolean>(true);
+  const [loading, setLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false); // ✨ Added state for expand/collapse
+  const [showWelcomeTip, setShowWelcomeTip] = useState(true);
   const [typingMessage, setTypingMessage] = useState<string | null>(null);
+  const chatRef = useRef<HTMLDivElement>(null);
+  const [isVisible] = useState(true);
 
+  // useEffect(() => {
+  //   const toggleVisibility = () => {
+  //     if (window.scrollY > 200) {
+  //       setIsVisible(true);
+  //     } else {
+  //       setIsVisible(false);
+  //     }
+  //   };
+
+  //   window.addEventListener('scroll', toggleVisibility);
+  //   return () => window.removeEventListener('scroll', toggleVisibility);
+  // }, []);
+
+  // Show welcome tip effect on mount
+  WelcomeTipEffect(setShowWelcomeTip);
+
+  // Add initial welcome message if chat is opened and empty
+  InitialWelcomeMessage(isOpen, messages, setMessages);
+
+  // Close chat on any click outside
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowWelcomeTip(false);
-    }, 6000);
-    return () => clearTimeout(timer);
-  }, []);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isOpen &&
+        chatRef.current &&
+        !chatRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
 
-  useEffect(() => {
-    if (isOpen && messages.length === 0) {
-      const now = new Date();
-      const hour = now.getHours();
-      let greeting = "مرحباً";
-
-      if (hour < 12) greeting = "صباح الخير";
-      else if (hour < 18) greeting = "مساء الخير";
-      else greeting = "مساء الخير";
-
-      const welcomeMessage: Message = {
-        role: "bot",
-        content: `${greeting}, أنا مساعدك الشخصي. أنا جاهز للإجابة على أسئلتك.`,
-        timestamp: now.toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
-      };
-
-      setMessages([welcomeMessage]);
-    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, [isOpen]);
 
-  const sendMessage = async (customInput?: string) => {
-    const messageToSend = customInput ?? input;
-    if (!messageToSend.trim()) return;
+  // Send user message and receive bot response
+  const { sendMessage } = ChatHandler(
+    setMessages,
+    setTypingMessage,
+    setLoading,
+    setInput
+  );
 
-    const timestamp = new Date().toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    });
-
-    const userMessage: Message = { role: "user", content: messageToSend, timestamp };
-    setMessages((prev) => [...prev, userMessage]);
-    setInput("");
-    setLoading(true);
-
-    try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: messageToSend }),
-      });
-
-      if (!res.ok) throw new Error("API Error");
-
-      const data: { response: string } = await res.json();
-      const fullResponse = data.response;
-      let index = 0;
-
-      setTypingMessage("");
-
-      const typingInterval = setInterval(() => {
-        setTypingMessage((prev) => (prev ?? "") + fullResponse.charAt(index));
-        index++;
-
-        if (index >= fullResponse.length) {
-          clearInterval(typingInterval);
-          const botMessage: Message = {
-            role: "bot",
-            content: fullResponse,
-            timestamp: new Date().toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-            }),
-          };
-          setMessages((prev) => [...prev, botMessage]);
-          setTypingMessage(null);
-        }
-      }, 30); // speed per character
-    } catch (err) {
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  // Handle user input change
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   };
 
+  // Send message on Enter key
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      sendMessage();
-    }
+    if (e.key === "Enter") sendMessage(input);
   };
 
   return (
-    <>
+    <div className="chatbot-container">
       {/* Welcome Tip */}
-      <AnimatePresence>
-        {showWelcomeTip && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.4 }}
-            className="welcome-tip"
-          >
-            <p className="tip-title">أنا مساعدك الشخصي. 👋</p>
-            <p>كيف يمكنني مساعدتك؟</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {showWelcomeTip && isVisible && (
+        <div className="welcome-tip">
+          <p className="font-semibold mb-1">{chatbotTexts.welcomeTitle}</p>
+          <p>{chatbotTexts.welcomeMessage}</p>
+        </div>
+      )}
 
-      {/* Chatbot Toggle Button */}
-      <button
-        onClick={() => setIsOpen((prev) => !prev)}
-        className="chatbot-toggle"
-        aria-label="Open Chatbot"
-      >
-        {/* <img src="/images/chatbot/chatIconw.svg" alt="Chat Icon" /> */}
-        <PiChatCircle />
-      </button>
+      {/* Toggle Button */}
+      {isVisible && (
+        <button
+          onClick={() => setIsOpen((prev) => !prev)}
+          className="chatbot-toggle"
+          aria-label="Open Chatbot"
+        >
+          <BsChat />
+          <span>{chatbotTexts.toggleTitle}</span>
+        </button>
+      )}
 
-      {/* Chatbot Window */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 100, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="chatbot-window"
-          >
-            {/* Header */}
-            <div className="chatbot-header">
-              <div className="chatbot-header-content">
-                <BsChat />
-                <div>
-                  <h2>مساعد سند</h2>
-                  <p>دليل ذكي</p>
-                </div>
+      {/* Chat Window */}
+      {isOpen && (
+        // ✨ Added dynamic class for expansion
+        <div
+          ref={chatRef}
+          className={`chatbot-window ${isExpanded ? "expanded" : ""}`}
+        >
+          {/* Header */}
+          <div className="chatbot-header">
+            <div className="flex items-center gap-3">
+              <BiBot />
+              <div>
+                <h2>{chatbotTexts.headerTitle}</h2>
+                <p>{chatbotTexts.headerSubtitle}</p>
               </div>
-              {/* Close Button */}
-              <button onClick={() => setIsOpen(false)} className="chatbot-close-btn">
-                ×
-              </button>
             </div>
-
-            {/* Chat Body */}
-            <div className="chatbot-body">
-              <div className="chatbot-body-layout"></div>
-              {messages.map((msg, i) => (
-                <div
-                  key={i}
-                  className={`message ${msg.role === "user" ? "user-message" : "bot-message"}`}
-                >
-                  {msg.role === "bot" && (
-                    <div className="message-meta">
-                      مساعد سند • {msg.timestamp}
-                    </div>
-                  )}
-                  <div className="message-bubble">
-                    {msg.content}
-                  </div>
-                </div>
-              ))}
-
-              {/* Typing Effect */}
-              {typingMessage && (
-                <div className="typing-message">
-                  <div className="message-meta">
-                    مساعد سند • يكتب...
-                  </div>
-                  <div className="message-bubble">
-                    {typingMessage}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Suggested Questions – just after body, before input */}
-            {messages.length === 1 && messages[0].role === "bot" && (
-              <div className="suggested-questions">
-                <p className="suggested-questions-text">يمكنك أن تسأل:</p>
-                <div className="suggested-questions-list">
-                  {[
-                    "ما هي الخدمات التي تقدمونها؟",
-                    "كيف يمكنني حجز جولة؟",
-                    "هل لديكم عروض خاصة؟",
-                  ].map((question) => (
-                    <button
-                      key={question}
-                      onClick={() => sendMessage(question)}
-                    >
-                      {question}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Input Field */}
-            <div className="chatbot-input-container">
-              <input
-                value={input}
-                onChange={handleInputChange}
-                onKeyDown={handleKeyDown}
-                placeholder="اسأل أي شيء..."
-              />
+            {/* ✨ Buttons are now in a container */}
+            <div className="header-controls">
               <button
-                onClick={() => sendMessage()}
-                disabled={loading}
+                onClick={() => setIsExpanded((prev) => !prev)}
+                aria-label={isExpanded ? "Collapse chat" : "Expand chat"}
               >
-                {loading ? <BsStop /> : <BiSend />}
-                {/* {loading ? <img src="/images/chatbot/stop.svg" alt="Stop" /> : <img src="/images/chatbot/send.svg" alt="Send" />} */}
+                {isExpanded ? <BsArrowsAngleContract /> : <BsArrowsFullscreen />}
+              </button>
+              <button onClick={() => setIsOpen(false)} aria-label="Close chat">
+                <CgCloseO />
               </button>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+          </div>
+
+          {/* Chat Body */}
+          <div className="chatbot-body">
+            {messages.map((msg, i) => (
+              <div key={i} className={`message ${msg.role}`}>
+                {msg.role === "bot" && (
+                  <div className="message-timestamp">
+                    {chatbotTexts.botLabel(msg.timestamp)}
+                  </div>
+                )}
+                {msg.content}
+              </div>
+            ))}
+
+            {typingMessage && (
+              <div className="typing">{typingMessage}</div>
+            )}
+          </div>
+
+          {/* Suggested Questions */}
+          {messages.length === 1 && messages[0].role === "bot" && (
+            <div className="suggested">
+              <p>{chatbotTexts.suggestedIntro}</p>
+              <div>
+                {chatbotTexts.suggestedQuestions.map((question) => (
+                  <button
+                    key={question}
+                    onClick={() => sendMessage(question)}
+                  >
+                    {question}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Input */}
+          <div className="chatbot-input">
+            <input
+              value={input}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
+              placeholder={chatbotTexts.placeholder}
+            />
+            <button
+              onClick={() => sendMessage(input)}
+              disabled={loading}
+            >
+              {loading ? (
+                <BsStop />
+              ) : (
+                <BsSend />
+              )}
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 

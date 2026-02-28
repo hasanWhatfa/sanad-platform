@@ -15,7 +15,7 @@ const HomeArticle = () => {
             {
                 ThreeArticles.map((dat,index)=>{
                     return(
-                        <ArticleCard key={index} desName={dat.title} desImage={dat.img} desTalk={dat.description} categ={dat.categ}/>
+                        <ArticleCard key={index} id={dat.id} desName={dat.title} desImage={dat.img || ''} desTalk={dat.description} categ={dat.categ}/>
                     )
                 })
             }

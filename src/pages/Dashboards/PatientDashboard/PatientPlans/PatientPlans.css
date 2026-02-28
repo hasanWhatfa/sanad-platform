@@ -1,0 +1,162 @@
+/* Container */
+.plans-container {
+  padding: 2rem;
+  text-align: center;
+  background: var(--color-light);
+  min-height: 100vh;
+}
+
+.plans-title {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+}
+
+/* Grid */
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card */
+.plan-card {
+  background: var(--color-white);
+  border: 1px solid var(--border-light);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.plan-card:hover {
+  transform: translateY(-5px);
+}
+
+.plan-icon {
+  font-size: 2.5rem;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.plan-name {
+  font-size: 1.4rem;
+  color: var(--text-primary);
+}
+
+.plan-price {
+  font-size: 1.2rem;
+  color: var(--color-highlight);
+  margin: 0.5rem 0 1rem;
+}
+
+.plan-features {
+  text-align: right;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+  width: 100%;
+}
+
+.plan-features li {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+}
+
+.available {
+  color: var(--text-primary);
+}
+
+.not-available {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.plan-btn {
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.plan-btn:hover {
+  background: var(--color-accent);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 30, 30, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.modal {
+  background: var(--color-white);
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: var(--shadow-soft);
+  text-align: right;
+}
+
+.modal h2 {
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+
+.modal label {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.modal input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--border-light);
+  border-radius: 0.5rem;
+  margin-top: 0.3rem;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.confirm-btn {
+  background: var(--color-accent);
+  border: none;
+  padding: 0.5rem 1rem;
+  color: var(--color-white);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background: var(--text-muted);
+  border: none;
+  padding: 0.5rem 1rem;
+  color: var(--color-white);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}

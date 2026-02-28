@@ -7,7 +7,7 @@ interface PaganationControlProps{
     setCurrentIndex?:Dispatch<SetStateAction<number>>;
     children:ReactNode;
 }
-const PaganationControl = ({onClick,className,currentIndex,setCurrentIndex,children} : PaganationControlProps) => {
+const PaganationControl = ({onClick,className,children} : PaganationControlProps) => {
   return (
     <button className={`${className} paganationControl`} onClick={onClick} >
       {children}

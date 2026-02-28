@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {testsData } from "../../data/PsychTest";
@@ -153,26 +153,32 @@ interface ResulteProps{
 }
 
 const ResultComponent = ({answers,currentTest}:ResulteProps)=>{
+  // Likert-based Scoring with Threshold Mapping implementation
   const navigate = useNavigate();
+  // حساب نتيجة المريض--هذا الكود سوف يعيد مجموع اوزان اجوبة المستخدم
   const calcResult = (answers: Answer[]): number =>
     answers.reduce((sum, answer) => sum + answer.score, 0);
 
+  // حساب اعلى نتيحة ممكنة للاختبار
   const maxScoreFromTest = currentTest.questions.reduce((acc, q) => {
     const maxScorePerQuestion = Math.max(...q.options.map((opt) => opt.score));
     return acc + maxScorePerQuestion;
   }, 0);
 
   const rs: number = calcResult(answers);
+  // حساب النسبة المؤوية---noramalization
   const userResult = (rs / maxScoreFromTest) * 100;
+  // تقريبا النتيحة الى اقرب عدد صحيح ليسهل تصنيفها ولكي نتخلص من الفواصل العشرية
   const roundedResult = Math.round(userResult);
 
 
+  // نتيجة المستخدم , نبحث عن النطاق الذي توجد فية نتيجة المستخدم
     const userLevel = currentTest.resultLevels?.find((level) =>
     roundedResult >= level.min && roundedResult <= level.max
   );
 
 
-  // summary
+  // تابع يقوم ببناء ملخص الاختبار لكي يتم تخزينة  في قاعدة البيانات
   const buildSummary = (
     test:PsychTest,
     answersArr: Answer[],
@@ -198,7 +204,7 @@ const ResultComponent = ({answers,currentTest}:ResulteProps)=>{
   }
 
   const summaryObject = buildSummary(currentTest, answers, roundedResult,userLevel?.label,currentTest);
-
+  // اذا كان المستخدم مسجلا سوف يتم تخزين نتيجتة في القاعدة لكي يقرأها الطبيب
   if(localStorage.getItem("token") && summaryObject){
     const baseUrl:string = "http://127.0.0.1:8000/api/patient/tests/store"
     axios.post(baseUrl,{
@@ -219,8 +225,7 @@ const ResultComponent = ({answers,currentTest}:ResulteProps)=>{
   .then(()=>{
       navigate('/patient-dash/patient-tests')
   })
-  .catch((err)=>{
-    console.log(err)
+  .catch(()=>{
   })
   .finally(()=>{
     console.log('Request Sent');

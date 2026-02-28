@@ -6,15 +6,12 @@ import { useEffect, useState } from 'react';
 
 interface TopNavProps{
   setNotifications:React.Dispatch<React.SetStateAction<Notification[]>>;
-
   setDrawerOpened:React.Dispatch<React.SetStateAction<boolean>>;
-
-  setNotificationFetchErr:React.Dispatch<React.SetStateAction<string | undefined>>;
   notifcations:Notification[];
 }
 
 
-const TopNav = ({setNotifications,setDrawerOpened,setNotificationFetchErr,notifcations}:TopNavProps) => {
+const TopNav = ({setNotifications,setDrawerOpened,notifcations}:TopNavProps) => {
 
   // must be more complecated , but ok for now
   const [hasNofi,setHasNotif] = useState<boolean>(false);
@@ -32,7 +29,7 @@ const TopNav = ({setNotifications,setDrawerOpened,setNotificationFetchErr,notifc
     .then((res)=>{
       setNotifications(res.data);
     })
-    .catch((err)=>setNotificationFetchErr(err.message))
+    .catch(()=>{})
   }
   useEffect(()=>{
     notifcations.length > 0 ? setHasNotif(true) : setHasNotif(false);

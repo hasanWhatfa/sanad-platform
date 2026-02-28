@@ -1,76 +1,129 @@
-.DoctorsPage{
-    padding-bottom: 100px;
-}
-.doctors-list{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-.doctors-list .doctorsROw{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-.doctors-list .doctorsROw .doctorCard--hw{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding-bottom:20px;
-    border-radius: 12px;
-    background-color: var(--color-secondary);
-    width: 31.9%;
-    border: 2px solid var(--color-primary);
-    overflow: hidden;
-    box-shadow: 4px 4px 0px 4px var(--color-primary);
-}
-.doctors-list .doctorsROw .doctorCard--hw .doctorCard--hw-image{
-    width: 100%;
-    height: 270px;
-}
-.doctors-list .doctorsROw .doctorCard--hw .doctorCard--hw-image img{
-    width: 100%;
-    height: 100%;
-}
-.doctorCard--hw-text{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-}
-.doctorCard--hw-text h3{
-    font-size: 20px;
-    color: var(--text-primary);
-    font-weight: 600;
-    line-height: 150%
-}
-.doctorCard--hw-text h5{
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--text-muted);
-    line-height: 150%;
-}
-.doctorCard--hw > a{
-    padding: 10px 20px;
-    font-size: 16px;
-    color: var(--color-primary);
-    background-color: var(--color-secondary);
-    border-radius: 8px;
-    border: 1px solid var(--color-primary);
-    transition: var(--main-trans);
-    width: max-content;
-    margin: 0 auto;
-    text-decoration: none;
-    font-weight: 600;
-    box-shadow: 4px 4px 0px 4px var(--color-primary);
-}
-.doctorCard--hw > a:hover{
-    transform: translate(-2px,-2px);
-    box-shadow: 2px 2px 0px 4px var(--color-primary);
-    background-color: var(--color-secondary);
-    color: var(--color-primary);
+:root {
+  --color-primary:#1D3557;
+  --color-secondary:#CAF0F8;
+  --color-accent:#457B9D;   
+  --color-light:#EDF6F9;
+  --color-highlight:#B5D9C9; 
+  --color-white:#ffffff;          
+  --color-black:#1E1E1E;   
+  --text-primary:#333333;         
+  --text-muted:#646363;             
+  --shadow-soft:0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-card:0 6px 18px rgba(0, 0, 0, 0.12);
+  --border-light:#e0e0e0;
+  --main-trans:300ms ease;
 }
 
+/* الصفحة */
+.DoctorsPage {
+  padding-bottom: 100px;
+  background: var(--color-light);
+}
 
+/* قائمة الأطباء */
+.doctors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 2rem;
+}
+
+.doctors-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+/* بطاقة الطبيب */
+.doctor-card {
+  background: var(--color-white);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  width: 31%;
+  min-width: 280px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--main-trans), box-shadow var(--main-trans);
+}
+
+.doctor-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card);
+}
+
+/* صورة الطبيب */
+.doctor-card__image {
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+}
+
+.doctor-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--main-trans);
+}
+
+.doctor-card:hover .doctor-card__image img {
+  transform: scale(1.05);
+}
+
+/* النصوص */
+.doctor-card__text {
+  padding: 1rem;
+  text-align: center;
+}
+
+.doctor-card__text h3 {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  transition: color var(--main-trans);
+}
+
+.doctor-card__text h5 {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* الرابط */
+.doctor-card > a {
+  margin: 1rem auto 1.5rem;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  background: var(--color-secondary);
+  border-radius: 10px;
+  border: 1px solid var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 3px 3px 0 var(--color-primary);
+  transition: all var(--main-trans);
+}
+
+.doctor-card > a:hover {
+  background: var(--color-primary);
+  color: var(--color-white);
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--color-accent);
+}
+
+/* 🎨 Responsive */
+@media (max-width: 992px) {
+  .doctor-card {
+    width: 47%;
+  }
+}
+
+@media (max-width: 600px) {
+  .doctor-card {
+    width: 100%;
+  }
+}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState, type FormEvent } from "react";
 import { useParams } from "react-router-dom";
-import { image_base, type Blog, type BlogSection } from "../../../../../data/generalTypes";
+import { image_base, type Blog } from "../../../../../data/generalTypes";
 import "./EditBlog.css";
 
 const EditBlog = () => {
@@ -41,7 +41,7 @@ const EditBlog = () => {
     setMessage("");
 
     try {
-      const res = await axios.post(
+      await axios.post(
         `http://127.0.0.1:8000/api/doctor/blogs/${id}/sections/add`,
         {
           
@@ -55,14 +55,6 @@ const EditBlog = () => {
           },
         }
       );
-      const newSection : BlogSection = {
-        blog_id:Date.now(),
-        created_at:String(Date.now()),
-        id:Date.now(),
-        section_text:res.data.section_text,
-        section_title:res.data.section_title,
-        updated_at:"someTIme"
-      }
       fetchBlogData(id);
       setMessage("✅ تم إضافة القسم بنجاح");
       setSectionTitle("");

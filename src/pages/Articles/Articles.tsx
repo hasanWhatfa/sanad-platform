@@ -4,10 +4,9 @@ import axios from 'axios';
 import './Articles.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+import 'swiper/swiper-bundle.css';
 import { image_base } from '../../data/generalTypes';
+import { Link } from 'react-router-dom';
 
 // تعريف الواجهات (Interfaces)
 export interface DoctorMainType {
@@ -110,7 +109,7 @@ export const Articles: React.FC = () => {
         <Swiper
           spaceBetween={30}
           slidesPerView={1}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
           pagination={{ clickable: true }}
           navigation={true}
           modules={[Pagination, Navigation, Autoplay]}
@@ -151,9 +150,9 @@ export const Articles: React.FC = () => {
                   <p className="article-summary">
                     {blog.sections[0]?.section_text.substring(0, 100)}...
                   </p>
-                  <a href={`/article/${blog.id}`} className="read-more-btn">
+                  <Link to={`/article/${blog.id}`} className="read-more-btn">
                     اقرأ المزيد
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}

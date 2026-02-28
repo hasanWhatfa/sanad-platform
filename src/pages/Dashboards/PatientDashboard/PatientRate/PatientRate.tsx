@@ -7,16 +7,6 @@ import { image_base } from "../../../../data/generalTypes";
 import { CgAdd } from "react-icons/cg";
 import AddCommentModal from "./AddCommentModal";
 
-interface CommentShape{
-    comment: string;
-    created_at: string;
-    doctor_id: number
-    id: number;
-    patient_id: number;
-    rate: number;
-    updated_at: string;
-}
-
 export default function PatientDoctors() {
   const [doctors,setDoctors] = useState<DoctorMainType[]>([]);
   const [openModal,setOpenModal] = useState<boolean>(false);
@@ -49,7 +39,7 @@ export default function PatientDoctors() {
   return (
     <>
     <div className="doctors-page">
-      <h2 className="page-title">الأطباء الذين تتعالج لديهم</h2>
+      <h2 className="page-title">تقييم الأطباء</h2>
       <div className="doctors-grid">
         {doctors?.map((doc, i) => (
           <div

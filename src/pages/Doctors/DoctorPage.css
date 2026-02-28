@@ -1,198 +1,197 @@
-.DoctorPage{
-    background-color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap:40px;
-    padding-top: 100px;
-    padding-bottom: 100px;
+:root {
+  --color-primary:#1D3557;
+  --color-secondary:#CAF0F8;
+  --color-accent:#457B9D;   
+  --color-light:#EDF6F9;
+  --color-highlight:#B5D9C9; 
+  --color-white:#ffffff;          
+  --color-black:#1E1E1E;   
+  --text-primary:#333333;         
+  --text-muted:#646363;             
+  --shadow-soft:0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-card:0 6px 18px rgba(0, 0, 0, 0.12);
+  --border-light:#e0e0e0;
+  --main-trans:300ms ease;
 }
-.DoctorPage > div{
-    padding: 20px;
-    width: 100%;
-    display: flex;
-    direction: rtl;
-    border-radius: 16px;
-    background-color: var(--color-secondary);
-    border: 2px solid var(--color-primary);
+
+/* الصفحة */
+.DoctorPage {
+  background: var(--color-light);
+  padding: 3rem 0;
+  color: var(--text-primary);
+  direction: rtl;
+  padding-top: 100px;
 }
+
+/* القسم الأول - صورة الطبيب والاسم */
 .DoctorInfo-one {
-    gap: 20px;
-    align-items: center;
-    justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: var(--color-white);
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 2rem;
+  animation: fadeIn 0.6s ease-in-out;
 }
-.DoctorInfo-one .img-cont{
-    width: 470px;
-    height: 470px;
-    border-radius:50%;
-    overflow: hidden;
-    border: 2px solid var(--color-primary);
+
+.DoctorInfo-one .img-cont {
+  flex: 0 0 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--color-primary);
+  box-shadow: var(--shadow-card);
 }
-.DoctorInfo-one .img-cont > img{
-    width: 100%;
-    height: 100%;
+
+.DoctorInfo-one .img-cont img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.DoctorInfo-one .name-cont{
-    display: flex;
+
+.DoctorInfo-one .name-cont h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.DoctorInfo-one .name-cont p {
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+/* القسم الثاني */
+.DoctorInfo-two, 
+.DoctorInfo-three,
+.DoctorInfo-four {
+  background: var(--color-white);
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 2rem;
+  transition: transform var(--main-trans);
+}
+
+.DoctorInfo-two:hover,
+.DoctorInfo-three:hover,
+.DoctorInfo-four:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card);
+}
+
+.DoctorInfo-two h3,
+.DoctorInfo-three h3,
+.DoctorInfo-four h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+
+/* إنجازات */
+.DoctorAchivments {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.DoctorAchivments li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1rem;
+  padding: 0.4rem 0;
+  color: var(--text-muted);
+  transition: color var(--main-trans);
+}
+
+.DoctorAchivments li svg {
+  color: var(--color-accent);
+}
+
+.DoctorAchivments li:hover {
+  color: var(--color-primary);
+}
+
+/* قسم التقييمات */
+.rating-main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* النجوم */
+.stars-container {
+  font-size: 1.5rem;
+  color: gold;
+}
+
+/* خطوط التقييم */
+.linesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.single-line-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.primaryLine-precentage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.primaryLine {
+  flex: 1;
+  height: 10px;
+  background: var(--border-light);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.yellowLine {
+  height: 100%;
+  background: gold;
+  transition: width 0.6s ease-in-out;
+}
+
+.precentageContainer {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* التعليقات */
+.commentContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+/* أنيميشن */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .DoctorInfo-one {
     flex-direction: column;
-    gap: 14px;
-    background-color: var(--color-primary);
-    padding: 16px;
-    padding-right: 24px;
-    border-radius: 8px 40px 40px 8px ;
-    color: white;
-    width: 50%;
-    position: relative;
-}
-.DoctorInfo-one .name-cont h3{
-    font-size: 38px;
-    line-height: 150%;
-    font-weight: 800;
-}
-.DoctorInfo-one .name-cont p{
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 150%;
-}
-.DoctorInfo-one .name-cont::after{
-    content: '';
-    position: absolute;
-    left: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 0px;
-    border-width: 19px;
-    border-color: transparent transparent transparent var(--color-primary);
-    border-style: solid;
-    transition: var(--main-trans);
-}
-.DoctorInfo-one .name-cont:hover::after{
-    left: 101%;
-}
-.DoctorInfo-two{
-    flex-direction: column;
-    align-items: flex-start;
-    gap:20px;
-}
-.DoctorInfo-two > h3 , .DoctorInfo-three > h3 , .DoctorInfo-four > h3{
-    font-size: 20px;
-    font-weight: 800;
-    line-height: 150%;
-}
-.DoctorInfo-two > p{
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 150%;
-}
-.DoctorInfo-three{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-.DoctorInfo-three .DoctorAchivments{
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-.DoctorInfo-three .DoctorAchivments li{
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 150%;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.DoctorInfo-four{
-    flex-direction: column;
-    gap:20px;
-    align-items: flex-start;
-}
-.commentContainer{
-    width: 48%;
-    display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    flex-direction: column;
-}
-.everyThingContainer{
-    width: 100%;
-    display:flex;
-    justify-content: space-between;
-    flex-direction: row-reverse;
-}
-.rating-main-container{
-    width:48%;
-    display: flex;
-    flex-direction: column;
-    gap:20px
-}
-.ratesThing{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    width: 100%;
-    background-color: var(--color-primary);
-    height: fit-content;
-    padding: 20px;
-    color: white;
-    border-radius: 8px;
-}
-.linesContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 15px;
-    width: 100%;
-}
-.single-line-container{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: row-reverse;
-    gap: 10px;
-    width: 100%;
-}
-.single-line-container:hover .primaryLine{
-    background-color: var(--color-primary);
-}
-.single-line-container:hover .primaryLine .yellowLine{
-    background-color: var(--color-secondary);
-}
-.single-line-container > h4{
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 150%;
-}
-.primaryLine-precentage{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
-    flex-direction: row-reverse;
-    width: 90%;
-}
-.primaryLine-precentage .primaryLine{
-    height: 12px;
-    background-color: var(--color-secondary);
-    padding: 3px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    border-radius: 12px;
-    width: 90%;
-    transition: var(--main-trans);
-}
-.primaryLine-precentage .primaryLine .yellowLine{
-    min-width: 1%;
-    height: 100%;
-    background-color: var(--color-primary);
-    border-radius: 12px;
-    transition: var(--main-trans);
-}
-.primaryLine-precentage > h5{
-    font-size: 14px;
-    direction: ltr;
+    text-align: center;
+  }
+
+  .DoctorInfo-one .img-cont {
+    width: 140px;
+    height: 140px;
+  }
 }

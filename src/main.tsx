@@ -42,6 +42,7 @@ import {DoctorBlogsPage} from './pages/Dashboards/DoctorDashboard/DoctorBlogs/Do
 import AddBlog from './pages/Dashboards/DoctorDashboard/DoctorBlogs/AddBlog/AddBlog'
 import EditBLog from './pages/Dashboards/DoctorDashboard/DoctorBlogs/EditBLog/EditBLog'
 import MediaPage from './pages/MediaPage/MediaPage'
+import PatientPlans from './pages/Dashboards/PatientDashboard/PatientPlans/PatientPlans'
 
 const routes = createBrowserRouter(
   [
@@ -126,6 +127,9 @@ const routes = createBrowserRouter(
             {
               index:true,
               element:<PatientDashMainPage />
+            },{
+              path:'plans',
+              element:<PatientPlans />
             },
             {
               path:'edit-patient-data',

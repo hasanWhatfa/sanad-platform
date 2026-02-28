@@ -1,16 +1,23 @@
-import './SubHero.css'
+// SubHero.tsx
+import "./SubHero.css";
+import { FaUserMd, FaHeartbeat, FaHandsHelping } from "react-icons/fa";
 
 const SubHero = () => {
   return (
-    <section className='subHero'>
-        <div className="subHeroTextHeading">
-            <h2>من نحن</h2>
-            <p>تعرف على نظرتنا, الاطباء والمختصين و المزيد عنا</p>
-        </div>
-        {/* <img src="" alt="doctor" className="floatinImageLeft" />
-        <img src="" alt="something" className="floatinImageRight" /> */}
-    </section>
-  )
-}
+    <section className="subHero">
+      {/* Background icons */}
+      <div className="subHero-bg-icons">
+        <FaUserMd className="sub-bg-icon icon1" />
+        <FaHeartbeat className="sub-bg-icon icon2" />
+        <FaHandsHelping className="sub-bg-icon icon3" />
+      </div>
 
-export default SubHero
+      <div className="subHeroTextHeading">
+        <h2>من نحن</h2>
+        <p>تعرف على نظرتنا، الأطباء والمختصين، والمزيد عنا</p>
+      </div>
+    </section>
+  );
+};
+
+export default SubHero;

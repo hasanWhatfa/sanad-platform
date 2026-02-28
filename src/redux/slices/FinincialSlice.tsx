@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { DoctorMainType, Transaction } from "../../data/generalTypes";
+import type { Transaction } from "../../data/generalTypes";
 import axios from "axios";
 
 interface FinancialState{

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { DoctorMainType, Transaction } from "../../data/generalTypes";
+import type { DoctorMainType } from "../../data/generalTypes";
 import axios from "axios";
 
 interface DoctorsState{
@@ -16,7 +16,7 @@ const initialState : DoctorsState = {
 
 export const fetchDox = createAsyncThunk("doctors/public/fetch",async (_,thunkApi)=>{
     try{
-        const res = await axios.get('http://127.0.0.1:8000/admin/doctors')
+        const res = await axios.get('http://127.0.0.1:8000/api/doctors/all')
         return res.data.data as DoctorMainType[];
     }
     catch (err: any) {

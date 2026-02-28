@@ -11,6 +11,7 @@ const AuthModal = () => {
   useEffect(() => {
     const container = document.getElementById("custom-portal-root");
     setPortalContainer(container);
+    closeModal();
   }, []);
 
   useEffect(() => {

@@ -29,5 +29,11 @@ export const testCardData : TestCardProps[]= [
     description: "يقيس احتمالية وجود أعراض فرط الحركة وتشتت الانتباه لمساعدتك على فهم نفسك أكثر.",
     name_id:"adhd",
     id:3
+    },
+    {
+      title:"اختبار الرهاب الاجتماعي",
+      description:"يساعدك على تقييم مدى تأثرك بالرهاب الاجتماعي وكيفية التعامل معه.",
+      name_id:"phobia",
+      id:5
     }
 ]

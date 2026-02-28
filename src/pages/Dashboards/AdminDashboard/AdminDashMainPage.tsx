@@ -42,7 +42,7 @@ const AdminDashMainPage: React.FC = () => {
   // fetch all patients to get their number 
     const dispatch = useDispatch<AppDispatch>();
     const { patients , loading } = useSelector((state: RootState) => state.adminPatients);
-    const {transactions,loadingFinincial,errors } = useSelector((state: RootState) => state.transations);
+    const {transactions,loadingFinincial } = useSelector((state: RootState) => state.transations);
     const numberOfPatients = patients?.length;
   // fetch doctors
     const {doctors , loadingDoctors } = useSelector((state : RootState)=>state.doctors);

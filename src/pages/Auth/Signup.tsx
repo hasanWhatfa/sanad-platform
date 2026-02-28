@@ -47,7 +47,8 @@ const Signup = ({ formData }: SignupFormData) => {
   const profile_image = useRef<HTMLInputElement>(null);
   const phone_number = useRef<HTMLInputElement>(null);
   const [image, setImage] = useState<string | null>(null);
-
+  const [submitting,setSubmmiting] = useState<boolean>(false)
+  const [successMessage, setSuccessMessage] = useState<string>(""); 
   const displayImage = (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file && file.type.startsWith("image/")) {
@@ -88,7 +89,7 @@ const Signup = ({ formData }: SignupFormData) => {
   //==== send SignUp request Function=====
   const handleFormSubmited = (e: FormEvent) => {
     e.preventDefault();
-
+    setSuccessMessage("");
     // validating data before sending
 
     const errors: FormErrors = {};
@@ -136,6 +137,7 @@ const Signup = ({ formData }: SignupFormData) => {
     if (avatar) {
       fd.append("avatar", avatar);
     }
+    setSubmmiting(true)
     axios
       .post(base_url, fd, { headers })
       .then((res) => {
@@ -143,6 +145,7 @@ const Signup = ({ formData }: SignupFormData) => {
         localStorage.setItem("token", res.data.access_token);
         checkRole(res.data.user.role);
         localStorage.setItem("user_data",JSON.stringify(res.data.user));
+        setSuccessMessage("تم تسجيل الحساب بنجاح ✅");
       })
       .catch((err) => {
         if (err.response?.status === 422) {
@@ -150,7 +153,8 @@ const Signup = ({ formData }: SignupFormData) => {
         } else {
           alert("حدث خطأ غير متوقع، حاول لاحقًا.");
         }
-      });
+      })
+      .finally(()=>setSubmmiting(false));
   };
 
   return (
@@ -174,6 +178,11 @@ const Signup = ({ formData }: SignupFormData) => {
           <span>{formData?.data.dontYou.linkWords}</span>
         </p>
       </div>
+      {successMessage && (
+        <div className="success-message" style={{ color: "green", margin: "10px 0" }}>
+          {successMessage}
+        </div>
+      )}
       <div className="square">
         <div className="fieldes_container">
           <div className="nameContainer">
@@ -259,7 +268,7 @@ const Signup = ({ formData }: SignupFormData) => {
               اوفق على <span>سياسات الخصوصية والأمان</span>
             </p>
           </div>
-          <button type="submit">{formData?.data.btnContent}</button>
+          <button type="submit">{submitting ? 'جار التسحيل...': formData?.data.btnContent}</button>
         </div>
       </div>
     </form>

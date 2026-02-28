@@ -271,6 +271,19 @@
 }
 
 
+.success-message{
+    text-align: center;
+    font-size: 14px;
+    color: green;
+    margin-top: 10px;
+    font-weight: 600;
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: var(--shadow-soft);
+}
+
+
 
 @media (max-width:992px) {
     .signUp_form{

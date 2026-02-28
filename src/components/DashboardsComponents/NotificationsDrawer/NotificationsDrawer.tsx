@@ -11,14 +11,6 @@ interface NotificationsDrawerProps{
     drawerOpend:boolean;
     setDrawerOpened:React.Dispatch<React.SetStateAction<boolean>>;
 }
-
-
-// 
-//  potenial errors to fix:
-//      1-the error message
-//      2-the handleDeleteNotif && handleMaskAsRead 
-//      3-needs to be reviewed
-
 const NotificationsDrawer = ({notifcations,setNotifications,drawerOpend,setDrawerOpened}:NotificationsDrawerProps) => {
 
     const [errors,setErrors] = useState<{

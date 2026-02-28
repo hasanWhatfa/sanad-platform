@@ -114,17 +114,6 @@ questions: [
       ]
     },
     {
-      questId: 5,
-      questionText: "كيفك جواد؟",
-      questionDesc: "هل انت منيح",
-      options: [
-        { optionText: "منيح", score: 3 },
-        { optionText: "عادي", score: 2 },
-        { optionText: "تعبان", score: 1 },
-        { optionText: "ماني منيح", score: 0 },
-      ]
-    },
-    {
       questId: 6,
       questionText: "هل تشعر بعدم الأمان في العلاقات حتى لو لم يكن هناك سبب واضح؟",
       questionDesc: "مثل الإحساس الدائم بأن شيئًا سيئًا سيحدث.",
@@ -1078,17 +1067,6 @@ questions: [
         { optionText: "غالبًا", score: 2 },
         { optionText: "أحيانًا", score: 1 },
         { optionText: "نادراً أو أبدًا", score: 0 }
-      ]
-    },
-    {
-      questId: 2,
-      questionText: "كيفك جواد؟",
-      questionDesc: "هل انت منيح",
-      options: [
-        { optionText: "منيح", score: 3 },
-        { optionText: "عادي", score: 2 },
-        { optionText: "تعبان", score: 1 },
-        { optionText: "ماني منيح", score: 0 },
       ]
     },
     {

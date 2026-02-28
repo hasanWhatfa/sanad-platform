@@ -11,15 +11,12 @@ const AdminDashTopNav = () => {
     const [drawerOpend,setDrawerOpened] = useState<boolean>(false);
 
   const [notifcations,setNotifications] = useState<Notification[]>([]);
-
-  const[notifcationsFetchErr,setNotificationFetchErr] = useState<string>();
   return (
     <Provider store={store}>
     <div className="DashContentWrapper">
       <TopNav 
       setNotifications={setNotifications} 
       setDrawerOpened={setDrawerOpened}
-      setNotificationFetchErr={setNotificationFetchErr}
       notifcations={notifcations}
       />      
       <div className="content_wrapper">

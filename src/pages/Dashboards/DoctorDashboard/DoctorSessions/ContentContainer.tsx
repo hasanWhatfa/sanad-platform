@@ -2,7 +2,6 @@ import { useRef, useState} from "react";
 import { image_base, type Session } from "../../../../data/generalTypes";
 import axios from "axios";
 import './DoctorSessions.css'
-import { time } from "framer-motion";
 type ContentContainerProps = {
     title:string;
     arrayOfData: Session[];
@@ -19,7 +18,7 @@ const ContentContainer = ({title,arrayOfData,displayedContent,handleSessionsUpda
 
 // -----------------------------------------------------------------------------------------------
 
-    const [loading,setLoading] = useState<boolean>(false)
+    const [,setLoading] = useState<boolean>(false)
     const [err,setErr] = useState<string>('')
     const [doneMessage,setDoneMessage] = useState<string>('');
     const [showEditForm,setShowEditForm] = useState<boolean>(false)

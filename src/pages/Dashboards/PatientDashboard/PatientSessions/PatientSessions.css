@@ -415,3 +415,15 @@ td.noSessionsYet{
     opacity: 1 !important;
     z-index: 100;
 }
+.error_message_last_edit{
+    background-color: orange;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 7px 12px;
+    border-radius: 4px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+}

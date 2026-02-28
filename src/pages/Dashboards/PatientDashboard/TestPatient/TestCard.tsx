@@ -46,7 +46,8 @@ const TestCard = ({title,description,name_id,id}:TestCardProps) => {
             setTestRes(res.data);
         })
         .catch((err)=>{
-            setNoTest(err.response.data.message)
+            setNoTest(err.response.data.message);
+            console.log(err.response);
         })
         .finally(()=>{
             setLoading(false)
@@ -61,9 +62,6 @@ const TestCard = ({title,description,name_id,id}:TestCardProps) => {
 
     const handleShowDetails = ()=>{
         setIsModalOpen(true);
-    }
-    const handleHideDetails = ()=>{
-        setIsModalOpen(false);
     }
 
     useEffect(()=>{

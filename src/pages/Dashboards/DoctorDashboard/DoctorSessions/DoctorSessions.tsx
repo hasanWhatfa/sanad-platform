@@ -14,7 +14,6 @@ const DoctorSessions = () => {
   const [sessions,setSession] = useState<Session[]>([]);
   const [sessionsUpdated,setSessionsUpadted] = useState<boolean>(false);
   const [loadingSessions,setLoadingSessions] = useState<boolean>(false);
-  const [error,setError] = useState<string>('');
 
   const approvedSessions = sessions.filter((ses)=>ses.status == SessionStatus.approved);
   const penedingSessions = sessions.filter((ses)=>ses.status == SessionStatus.pending);
@@ -34,7 +33,7 @@ const DoctorSessions = () => {
     .then((res)=>{
       setSession(res.data.data);
     })
-    .catch((err)=>{setError(err.response.data.message)})
+    .catch(()=>{})
     .finally(()=>{
       setLoadingSessions(false)
     })

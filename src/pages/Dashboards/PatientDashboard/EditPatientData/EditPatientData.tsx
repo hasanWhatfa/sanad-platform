@@ -108,10 +108,9 @@ const EditPatientData = () => {
       setFrontErrors(errors);
       return;
     }
-
-
+    
     const fd = new FormData();
-
+      
     if (imgFiled) fd.append("avatar", imgFiled || '');
     fd.append("first_name", firstName || "");
     fd.append("last_name", lastName || "");

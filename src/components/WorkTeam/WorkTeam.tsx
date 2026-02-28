@@ -4,9 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 // import required modules
 import { Pagination } from 'swiper/modules';
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
+import 'swiper/swiper-bundle.css';
 
 import { RiArrowLeftDoubleLine } from "react-icons/ri";
 
@@ -18,13 +16,19 @@ import { image_base, type DoctorMainType } from '../../data/generalTypes';
 
 const WorkTeam = () => {
   // نخزن الطبيب المختار كاملاً لتسهيل التعامل مع البيانات
-  const [chosenDoctor, setChosenDoctor] = useState<DoctorMainType>();
   const {doctorsPub ,loadingDoctors } = useSelector((state : RootState)=>state.doctorsPub);
   const dispatch = useDispatch<AppDispatch>();
+  const [chosenDoctor, setChosenDoctor] = useState<DoctorMainType>({
+    first_name:"حازم ",
+    last_name:"الرفاعي",
+    avatar:`/images/docPhoto.webp`,
+    specialization:"اختصاصي نفسي",
+  });
+
 
   useEffect(()=>{
    dispatch(fetchDox());
-  },[])
+  },[]);
   return (
     <section className='workTeam'>
       <div className="workTeamHeader">

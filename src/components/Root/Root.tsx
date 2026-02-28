@@ -63,10 +63,6 @@ const Root = () => {
       ]
     },
     {
-      linkName:'العاب تفاعلية',
-      linkTo:'interactiveGames'
-    },
-    {
       linkName:'مكتبة صوتية/مرئية',
       linkTo:'library'
     },
