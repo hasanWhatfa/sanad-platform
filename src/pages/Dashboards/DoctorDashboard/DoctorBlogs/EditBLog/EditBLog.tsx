@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState, type FormEvent } from "react";
 import { useParams } from "react-router-dom";
 import { image_base, type Blog } from "../../../../../data/generalTypes";
-import "./EditBlog.css";
+import "./EditBLog.css";
 
 const EditBlog = () => {
   const { id } = useParams();
