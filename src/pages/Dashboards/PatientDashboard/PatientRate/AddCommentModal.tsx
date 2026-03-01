@@ -17,7 +17,7 @@ const AddCommentModal = ({
   const [hover, setHover] = useState<number>(0);
   const [comment, setComment] = useState<string>("");
   const [touched, setTouched] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>(""); // بدال doneMessage و err
+  const [message, setMessage] = useState<string>(""); 
   const [isError, setIsError] = useState<boolean>(false);
 
   const base_url: string = "http://127.0.0.1:8000/api/patient/ratings/add";
