@@ -26,7 +26,7 @@ const mapLocalToApiFormat = (localDoctors: typeof doctorsData): DoctorMainType[]
     }));
 };
 
-export const fetchDox = createAsyncThunk("doctors/public/fetch",async (_,thunkApi)=>{
+export const fetchDox = createAsyncThunk("doctors/public/fetch",async ()=>{
     try{
         const res = await axios.get('http://127.0.0.1:8000/api/doctors/all')
         return res.data.data as DoctorMainType[];
