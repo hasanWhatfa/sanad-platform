@@ -1,4 +1,3 @@
-import { image_base } from '../../data/generalTypes';
 import './DocCard.css'
 
 
