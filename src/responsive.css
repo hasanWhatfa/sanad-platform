@@ -1,0 +1,111 @@
+/* ========================================
+   RESPONSIVE STYLES FOR MOBILE & TABLETS
+   ======================================== */
+
+/* Mobile First Approach - Base styles for mobile */
+
+/* Typography Responsive */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  
+  h1 { font-size: 1.75rem !important; }
+  h2 { font-size: 1.5rem !important; }
+  h3 { font-size: 1.25rem !important; }
+  h4 { font-size: 1.1rem !important; }
+  p { font-size: 0.95rem !important; }
+  
+  .p60 {
+    padding-inline: 20px !important;
+  }
+  
+  section, .subHero {
+    padding-bottom: 40px !important;
+    padding-top: 20px !important;
+  }
+  
+  .mainHero {
+    margin-bottom: 30px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+  
+  .px-162 {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+  
+  .p60 {
+    padding-inline: 15px !important;
+  }
+}
+
+/* Hide elements on mobile */
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Show only on mobile */
+.show-mobile {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .show-mobile {
+    display: block !important;
+  }
+}
+
+/* Flex utilities for responsive */
+@media (max-width: 768px) {
+  .flex-mobile-column {
+    flex-direction: column !important;
+  }
+  
+  .flex-mobile-wrap {
+    flex-wrap: wrap !important;
+  }
+  
+  .w-mobile-full {
+    width: 100% !important;
+  }
+  
+  .text-mobile-center {
+    text-align: center !important;
+  }
+}
+
+/* Grid responsive */
+@media (max-width: 768px) {
+  .grid-mobile-1 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .grid-tablet-2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Spacing responsive */
+@media (max-width: 768px) {
+  .gap-mobile-small {
+    gap: 10px !important;
+  }
+  
+  .mt-mobile-0 {
+    margin-top: 0 !important;
+  }
+  
+  .mb-mobile-small {
+    margin-bottom: 15px !important;
+  }
+}
