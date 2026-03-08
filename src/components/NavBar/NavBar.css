@@ -171,6 +171,32 @@ nav .logoContainer{
     background-color: var(--color-primary);
     color: var(--color-white);
 }
+.mobile-dropdown{
+    width: 100%;
+}
+.mobile-dropdown-header{
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid var(--color-primary);
+    border-bottom: 1px solid var(--color-primary);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    padding: 10px;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+.mobile-dropdown-links{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 0;
+}
+.mobile-dropdown-links a{
+    border: none;
+    padding: 8px 20px;
+    font-size: 14px;
+}
 .sm-screen-menu .navBtns{
     gap: 30px;
 }

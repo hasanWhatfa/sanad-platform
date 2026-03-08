@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { DoctorMainType } from "../../data/generalTypes";
 import axios from "axios";
+import doctorsData from "../../data/doctorsData";
 
 interface DoctorsState{
     loadingDoctors:boolean;
@@ -14,13 +15,24 @@ const initialState : DoctorsState = {
     errors:null
 };
 
+const mapLocalToApiFormat = (localDoctors: typeof doctorsData): DoctorMainType[] => {
+    return localDoctors.map(doc => ({
+        id: doc.id,
+        first_name: doc.name.split(' ')[0],
+        last_name: doc.name.split(' ').slice(1).join(' '),
+        avatar: doc.image,
+        specialization: doc.description,
+        achievements: doc.achievements.join(',')
+    }));
+};
+
 export const fetchDox = createAsyncThunk("doctors/public/fetch",async (_,thunkApi)=>{
     try{
         const res = await axios.get('http://127.0.0.1:8000/api/doctors/all')
         return res.data.data as DoctorMainType[];
     }
     catch (err: any) {
-    return thunkApi.rejectWithValue(err.message);
+        return mapLocalToApiFormat(doctorsData);
     }
 });
 
@@ -39,9 +51,9 @@ const pubDoctors = createSlice(
                 state.loadingDoctors = false;
                 state.doctorsPub = action.payload;
             })
-            .addCase(fetchDox.rejected,(state,action)=>{
+            .addCase(fetchDox.rejected,(state)=>{
                 state.loadingDoctors = false;
-                state.errors = action.payload as string;
+                state.errors = null;
             })
         }
     }

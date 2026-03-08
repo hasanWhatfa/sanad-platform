@@ -16,7 +16,8 @@ interface NavBarProps{
 
 const NavBar = ({links} : NavBarProps) => {
   const[showMenu,setShowMenu] = useState(false);
-  const[scrolling,setScrolling] = useState(false);   
+  const[scrolling,setScrolling] = useState(false);
+  const[expandedDropdown,setExpandedDropdown] = useState<number | null>(null);   
 
   const {openModal} = useAuthModal();
     //track the scrolling to chage the appreance of the navBar
@@ -92,8 +93,24 @@ const NavBar = ({links} : NavBarProps) => {
                     </div>
                     <div className="navLinks">
                         {links.map((link,linkIndex)=>{
+                            if(link.isDropDown){
+                              return(
+                                <div key={linkIndex} className="mobile-dropdown">
+                                  <div className="mobile-dropdown-header" onClick={()=>setExpandedDropdown(expandedDropdown === linkIndex ? null : linkIndex)}>
+                                    {link.linkName}
+                                  </div>
+                                  {expandedDropdown === linkIndex && (
+                                    <div className="mobile-dropdown-links">
+                                      {link.dropDownLinks?.map((subLink,subIndex)=>(
+                                        <NavLink key={subIndex} to={`test/${subLink.linkTo}`} onClick={()=>setShowMenu(false)}>{subLink.linkText}</NavLink>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                              )
+                            }
                             return(
-                            <NavLink key={linkIndex} to={link.linkTo} className={({isActive})=> isActive ? 'activeLink':''}>{link.linkName}</NavLink>                      
+                            <NavLink key={linkIndex} to={link.linkTo} className={({isActive})=> isActive ? 'activeLink':''} onClick={()=>setShowMenu(false)}>{link.linkName}</NavLink>                      
                         )
                         })}
                     </div>

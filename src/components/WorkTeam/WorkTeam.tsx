@@ -12,7 +12,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import type { AppDispatch, RootState } from '../../redux/store';
 import { fetchDox } from '../../redux/slices/PubDoctors';
-import { image_base, type DoctorMainType } from '../../data/generalTypes';
+import {type DoctorMainType } from '../../data/generalTypes';
 
 const WorkTeam = () => {
   // نخزن الطبيب المختار كاملاً لتسهيل التعامل مع البيانات
@@ -40,7 +40,7 @@ const WorkTeam = () => {
           <div className="top">
             <div className="choosenDocImage">
               {/* الصورة الآن تتغير حسب الطبيب المختار */}
-              <img src={`${image_base}/${chosenDoctor?.avatar}` || "/images/docPhoto.webp"} alt={`${chosenDoctor?.first_name} photo`} />
+              <img src={`${chosenDoctor?.avatar}` || "/images/docPhoto.webp"} alt={`${chosenDoctor?.first_name} photo`} />
             </div>
           </div>
           <div className="displayedDocInfo">
@@ -51,7 +51,7 @@ const WorkTeam = () => {
             <ul className="docAchivments">
               {chosenDoctor?.achievements?.split(",").map((ach, index) => (
                 <li key={index}>
-                  {ach} <RiArrowLeftDoubleLine />
+                  {ach.trim()} <RiArrowLeftDoubleLine />
                 </li>
               ))}
             </ul>

@@ -144,6 +144,13 @@
 .one_option:hover {
   background-color: var(--color-secondary);
   border-color: var(--color-accent);
+  transform: translateX(-5px);
+}
+
+.one_option:has(input[type="radio"]:checked) {
+  background-color: var(--color-secondary);
+  border-color: var(--color-accent);
+  transform: scale(1.02);
 }
 
 .one_option input[type="radio"] {
@@ -156,10 +163,12 @@
   font-weight: 500;
   flex-grow: 1;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
 }
 
-/* Add a custom radio button visual */
-.one_option::before {
+.one_option label::before {
   content: '';
   width: 1.25rem;
   height: 1.25rem;
@@ -167,6 +176,7 @@
   border-radius: 50%;
   margin-left: 1rem;
   transition: all var(--main-trans);
+  flex-shrink: 0;
 }
 
 .one_option input[type="radio"]:checked + label::before {
@@ -178,10 +188,8 @@
   color: var(--color-white);
   font-size: 0.8rem;
   border-color: var(--color-accent);
-  transform: scale(1.1);
 }
 
-/* When the radio button is checked, style the parent container */
 .one_option input[type="radio"]:checked ~ label {
   color: var(--color-primary);
   font-weight: bold;

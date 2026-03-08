@@ -20,7 +20,7 @@ const DocCard = ({docName,docImage,docDesc,choosenDoc} : DocCardProps) => {
     <div className={`DocCardComponent ${choosenDoc ? 'DocCardActive' : ''}`}>
       <div className="topPART">
         <div className="docCardImage">
-          <img src={`${image_base}/${docImage}`} />
+          <img src={`${docImage}`} />
         </div>
       </div>
       <div className="bottomPart">

@@ -74,12 +74,12 @@ const QuestionsPage: React.FC = () => {
                 { !showResult ? 
                     (
                     <motion.div
-                    style={{width:'100%'}}
+                    style={{width:'100%', minHeight: '400px'}}
                     key={currentIndex}
-                    initial={{ opacity: 0, x: 100 }}
+                    initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -100 }}
-                    transition={{ duration: 0.5 }}
+                    exit={{ opacity: 0, x: -50 }}
+                    transition={{ duration: 0.3 }}
                     >
                         <QuestionComponent
                         question={test.questions[currentIndex]}
@@ -117,7 +117,9 @@ const QuestionComponent: React.FC<QuestionShapeProps> = ({ question, handleAnswe
 
   const onSelect = (score: number) => {
     setSelected(score);
-    handleAnswered(question.questId, score);
+    setTimeout(() => {
+      handleAnswered(question.questId, score);
+    }, 300);
   };
 
   return (
